@@ -1,0 +1,139 @@
+#con {
+height: 100vh;
+justify-content: center;
+text-align: center;
+align-items: center;
+display: flex;
+}
+#bolas{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: row  ;
+}
+#filhos{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#selectfunc{
+  border: none;
+  background-color:transparent;
+  width: 4vw;
+}
+#filhos,input{
+flex-direction: column;
+}
+
+#buttons{
+  margin-top: 20px;
+}
+
+#form1{
+    align-items: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    
+}
+.buttonlogin, #texto{
+  cursor: pointer;
+  width: 150px;
+  border-radius: 30px;
+  height: 70px;
+  font-size: 20px;
+  border: black solid 3px;
+}
+#divbtn button{
+  border: solid 2px;
+}
+#con input, #con select{  
+    border:2px  solid black;
+    width: 600px;
+    height: 65px;
+    font-size: 20px;
+    
+}
+#bolhas, #termos {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+.bolha{
+    margin-left: 10px;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    background-color: gray;
+}
+#bolhas{
+margin: 0;
+}
+
+#botoeslogin1{
+    margin-top: 10px;
+}
+
+#termos{
+    border: 3px solid black;
+    padding: 0;
+    background: #e9ecef;
+    width: 300px;
+    height: 70px;
+    border-radius: 7px;
+    margin-top: 20px;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+  }
+#senhaobs{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: justify;
+  width: 350px;
+}
+#textsenhaobs{
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+}
+
+#termos label{
+    margin-right: 20px;
+}
+  #termos input{
+    width: 60px;
+  }
+  #leia{
+    font-size: 24px;
+  }
+#texconem{
+    font-size: 24px;
+  }
+  #senhaobs{
+    font-size: 22px;
+  }
+  #Nome{
+    margin-top: 20px;
+  }
+  #form{
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+  }
+  .erros{
+    color: "#FF6300";
+  }
+  @keyframes anima{
+    0%{
+      transform: scale(1);
+    }
+    100%{
+      transform: scale(1.05);
+    }
+  }
+  

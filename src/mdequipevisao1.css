@@ -1,0 +1,8 @@
+.mdbtnequivis
+{width:18vw; margin-bottom:2vh;height:5.5vh; background-color:#14B57A;color:white; box-shadow:4px 4px 4px 3px rgba(0, 0, 0, 0.2);font-weight:bold;font-size: 20px;border-radius:10px;border:0px solid white}
+#dequivistxt{
+    font-size: 1.7vw;
+}
+#mdgapvis{
+    gap: 30px;
+}

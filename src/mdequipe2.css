@@ -1,0 +1,492 @@
+#mdequi3txt1{
+    font-size:20px;
+}
+#mdequi3txt0{
+    font-size:40px;margin-top:-30px
+}
+.mdAnuMendiv{ width:12vw}
+.mdAnuMen{
+font-size:25px
+}
+#Assinatura{
+width:17vw;margin-top: 3vh;
+}
+#divAssinatura{display:flex;flex-direction:row;gap: 20px;}
+#mddivplano{
+    font-size:1.7vw
+}
+#mddivpreco{
+    margin-top:20px; margin-bottom:20px
+
+}
+#mddivpreco span{
+    font-size: 1.7vw;
+}
+#mddivpreco span span{
+    font-size: 2.3vw;
+}
+#mddivlista{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#mddivlista ul{
+    padding: 0px;
+}
+#mddivlista ul li{
+
+margin-bottom: 10px;
+
+}
+#mddivavisoequi{
+    margin-top:10px; font-size:20px;
+}
+
+@media screen and (max-width:1400px) and (min-width:1200px) {
+    #mdequi3txt1{
+        font-size:1.6vw;
+    }
+    #mdequi3txt0{
+        font-size:2vw;margin-top:-30px
+    }
+    .mdAnuMendiv{ width:12vw}
+    .mdAnuMen{
+    font-size:1.6vw
+    }
+    #Assinatura{
+       
+        width:22vw;margin-top: 1.5vh;
+    }
+    #divAssinatura{display:flex;flex-direction:row;gap: 20px;}
+    #mddivplano{
+        font-size:1.7vw
+    }
+    #mddivpreco{
+        margin-top:20px; margin-bottom:20px
+    
+    }
+    #mddivpreco span{
+        font-size: 1.7vw;
+    }
+    #mddivpreco span span{
+        font-size: 2.3vw;
+    }
+    #mddivlista{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #mddivlista ul{
+        padding: 0px;
+    }
+    #mddivlista ul li, #txtGratis{
+    margin-bottom: 10px;
+    font-size:17px;
+
+    }
+    #mddivavisoequi{
+        margin-top:40px; font-size:1.5vw;margin-left: 10px; margin-right: 10px;
+    }
+}
+
+@media screen and (max-width:1200px) and (min-width:1100px) {
+    #mdequi3txt1{
+        font-size:1.65vw;
+    }
+    #mdequi3txt0{
+        font-size:2vw;margin-top:-30px
+    }
+    .mdAnuMendiv{ width:12vw}
+    .mdAnuMen{
+    font-size:1.6vw
+    }
+    #Assinatura{
+    width:22vw;margin-top: 1.5vh;
+    }
+    #divAssinatura{display:flex;flex-direction:row;gap: 20px;}
+    #mddivplano{
+        font-size:1.7vw
+    }
+    #mddivpreco{
+        margin-top:20px; margin-bottom:20px
+    
+    }
+    #mddivpreco span{
+        font-size: 1.7vw;
+    }
+    #mddivpreco span span{
+        font-size: 2.3vw;
+    }
+    #mddivlista{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #mddivlista ul{
+        padding: 0px;
+    }
+    #mddivlista ul li, #txtGratis{
+        font-size:16px;
+    margin-bottom: 10px;
+    }
+    #mddivavisoequi{
+        margin-top:40px; font-size:1.55vw;margin-left: 10px; margin-right: 10px;;
+    }
+}
+@media screen and (max-width:1100px) and (min-width:1000px) {
+    #mdequi3txt1{
+        font-size:1.85vw;
+    }
+    #mdequi3txt0{
+        font-size:2.5vw;margin-top:-30px
+    }
+    .mdAnuMendiv{ width:12vw}
+    .mdAnuMen{
+    font-size:1.8vw
+    }
+    #Assinatura{
+    width:22vw;margin-top: 1.5vh;
+    }
+    #divAssinatura{display:flex;flex-direction:row;gap: 20px;}
+    #mddivplano{
+        font-size:1.7vw
+    }
+    #mddivpreco{
+        margin-top:20px; margin-bottom:20px
+    
+    }
+    #mddivpreco span{
+        font-size: 1.7vw;
+    }
+    #mddivpreco span span{
+        font-size: 2.3vw;
+    }
+    #mddivlista{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #mddivlista ul{
+        padding: 0px;
+    }
+    #mddivlista ul li,#txtGratis{
+        font-size:16px;
+    margin-bottom: 10px;
+    }
+    #mddivavisoequi{
+        margin-top:40px; font-size:1.85vw;margin-left: 10px; margin-right: 10px;;
+    }
+}
+@media screen and (max-width:1000px) and (min-width:900px) {
+    #mdequi3txt1{
+        font-size:1.85vw;
+    }
+    #mdequi3txt0{
+        font-size:2.5vw;margin-top:-30px
+    }
+    .mdAnuMendiv{ width:12vw}
+    .mdAnuMen{
+    font-size:1.8vw
+    }
+    #Assinatura{
+    width:22vw;margin-top: 1.5vh;
+    }
+    #divAssinatura{display:flex;flex-direction:row;gap: 20px;}
+    #mddivplano{
+        font-size:1.7vw
+    }
+    #mddivpreco{
+        margin-top:20px; margin-bottom:20px
+    
+    }
+    #mddivpreco span{
+        font-size: 1.7vw;
+    }
+    #mddivpreco span span{
+        font-size: 2.3vw;
+    }
+    #mddivlista{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #mddivlista ul{
+        padding: 0px;
+    }
+    #mddivlista ul li,#txtGratis{
+        font-size:16px;
+    margin-bottom: 10px;
+    }
+    #mddivavisoequi{
+        margin-top:40px; font-size:1.85vw;margin-left: 10px; margin-right: 10px;;
+    }
+}
+@media screen and (max-width:900px) {
+    #mdequi3txt1{
+        font-size:2vw;
+    }
+    #mdequi3txt0{
+        font-size:3vw;margin-top:-30px
+    }
+    .mdAnuMendiv{ width:14vw}
+    .mdAnuMen{
+    font-size:2vw
+    }
+    #Assinatura{
+    width:22vw;margin-top: 1.5vh;
+    }
+    #divAssinatura{display:flex;flex-direction:row;gap: 20px;}
+    #mddivplano{
+        font-size:1.7vw
+    }
+    #mddivpreco{
+        margin-top:20px; margin-bottom:20px
+    
+    }
+    #mddivpreco span{
+        font-size: 1.7vw;
+    }
+    #mddivpreco span span{
+        font-size: 2.3vw;
+    }
+    #mddivlista{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #mddivlista ul{
+        padding: 0px;
+    }
+    #mddivlista ul li,#txtGratis{
+        font-size:14px;
+    margin-bottom: 10px;
+    }
+    #mddivavisoequi{
+        margin-top:40px; font-size:2vw;
+ margin-left: 10px; margin-right: 10px;   }
+}
+@media screen and (max-width:800px) {
+    #mdequi3txt1{
+        font-size:2.2vw;
+    }
+    #mdequi3txt0{
+        font-size:3.2vw;margin-top:-30px
+    }
+    .mdAnuMendiv{ width:14vw}
+    .mdAnuMen{
+    font-size:2.2vw
+    }
+    #Assinatura{
+    width:21vw;margin-top: 1.5vh;
+    }
+    #divAssinatura{display:flex;flex-direction:row;gap: 20px;}
+    #mddivplano{
+        font-size:1.7vw
+    }
+    #mddivpreco{
+        margin-top:20px; margin-bottom:20px
+    
+    }
+    #mddivpreco span{
+        font-size: 1.7vw;
+    }
+    #mddivpreco span span{
+        font-size: 2.3vw;
+    }
+    #mddivlista{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #mddivlista ul{
+        padding: 0px;
+    }
+    #mddivlista ul li,#txtGratis{
+        font-size:13.5px;
+    margin-bottom: 10px;
+    }
+    #mddivavisoequi{
+        margin-top:40px; font-size:2.2vw;margin-left: 10px; margin-right: 10px;
+    }
+}
+@media screen and (max-width:700px) {
+    #mdequi3txt1{
+        font-size:2.4vw;
+    }
+    #mdequi3txt0{
+        font-size:3.4vw;margin-top:-30px
+    }
+    .mdAnuMendiv{ width:16vw}
+    .mdAnuMen{
+    font-size:2.4vw
+    }
+    #Assinatura{
+    width:21vw;margin-top: 1.5vh;
+    }
+    #divAssinatura{display:flex;flex-direction:row;gap: 20px;}
+    #mddivplano{
+        font-size:1.7vw
+    }
+    #mddivpreco{
+        margin-top:20px; margin-bottom:20px
+    
+    }
+    #mddivpreco span{
+        font-size: 1.7vw;
+    }
+    #mddivpreco span span{
+        font-size: 2.3vw;
+    }
+    #mddivlista{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #mddivlista ul{
+        padding: 0px;
+    }
+    #mddivlista ul li,#txtGratis{
+        font-size:16px;
+    margin-bottom: 10px;
+    }
+    #mddivavisoequi{
+        margin-top:40px; font-size:2.4vw;margin-left: 10px; margin-right: 10px;
+    }
+}
+@media screen and (max-width:650px) {
+    #mdequi3txt1{
+        font-size:2.6vw;
+    }
+    #mdequi3txt0{
+        font-size:3.6vw;margin-top:-30px
+    }
+    .mdAnuMendiv{ width:18vw}
+    .mdAnuMen{
+    font-size:2.6vw
+    }
+    #Assinatura{
+    width:21vw;margin-top: 1.5vh;
+    }
+    #divAssinatura{display:flex;flex-direction:row;gap: 20px;}
+    #mddivplano{
+        font-size:1.7vw
+    }
+    #mddivpreco{
+        margin-top:20px; margin-bottom:20px
+    
+    }
+    #mddivpreco span{
+        font-size: 1.7vw;
+    }
+    #mddivpreco span span{
+        font-size: 2.3vw;
+    }
+    #mddivlista{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #mddivlista ul{
+        padding: 0px;
+    }
+    #mddivlista ul li,#txtGratis{
+        font-size:14px;
+    margin-bottom: 10px;
+    }
+    #mddivavisoequi{
+        margin-top:10px; font-size:2.6vw;margin-left: 10px; margin-right: 10px; 
+    }
+}
+@media screen and (max-width:600px) {
+    #mdequi3txt1{
+        font-size:2.8vw;
+        margin-left: 10px;
+        margin-right: 10px
+    }
+    #mdequi3txt0{
+        font-size:3.8vw;margin-top:-30px
+    }
+    .mdAnuMendiv{ width:20vw}
+    .mdAnuMen{
+    font-size:2.8vw
+    }
+    #Assinatura{
+    width:21vw;margin-top: 2vh;
+    }
+    #divAssinatura{display:flex;flex-direction:row;gap: 20px;}
+    #mddivplano{
+        font-size:1.7vw
+    }
+    #mddivpreco{
+        margin-top:20px; margin-bottom:20px
+    
+    }
+    #mddivpreco span{
+        font-size: 1.7vw;
+    }
+    #mddivpreco span span{
+        font-size: 2.3vw;
+    }
+    #mddivlista{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #mddivlista ul{
+        padding: 0px;
+    }
+    #mddivlista ul li,#txtGratis{
+        font-size:14px;
+    margin-bottom: 10px;
+    }
+    #mddivavisoequi{
+        margin-top:10px; font-size:2.8vw;
+ margin-left: 10px; margin-right: 10px;   }
+}
+@media screen and (max-width:500px) {
+    #mdequi3txt1{
+        font-size:3vw;
+        margin-left: 10px;
+        margin-right: 10px
+    }
+    #mdequi3txt0{
+        font-size:4vw;margin-top:-30px
+    }
+    .mdAnuMendiv{ width:20vw}
+    .mdAnuMen{
+    font-size:3vw
+    }
+    #Assinatura{
+    width:21vw;margin-top: 2vh;
+    }
+    #divAssinatura{display:flex;flex-direction:row;gap: 20px;}
+    #mddivplano{
+        font-size:1.7vw
+    }
+    #mddivpreco{
+        margin-top:20px; margin-bottom:20px
+    
+    }
+    #mddivpreco span{
+        font-size: 1.7vw;
+    }
+    #mddivpreco span span{
+        font-size: 2.3vw;
+    }
+    #mddivlista{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #mddivlista ul{
+        padding: 0px;
+    }
+    #mddivlista ul li,#txtGratis{
+        font-size:12px;
+    margin-bottom: 10px;
+    }
+    #mddivavisoequi{
+        margin-top:10px; font-size:3vw;
+ margin-left: 10px; margin-right: 10px;   }
+}
+

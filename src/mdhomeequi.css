@@ -1,0 +1,151 @@
+#mdnav1equihome{
+    width: 98vw;
+    background-color: #FFFBFB;
+    height: 8vh;
+    padding-top: 2vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+
+}
+#mdbtnconequihome{
+    border-radius: 10px;
+    width: 6vw;
+    height: 3.8vh;
+    background-color: #3AB110;
+}
+#mdnav11equihome{
+font-weight: 700;
+font-size: 24px;
+gap: 3vw;
+display: flex;
+flex-direction: row;
+}
+#mdnav11equihome select{
+    border: 0px;
+    font-weight: 700;
+    font-size: 22px;
+
+    }
+#mdiconehomeequi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #476DCF;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+#mdnav12equihome{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    gap: 3vw;
+    display: flex;
+    flex-direction: row;
+    }
+#mdnav12equihome button {
+display: flex;
+flex-direction: row;
+justify-content: center;
+text-align: center;
+align-items: center;
+font-size: 15px;
+}
+#mdnav12equihome button svg{
+    margin-right: 10px;
+}
+#mdequihomecon{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+#mdequihomenav21{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4vh;
+}
+#mdequihomenav22{
+    margin-top: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10vh;
+}
+#mdequihomenav2{
+    z-index: 1;
+    background-color: #FFFBFB;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 92vh;
+    width: 8vw;
+}
+.mdnav2hr{
+    background-color: #F5F1ED;
+    width: 8vw;
+    height: 2px;
+}
+#mdhomeequigeraldiv1{
+    gap: 6vh;
+    display: flex;
+    flex-direction: column;
+}
+#mdhomeequigeraldiv11{
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    width: 40vw;
+    height: 25vh;
+}
+#mdhomeequigeraldiv12{
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    width: 40vw;
+    height: 43vh;
+}
+#mdequihomegeral{
+    gap: 4vw;
+    display: flex;
+    flex-direction: row;
+    background-color: #F5F1ED;
+    display: flex;
+    flex-direction: row;
+    padding: 5vh 5vw;
+    height: 82vh;
+    width: 92vw;
+}
+#mdiconeequihomequi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #476DCF;
+    border-radius: 13.5px;
+    width: 50px;
+    height: 50px;
+}
+#mdtxt2homeequi{
+    display: flex;
+    justify-content: left;
+    font-size: 50PX;
+    font-weight: 700;
+}
+#mdhomeequigeraldiv2{
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    width: 38vw;
+    height: 82vh;
+}
+#mdnav11equihome div{
+margin-left: 20px;
+}

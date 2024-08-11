@@ -1,0 +1,23 @@
+
+  *{
+    font-family: "poppins", sans-serif;
+    
+  }
+  #chosen{
+    background-color: #f5ebe0;
+  }
+  input[type="password"]::-webkit-credentials-auto-fill-button {
+    display: none;
+  }
+  
+  input[data-password="true"]::-webkit-credentials-auto-fill-button,
+  input[data-password="true"]::-webkit-credentials-auto-fill-button,
+  input[data-password="true"]::-webkit-autofill,
+  input[data-password="true"]::-webkit-autofill-button,
+  input[data-password="true"]::-webkit-autofill-cancel-button,
+  input[data-password="true"]::-webkit-autofill-preview,
+  input[data-password="true"]::-webkit-autofill-selected {
+    display: none;
+  }
+#Btncada:hover{
+}
