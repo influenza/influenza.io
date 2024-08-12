@@ -110,14 +110,13 @@ export function Cadastro4(props){
         setNome(event.target.value)
       }
     return(
-      <div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"", justifyContent:"center",alignItems:"center",textAlign:"center"}}>
-      <div id='imgmargin' className="imgmargindiv" style={{display:"flex",flexDirection:"row", width:"100vw",}}>
-  <div id="imgs" >  
-  <img src={`${logo}`} className='img'alt="" />
+      <div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"",textAlign:"center"}}>
+
+<div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",height:"15vh",justifyContent:"center",alignItems:"center",marginBottom:"20px"}}>
+<img src={`${logo}`} className='img'alt="" />
     <img src={`${letraverde}`} className='img'   alt="" /></div>
-  
-      </div>
-      <div id="mdcon" style={{backgroundColor:"white",  borderRadius:"17px",boxShadow:"4px 4px 4px 3px rgba(0, 0, 0, 0.2)"}}>
+     <div style={{display:"flex",justifyContent:"center", alignItems:"center", height:"80vh"}}>
+     <div id="mdcon" style={{backgroundColor:"white",  borderRadius:"17px",boxShadow:"4px 4px 4px 3px rgba(0, 0, 0, 0.2)"}}>
       <p id="mdtxt1cad4">Estamos quase lá</p>
       <p className='diverro'style={{  textAlign:"left",marginTop:"5px",marginBottom:"5px"}}>NOME COMPLETO</p>
       <input  className="inplog" value={Nome} onChange={handleNome} />
@@ -221,6 +220,7 @@ fill="#FF6300" stroke="none">
             </div>
             
         </div>
+     </div>
         
               </div>
         

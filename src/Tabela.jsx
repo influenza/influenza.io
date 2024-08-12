@@ -44,7 +44,6 @@ import axios from "axios";
         };
         
         useEffect(()=>{
-          document.getElementById("mdpagebutton1").className = "chosen";
           setdata({"_embedded":{"mQ135ReadingVOList":[{"id":1,"teamHandle":"ecosynergyofc","value":567.8,"timestamp":"2024-07-26T00:07:25Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/1"}}},{"id":2,"teamHandle":"ecosynergyofc","value":1.07373E9,"timestamp":"2024-07-26T14:40:33Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/2"}}},{"id":3,"teamHandle":"ecosynergyofc","value":1.07373E9,"timestamp":"2024-07-26T14:40:53Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/3"}}},{"id":4,"teamHandle":"ecosynergyofc","value":712.0,"timestamp":"2024-07-26T14:40:55Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/4"}}},{"id":5,"teamHandle":"ecosynergyofc","value":714.0,"timestamp":"2024-07-26T14:40:56Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/5"}}},{"id":6,"teamHandle":"ecosynergyofc","value":717.0,"timestamp":"2024-07-26T14:40:57Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/6"}}},{"id":7,"teamHandle":"ecosynergyofc","value":713.0,"timestamp":"2024-07-26T14:40:59Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/7"}}},{"id":8,"teamHandle":"ecosynergyofc","value":714.0,"timestamp":"2024-07-26T14:41:00Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/8"}}},{"id":9,"teamHandle":"ecosynergyofc","value":714.0,"timestamp":"2024-07-26T14:41:01Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/9"}}},{"id":10,"teamHandle":"ecosynergyofc","value":713.0,"timestamp":"2024-07-26T14:41:03Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/10"}}},{"id":11,"teamHandle":"ecosynergyofc","value":715.0,"timestamp":"2024-07-26T14:41:04Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/11"}}},{"id":12,"teamHandle":"ecosynergyofc","value":715.0,"timestamp":"2024-07-26T14:41:05Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/12"}}},{"id":13,"teamHandle":"ecosynergyofc","value":716.0,"timestamp":"2024-07-26T14:41:07Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/13"}}},{"id":14,"teamHandle":"ecosynergyofc","value":715.0,"timestamp":"2024-07-26T14:41:08Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/14"}}},{"id":15,"teamHandle":"ecosynergyofc","value":714.0,"timestamp":"2024-07-26T14:41:09Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/15"}}},{"id":16,"teamHandle":"ecosynergyofc","value":714.0,"timestamp":"2024-07-26T14:41:10Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/16"}}},{"id":17,"teamHandle":"ecosynergyofc","value":715.0,"timestamp":"2024-07-26T14:41:12Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/17"}}},{"id":18,"teamHandle":"ecosynergyofc","value":715.0,"timestamp":"2024-07-26T14:41:13Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/18"}}},{"id":19,"teamHandle":"ecosynergyofc","value":740.0,"timestamp":"2024-07-26T14:41:14Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/19"}}},{"id":20,"teamHandle":"ecosynergyofc","value":557.0,"timestamp":"2024-07-26T14:41:16Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/20"}}}]},"_links":{"first":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1?limit=20&direction=timestamp%3A%20ASC&page=0&size=20&sort=timestamp,asc"},"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1?page=0&limit=20&direction=timestamp%3A%20ASC"},"next":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1?limit=20&direction=timestamp%3A%20ASC&page=1&size=20&sort=timestamp,asc"},"last":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1?limit=20&direction=timestamp%3A%20ASC&page=2&size=20&sort=timestamp,asc"}},"page":{"size":20,"totalElements":51,"totalPages":3,"number":0}})  
           console.log(dia["_embedded"])
         },[])
@@ -67,18 +66,18 @@ import axios from "axios";
                 <div style={{display:"flex", justifyContent:"center", flexDirection:"row", gap:"20px"}}>
                 <div id="mdSelectstab">
                     <div style={{display:"flex", flexDirection:"column"}}>
-                    <span className="mdselectspantab">Selecione a unidade de medida:</span>
+                    <span className="mdselectspantab">Tabela por:</span>
                     <select name="" id="" className="mdselecttab">
-                        <option value="Semanal">Semanal</option>
-                        <option value="Mensal">Mensal</option>
-                        <option value="Anual">Anual</option>
+                        <option value="Semanal">Semana</option>
+                        <option value="Mensal">Més</option>
+                        <option value="Anual">Ano</option>
 
                     </select>
                     </div>
                 </div>
                 <div id="mdSelectstab">
                     <div style={{display:"flex", flexDirection:"column"}}>
-                    <span className="mdselectspantab">Selecione o sensor:</span>
+                    <span className="mdselectspantab"> Sensor:</span>
                     <select name="" id="" className="mdselecttab">
                         <option value="MQ7">MQ7</option>
                         <option value="FIRE">FIRE</option>
@@ -89,10 +88,10 @@ import axios from "axios";
                 </div>
                 <div id="mdSelectstab">
                     <div style={{display:"flex", flexDirection:"column"}}>
-                    <span className="mdselectspantab" style={{color:"white"}}>Selecione a unidade de medida:</span>
+                    <span className="mdselectspantab" style={{color:"white"}}>Se:</span>
 
-                    <div name="" id="" style={{backgroundColor:"#0075E8", display:'flex', justifyContent:"space-around", alignItems:"center", textAlign:"center"}} className="mdselecttab">
-                    <svg width="20px" height="20px" viewBox="0 0 29 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div name="" id="mdselectazulfilter" style={{backgroundColor:"#0075E8", display:'flex', justifyContent:"space-around", alignItems:"center", textAlign:"center", borderRadius:"8px",marginRight:"10px"}} >
+                    <svg width="20px" height="20px" style={{marginLeft:"5px"}} viewBox="0 0 29 23" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M7.47401 0.151733L0.394043 8.43017H5.1617V22.2276H9.92935V8.43017H14.697L7.47401 0.151733Z" fill="white"/>
 <path d="M19.4649 0.151733V14.0284H14.6973L21.9203 22.3543L29.0002 14.0284H24.2326V0.151733H19.4649Z" fill="white"/>
 </svg>
@@ -146,9 +145,9 @@ return null;
 
         </div>
         <div id="mdfoottab">
-            <div style={{display:"flex",gap:"20px", marginLeft:"20px"}}>
-            <div style={{backgroundColor:"#279301", width:"120px", borderRadius:"10px", height:"35px", display:"flex", justifyContent:"center",gap:"15px"}}>
-            <svg width="20px" height="20px" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div id="mdtabopagesdiv" style={{display:"flex", marginLeft:"5px"}}>
+            <div className="mdTABDOWN" style={{backgroundColor:"#279301", display:"flex", justifyContent:"center"}}>
+            <svg className="mdTabUPLOADSVG" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M16.0171 2C16.0171 1.0335 15.2336 0.25 14.2671 0.25C13.3006 0.25 12.5171 1.0335 12.5171 2H16.0171ZM12.5171 2V17.84H16.0171V2H12.5171Z" fill="white"/>
 <path d="M15.1317 20.1604C14.7377 20.5567 14.0962 20.5543 13.7067 20.1551L6.768 13.0436C6.14896 12.4091 6.60266 11.3413 7.48987 11.3446L21.4451 11.3969C22.3323 11.4002 22.7743 12.4714 22.1483 13.1012L15.1317 20.1604Z" fill="white"/>
 <path d="M2.5332 24H24.9332" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
@@ -156,11 +155,11 @@ return null;
 <path d="M24.5 24C24.5 24.8284 25.1716 25.5 26 25.5C26.8284 25.5 27.5 24.8284 27.5 24H24.5ZM24.5 17.84V24H27.5V17.84H24.5Z" fill="white"/>
 </svg>
 
-            <button style={{backgroundColor:"#279301", border:"0px",fontSize:"18px"}}>PDF</button>
+            <button style={{backgroundColor:"#279301", border:"0px"}}>PDF</button>
 
             </div>
-            <div style={{backgroundColor:"#279301", width:"120px", borderRadius:"10px", height:"35px", display:"flex", justifyContent:"center",gap:"15px"}}>
-            <svg width="20px" height="20px" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div className="mdTABDOWN" style={{backgroundColor:"#279301", display:"flex", justifyContent:"center"}}>
+            <svg className="mdTabUPLOADSVG" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M16.0171 2C16.0171 1.0335 15.2336 0.25 14.2671 0.25C13.3006 0.25 12.5171 1.0335 12.5171 2H16.0171ZM12.5171 2V17.84H16.0171V2H12.5171Z" fill="white"/>
 <path d="M15.1317 20.1604C14.7377 20.5567 14.0962 20.5543 13.7067 20.1551L6.768 13.0436C6.14896 12.4091 6.60266 11.3413 7.48987 11.3446L21.4451 11.3969C22.3323 11.4002 22.7743 12.4714 22.1483 13.1012L15.1317 20.1604Z" fill="white"/>
 <path d="M2.5332 24H24.9332" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
@@ -168,11 +167,11 @@ return null;
 <path d="M24.5 24C24.5 24.8284 25.1716 25.5 26 25.5C26.8284 25.5 27.5 24.8284 27.5 24H24.5ZM24.5 17.84V24H27.5V17.84H24.5Z" fill="white"/>
 </svg>
 
-            <button style={{backgroundColor:"#279301", border:"0px",fontSize:"18px"}}>Excel</button>
+            <button style={{backgroundColor:"#279301", border:"0px"}}>Excel</button>
 
             </div>
-            <div style={{backgroundColor:"#279301", width:"120px", borderRadius:"10px", height:"35px", display:"flex", justifyContent:"center",gap:"15px", paddingLeft:"20px"}}>
-            <svg width="20px" height="20px" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div className="mdTABDOWNBI" style={{backgroundColor:"#279301", display:"flex", justifyContent:"center"}}>
+            <svg className="mdTabUPLOADSVG" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M16.0171 2C16.0171 1.0335 15.2336 0.25 14.2671 0.25C13.3006 0.25 12.5171 1.0335 12.5171 2H16.0171ZM12.5171 2V17.84H16.0171V2H12.5171Z" fill="white"/>
 <path d="M15.1317 20.1604C14.7377 20.5567 14.0962 20.5543 13.7067 20.1551L6.768 13.0436C6.14896 12.4091 6.60266 11.3413 7.48987 11.3446L21.4451 11.3969C22.3323 11.4002 22.7743 12.4714 22.1483 13.1012L15.1317 20.1604Z" fill="white"/>
 <path d="M2.5332 24H24.9332" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
@@ -180,15 +179,16 @@ return null;
 <path d="M24.5 24C24.5 24.8284 25.1716 25.5 26 25.5C26.8284 25.5 27.5 24.8284 27.5 24H24.5ZM24.5 17.84V24H27.5V17.84H24.5Z" fill="white"/>
 </svg>
 
-            <button style={{backgroundColor:"#279301", border:"0px",fontSize:"18px"}}>Power Bi</button>
+            <button style={{backgroundColor:"#279301", border:"0px"}}>PowerBI</button>
 
             </div>
+     
             </div>
-            <div style={{display:"flex", justifyContent:"center", gap:"20px"}}>
+            <div id="mdtabopagesdiv" style={{display:"flex", justifyContent:"center",}}>
             {arraypages.map((page, index)=>{
                 if(page == 1){
                     return(
-                        <div  id={`mdpagebutton${page}`}style={{backgroundColor:"#0075E8", width:"25px", height:"25px", justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"white", }}>{page}</div>
+                        <div className="mdtabpages" id={`mdpagebutton${page}`}style={{backgroundColor:"#0075E8",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"white", }}>{page}</div>
                         
                                         )
                 }else if(page > 4){
@@ -200,10 +200,10 @@ return null;
                         <span style={{fontSize:"20px"}}>...</span>
                         <div  onClick={()=>{
                             navigate(`/tabela/${page}`)
-                        }} id={`mdpagebutton${page}`}style={{backgroundColor:"#BBD6F0", width:"25px", height:"25px", justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}>{page}</div>
+                        }} className="mdtabpages" id={`mdpagebutton${page}`}style={{backgroundColor:"#BBD6F0",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}>{page}</div>
                        <div  onClick={()=>{
                             navigate(`/tabela/${2}`)
-                        }} style={{backgroundColor:"#BBD6F0", width:"25px", height:"25px", justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}> {">"}</div>
+                        }} className="mdtabpages" style={{backgroundColor:"#BBD6F0",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}> {">"}</div>
                        
                         </>
                          )
@@ -213,7 +213,7 @@ return null;
                     return(
                         <div  onClick={()=>{
                             navigate(`/tabela/${page}`)
-                        }} id={`mdpagebutton${page}`}style={{backgroundColor:"#BBD6F0", width:"25px", height:"25px", justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}>{page}</div>
+                        }} className="mdtabpages" id={`mdpagebutton${page}`}style={{backgroundColor:"#BBD6F0",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}>{page}</div>
                         
                                         )   
                 }

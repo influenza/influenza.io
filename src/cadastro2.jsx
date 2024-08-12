@@ -186,13 +186,14 @@ if(cadastro == true){
   return (
     <>
 
-    <div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"", justifyContent:"center",alignItems:"center",textAlign:"center"}}>
-    <div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",}}>
+    <div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"", }}>
+    <div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",height:"15vh",justifyContent:"center",alignItems:"center"}}>
 <div id="imgs" >  
 <img src={`${logo}`} className='img'alt="" />
   <img src={`${letraverde}`} className='img'   alt="" /></div>
 
     </div>
+    <div style={{ height:"85vh", width:"100vw", display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center"}}>
     <div id="mdcon" style={{backgroundColor:"white",  borderRadius:"17px",boxShadow:"4px 4px 4px 3px rgba(0, 0, 0, 0.2)"}}>
       <p id="mdtxt1" style={{ fontWeight:"bolder"}}> Bem vindo ao mundo verde</p>
       
@@ -399,6 +400,7 @@ fill="#FF6300" stroke="none">
         </div>
           </div>
         
+    </div>
     </div>
     
           </div>

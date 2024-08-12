@@ -12,6 +12,7 @@ import "./404.css"
 import Navbar2 from "./navbarlateral2";
 import { Navbar4 } from "./Navbar4";
 import { Navbar3 } from "./navbar3";
+import "./mdequipevisão.css"
 export function HomeTem(props){
     let navigate=useNavigate()
     const [imageperfil, setImageperfil] = useState(null);
@@ -77,31 +78,31 @@ function handlePular(e){
         <Navbar3></Navbar3>
         <div id="mdequihomecon">
            <Navbar4></Navbar4>
-           <div style={{display:"flex", flexDirection:"row", backgroundColor:"#f5ebe0", width:"92vw", height:"92vh",  textAlign:"center"}}>
+           <div id="mdEquiVis2Conger" style={{display:"flex", flexDirection:"row", backgroundColor:"#f5ebe0",  textAlign:"center"}}>
             <div style={{display:"flex", justifyContent:"left"}}>
-            <div style={{display:"flex", justifyContent:"space-around", alignItems:"center", flexDirection:"column", width:"50vw"}}>
-              <div style={{display:"flex",justifyContent:"left",gap:"20px"}}>
-                <p style={{fontSize:"40px",fontWeight:"bold",marginTop:"20px",marginBottom:"20px"}}>
+            <div id="mdconEquiVIS2" style={{display:"flex", justifyContent:"space-around", alignItems:"center", flexDirection:"column", }}>
+              <div id="mdcondiv1EquiVIS2" style={{display:"flex",justifyContent:"left"}}>
+                <p id="mdconP1EquiVIS2" style={{fontWeight:"bold"}}>
               Visão Geral da Equipe</p>
-              <span style={{width:"200px"}}></span>
+              <span id="Gap200px"></span>
               </div>
               <div style={{justifyContent:"left"}}>
-      <div style={{justifyContent:"center",display:"flex",gap:"100px"}}>
-      <div style={{fontSize:"100px", fontWeight:"bold",backgroundImage:`url(${imageperfil})`,textAlign:"center", backgroundSize:"cover", backgroundPositionX:"center", backgroundPositionY:"center", backgroundColor:"#14B57A", width:"200px", height:"200px", borderRadius: "20%",justifyContent:"center",alignItems:"center", display:"flex"}}>
+      <div id="mdcondivFOTOEquiVIS2" style={{justifyContent:"center",display:"flex"}}>
+      <div id="mdcondivdivFOTOEquiVIS2"style={{ fontWeight:"bold",backgroundImage:`url(${imageperfil})`,textAlign:"center", backgroundSize:"cover", backgroundPositionX:"center", backgroundPositionY:"center", backgroundColor:"#14B57A",   borderRadius: "20%",justifyContent:"center",alignItems:"center", display:"flex"}}>
   {Cookies.get().NomeEqui2.split("")[0].toUpperCase()}
 </div>
 <div style={{display:"flex", justifyContent:"center",flexDirection:"column"}}>
-  <div style={{display:"flex",flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"20px"}}>
-  <span style={{fontSize:"26px",fontWeight:"bold"}}>NOME DA EQUIPE</span>
-  <input type="text" value={NomeEqui} style={{fontSize:"20px",color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA", textAlign:"center", width:"400px",height:"30px",marginBottom:"20px"}}/>
+  <div id="mdcondiv1EquiVIS2" style={{display:"flex",flexDirection:"column", justifyContent:"center", alignItems:"center",}}>
+  <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>NOME DA EQUIPE</span>
+  <input id="mdinputNomeEqui" type="text" value={NomeEqui} style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA", textAlign:"center",}}/>
 
   </div>
-  <div style={{display:"flex",flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"20px"}}>
-  <span style={{fontSize:"26px",fontWeight:"bold"}}>USERNAME DA EQUIPE</span>
+  <div id="mdcondiv1EquiVIS2" style={{display:"flex",flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+  <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>USERNAME DA EQUIPE</span>
 
-<input type="text" value={handleEqui} style={{fontSize:"20px",color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA", textAlign:"center", width:"400px",height:"30px"}} />
+<input id="mdinputNomeEqui" type="text" value={handleEqui} style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA", textAlign:"center",}}/>
   </div>
-<div style={{listStyle:"none", width:"360px",fontSize:"16px", color:"#A6A6A6"}}>
+<div id="txtAvisoEquiVis" style={{listStyle:"none",  color:"#A6A6A6"}}>
   <ul>
     <li>
     Atenção com todos os dados inseridos nessa sessão, muda-los constantemente trará consequências.
@@ -112,64 +113,67 @@ function handlePular(e){
       </div>
 
       </div>
-      <div style={{justifyContent:"left",display:"flex",flexDirection:"column"}}>
+      <div id="mddivequiDesc" style={{justifyContent:"left",display:"flex",flexDirection:"column",}}>
       <div style={{display:"flex",justifyContent:"left",gap:"20px"}}>
 
-<span style={{fontSize:"32px",fontWeight:"bold"}}>
+<span id="txtdescEquiVis" style={{fontWeight:"bold"}}>
 Descrição
 </span>
-<span style={{width:"400px"}}></span>
+<span id="span400pxEquivis" ></span>
 
       </div>
-      <div style={{width:"800px", height:"300px", backgroundColor:"white", borderRadius:"10px", marginTop:"40px"}}>
+      <div id="descinpEquiVIS" style={{ backgroundColor:"white"}}>
 
       </div>
+      <button id="btnAdicionarEquiVIS2" style={{ backgroundColor:"#279301"}}>Adicionar</button>
+
       </div>
-      <div style={{display:"flex",justifyContent:"left",gap:"20px"}}>
-<span style={{width:"480px"}}></span>
-        <button style={{width:"300px", backgroundColor:"#279301",borderRadius:"10px", height:"30px"}}>Adicionar</button>
+      <div style={{display:"flex",justifyContent:"center",alignItems:"center",gap:"20px"}}>
+<span id="span480pxEquivis" ></span>
         
       </div>
             </div>
             </div>
             <div style={{justifyContent:"space-around", display:"flex", width:"50vw", alignItems:"center",flexDirection:"column"}}>
-
+            <div id="mddivEquiVIS2" style={{display:"flex", flexDirection:"column", justifyContent:"center"}}>
             <div style={{display:"flex",flexDirection:"column",gap:"20px"}}>
-            <span style={{fontSize:"26px",fontWeight:"bold"}}>INFORMAÇÕES GERAIS </span>
+            <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>SETOR </span>
 
-<input type="text" value={Setor} style={{fontSize:"20px",color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",padding:"10px",  width:"400px",height:"30px"}} />
+<input type="text" value={Setor} id="inputMDEquiVIS" style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
             
             </div>
-            <div style={{display:"flex",flexDirection:"column",gap:"10px"}}>
-            <span style={{fontSize:"26px",fontWeight:"bold"}}>QUANTIDADE DE FUNCIONÁRIOS </span>
+            <div style={{display:"flex",flexDirection:"column",gap:"10px", justifyContent:"center"}}>
+            <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>FUNCIONÁRIOS </span>
 
-<input type="text" value={Setor} style={{fontSize:"20px",color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",padding:"10px",   width:"400px",height:"30px"}} />
+<input type="text" value={Setor} id="inputMDEquiVIS"  style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
             
             </div>
-            <div style={{display:"flex",flexDirection:"column",gap:"10px"}}>
-            <span style={{fontSize:"26px",fontWeight:"bold"}}>SEDE DA EMPRESA</span>
+            <div style={{display:"flex",flexDirection:"column",gap:"10px", justifyContent:"center"}}>
+            <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>SEDE </span>
 
-<input type="text" value={Setor} style={{fontSize:"20px",color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA", padding:"10px",  width:"400px",height:"30px"}} />
+<input type="text" value={Setor} id="inputMDEquiVIS" style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
             
             </div>
-            <div style={{display:"flex",flexDirection:"column",gap:"10px"}}>
-            <span style={{fontSize:"26px",fontWeight:"bold"}}>ESTADO</span>
+            <div style={{display:"flex",flexDirection:"column",gap:"10px", justifyContent:"center"}}>
+            <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>ESTADO</span>
 
-<input type="text" value={Setor} style={{fontSize:"20px",color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA", padding:"10px", width:"400px",height:"30px"}} />
+<input type="text" value={Setor} id="inputMDEquiVIS" style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
             
             </div>
-            <div style={{display:"flex",flexDirection:"column",gap:"10px"}}>
-            <span style={{fontSize:"26px",fontWeight:"bold"}}>FUSO HORÁRIO</span>
+            <div style={{display:"flex",flexDirection:"column",gap:"10px", justifyContent:"center"}}>
+            <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>FUSO HORÁRIO</span>
 
-<input type="text" value={Setor} style={{fontSize:"20px",color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA", padding:"10px",  width:"400px",height:"30px"}} />
+<input type="text" value={Setor} id="inputMDEquiVIS" style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
             
             </div>
-            <div style={{display:"flex",flexDirection:"column",gap:"10px"}}>
-            <span style={{fontSize:"26px",fontWeight:"bold"}}>E-MAIL EMPRESARIAL</span>
+            <div style={{display:"flex",flexDirection:"column",gap:"10px", justifyContent:"center"}}>
+            <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>E-MAIL </span>
 
-<input type="text" value={Setor} style={{fontSize:"20px",color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",padding:"10px",   width:"400px",height:"30px"}} />
+<input type="text" value={Setor} id="inputMDEquiVIS" style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
             
             </div>
+            </div>
+
             </div>
           </div>
         </div>

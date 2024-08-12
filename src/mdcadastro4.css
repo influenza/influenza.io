@@ -16,26 +16,26 @@ padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  heigh
 font-size:18px;margin-left:4.5vw; margin-top:5px;margin-bottom:5px; text-align:left;
 }
 #mdinp2cad4{
-    padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:27vw
+    padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh; width:27vw
 }
 #mdtxt4cad4{
  font-size:18px; margin-left:4.5vw; margin-top:5px;margin-bottom:5px; text-align:left
 }
 #mdinp3cad4{
-    padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:22.4vw
+    padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh; width:22.4vw
 }
 #mdbtncad4{
 width:18vw;
 margin-bottom:2vh;
 height:5.5vh;
-margin-top:3vh;
+margin-top:1vh;
 background-color:#279301;
 color:white;
 font-weight:bold;
 border-radius:10px;
 border:0px solid white;
 }
-@media screen and (max-width:1300px) {
+@media screen and (max-width:1350px) {
     #mdconcad4{
         background-color:white; width:37vw; border-radius:17px;box-shadow:4px 4px 4px 3px rgba(0, 0, 0, 0.2)}
         #mdtxt1cad4{
@@ -44,6 +44,9 @@ border:0px solid white;
         #mdtxt2cad4{
             font-size:18px; margin-left:6.5vw; margin-top:5px;margin-bottom:5px; text-align:left
         }
+        #mdinp3cad4{
+            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh; width:28.4vw
+        }
         #mdinpcad4{
         padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:26.5vw
         }
@@ -56,14 +59,49 @@ border:0px solid white;
         #mdtxt4cad4{
          font-size:18px; margin-left:6.5vw; margin-top:5px;margin-bottom:5px; text-align:left
         }
-        #mdinp3cad4{
-            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:28vw
-        }
+
         #mdbtncad4{
         width:20vw;
         margin-bottom:2vh;
         height:5.5vh;
-        margin-top:3vh;
+        margin-top:1vh;
+        background-color:#279301;
+        color:white;
+        font-weight:bold;
+        border-radius:10px;
+        border:0px solid white;
+        }
+}
+@media screen and (max-width:1150px) {
+    #mdconcad4{
+        background-color:white; width:37vw; border-radius:17px;box-shadow:4px 4px 4px 3px rgba(0, 0, 0, 0.2)}
+        #mdtxt1cad4{
+            margin-top:20px;margin-bottom:20px; font-size:40px;font-weight:bolder; margin-bottom:50px
+        }
+        #mdtxt2cad4{
+            font-size:18px; margin-left:6.5vw; margin-top:5px;margin-bottom:5px; text-align:left
+        }
+        #mdinp3cad4{
+            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh; width:33.4vw
+        }
+        #mdinpcad4{
+        padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:30.5vw
+        }
+        #mdtxt3cad4{
+        font-size:18px;margin-left:6.5vw; margin-top:5px;margin-bottom:5px; text-align:left;
+        }
+        #mdinp2cad4{
+            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:28vw
+        }
+        #mdtxt4cad4{
+         font-size:18px; margin-left:6.5vw; margin-top:5px;margin-bottom:5px; text-align:left
+        }
+
+        #mdbtncad4{
+        width:20vw;
+        margin-bottom:2vh;
+        height:5.5vh;
+        margin-top:1vh;
         background-color:#279301;
         color:white;
         font-weight:bold;
@@ -72,42 +110,6 @@ border:0px solid white;
         }
 }
 @media screen and (max-width:1000px) {
-    #mdconcad4{
-        background-color:white; width:40vw; border-radius:17px;box-shadow:4px 4px 4px 3px rgba(0, 0, 0, 0.2)}
-        #mdtxt1cad4{
-            margin-top:20px;margin-bottom:20px; font-size:40px;font-weight:bolder; margin-bottom:50px
-        }
-        #mdtxt2cad4{
-            font-size:18px; margin-left:6.5vw; margin-top:5px;margin-bottom:5px; text-align:left
-        }
-        #mdinpcad4{
-        padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:26.5vw
-        }
-        #mdtxt3cad4{
-        font-size:18px;margin-left:6.5vw; margin-top:5px;margin-bottom:5px; text-align:left;
-        }
-        #mdinp2cad4{
-            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:28vw
-        }
-        #mdtxt4cad4{
-         font-size:18px; margin-left:6.5vw; margin-top:5px;margin-bottom:5px; text-align:left
-        }
-        #mdinp3cad4{
-            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:28vw
-        }
-        #mdbtncad4{
-        width:20vw;
-        margin-bottom:2vh;
-        height:5.5vh;
-        margin-top:3vh;
-        background-color:#279301;
-        color:white;
-        font-weight:bold;
-        border-radius:10px;
-        border:0px solid white;
-        }
-}
-@media screen and (max-width:850px) {
     #imgmargin{
         width: 100vw;
         justify-content: center;
@@ -133,7 +135,7 @@ border:0px solid white;
          font-size:18px; margin-left:7.5vw; margin-top:5px;margin-bottom:5px; text-align:left
         }
         #mdinp3cad4{
-            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:29vw
+            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh; width:33.4vw
         }
         #mdbtncad4{
         width:25vw;
@@ -147,7 +149,7 @@ border:0px solid white;
         border:0px solid white;
         }
 }
-@media screen and (max-width:800px) {
+@media screen and (max-width:900px) {
     #mdconcad4{
         background-color:white; width:45vw; border-radius:17px;box-shadow:4px 4px 4px 3px rgba(0, 0, 0, 0.2)}
         #mdtxt1cad4{
@@ -169,7 +171,79 @@ border:0px solid white;
          font-size:18px; margin-left:8vw; margin-top:5px;margin-bottom:5px; text-align:left
         }
         #mdinp3cad4{
+            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh; width:38vw
+        }
+        #mdbtncad4{
+        width:22vw;
+        margin-bottom:2vh;
+        height:5.5vh;
+        margin-top:3vh;
+        background-color:#279301;
+        color:white;
+        font-weight:bold;
+        border-radius:10px;
+        border:0px solid white;
+        }
+}
+@media screen and (max-width:850px) {
+    #mdconcad4{
+        background-color:white; width:45vw; border-radius:17px;box-shadow:4px 4px 4px 3px rgba(0, 0, 0, 0.2)}
+        #mdtxt1cad4{
+            margin-top:20px;margin-bottom:20px; font-size:36px;font-weight:bolder; margin-bottom:50px
+        }
+        #mdtxt2cad4{
+            font-size:18px; margin-left:8vw; margin-top:5px;margin-bottom:5px; text-align:left
+        }
+        #mdinpcad4{
+        padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:28vw
+        }
+        #mdtxt3cad4{
+        font-size:18px;margin-left:8vw; margin-top:5px;margin-bottom:5px; text-align:left;
+        }
+        #mdinp2cad4{
             padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:30vw
+        }
+        #mdtxt4cad4{
+         font-size:18px; margin-left:8vw; margin-top:5px;margin-bottom:5px; text-align:left
+        }
+        #mdinp3cad4{
+            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh; width:40vw
+        }
+        #mdbtncad4{
+        width:22vw;
+        margin-bottom:2vh;
+        height:5.5vh;
+        margin-top:3vh;
+        background-color:#279301;
+        color:white;
+        font-weight:bold;
+        border-radius:10px;
+        border:0px solid white;
+        }
+}
+@media screen and (max-width:750px) {
+    #mdconcad4{
+        background-color:white; width:45vw; border-radius:17px;box-shadow:4px 4px 4px 3px rgba(0, 0, 0, 0.2)}
+        #mdtxt1cad4{
+            margin-top:20px;margin-bottom:20px; font-size:36px;font-weight:bolder; margin-bottom:50px
+        }
+        #mdtxt2cad4{
+            font-size:18px; margin-left:8vw; margin-top:5px;margin-bottom:5px; text-align:left
+        }
+        #mdinpcad4{
+        padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:28vw
+        }
+        #mdtxt3cad4{
+        font-size:18px;margin-left:8vw; margin-top:5px;margin-bottom:5px; text-align:left;
+        }
+        #mdinp2cad4{
+            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:30vw
+        }
+        #mdtxt4cad4{
+         font-size:18px; margin-left:8vw; margin-top:5px;margin-bottom:5px; text-align:left
+        }
+        #mdinp3cad4{
+            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh; width:42.5vw
         }
         #mdbtncad4{
         width:22vw;
@@ -205,11 +279,10 @@ border:0px solid white;
          font-size:18px; margin-left:8.5vw; margin-top:5px;margin-bottom:5px; text-align:left
         }
         #mdinp3cad4{
-            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:32vw
+            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh; width:43vw
         }
         #mdbtncad4{
         width:26vw;
-        margin-bottom:2vh;
         height:5.5vh;
         margin-top:3vh;
         background-color:#279301;
@@ -241,8 +314,8 @@ border:0px solid white;
          font-size:18px; margin-left:9vw; margin-top:5px;margin-bottom:5px; text-align:left
         }
         #mdinp3cad4{
-            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:34vw
-        }
+            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh; width:52vw
+        }        
         #mdbtncad4{
         width:29vw;
         margin-bottom:2vh;
@@ -277,8 +350,8 @@ border:0px solid white;
          font-size:18px; margin-left:9.5vw; margin-top:5px;margin-bottom:5px; text-align:left
         }
         #mdinp3cad4{
-            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:37vw
-        }
+            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh; width:54vw
+                }
         #mdbtncad4{
         width:30vw;
         margin-bottom:2vh;
@@ -313,7 +386,7 @@ border:0px solid white;
          font-size:18px; margin-left:13vw; margin-top:5px;margin-bottom:5px; text-align:left
         }
         #mdinp3cad4{
-            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:38vw
+            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh; width:56vw
         }
         #mdbtncad4{
         width:32vw;
@@ -327,39 +400,94 @@ border:0px solid white;
         border:0px solid white;
         }
 }
-@media screen and (max-width:500px) {
-    #mdconcad4{
-        background-color:white; width:70vw; border-radius:17px;box-shadow:4px 4px 4px 3px rgba(0, 0, 0, 0.2)}
+@media screen and (max-height:700px) {
+
         #mdtxt1cad4{
-            margin-top:20px;margin-bottom:20px; font-size:28px;font-weight:bolder; margin-bottom:50px
+            margin-top:20px;font-size:30px;font-weight:bolder; margin-bottom:20px
         }
         #mdtxt2cad4{
-            font-size:18px; margin-left:13vw; margin-top:5px;margin-bottom:5px; text-align:left
+  margin-top:5px;margin-bottom:5px; 
         }
         #mdinpcad4{
-        padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:36vw
+        padding:0px 10px; height:6.5vh;margin-bottom:3vh; 
         }
         #mdtxt3cad4{
-        font-size:18px;margin-left:13vw; margin-top:5px;margin-bottom:5px; text-align:left;
+ margin-top:5px;margin-bottom:5px;
         }
         #mdinp2cad4{
-            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:40vw
+            padding:0px 10px; height:3vh;margin-bottom:0vh;
         }
         #mdtxt4cad4{
-         font-size:18px; margin-left:13vw; margin-top:5px;margin-bottom:5px; text-align:left
+         margin-top:5px;margin-bottom:5px;
         }
         #mdinp3cad4{
-            padding:0px 10px;border:2px solid #aaa;border-radius:16px;font-size:18px;  height:6.5vh;margin-bottom:3vh; width:40vw
+             height:5vh
         }
         #mdbtncad4{
-        width:34vw;
-        margin-bottom:2vh;
+       margin-bottom:1.5vh;
         height:5.5vh;
-        margin-top:3vh;
-        background-color:#279301;
-        color:white;
-        font-weight:bold;
-        border-radius:10px;
-        border:0px solid white;
+        margin-top:2vh;
+
         }
+}
+@media screen and (max-height:600px) {
+
+    #mdtxt1cad4{
+        margin-top:20px;font-size:30px;font-weight:bolder; margin-bottom:20px
+    }
+    #mdtxt2cad4{
+margin-top:5px;margin-bottom:5px; 
+    }
+    #mdinpcad4{
+    padding:0px 10px; height:6.5vh;margin-bottom:3vh; 
+    }
+    #mdtxt3cad4{
+margin-top:5px;margin-bottom:5px;
+    }
+    #mdinp2cad4{
+        padding:0px 10px; height:3vh;margin-bottom:0vh;
+    }
+    #mdtxt4cad4{
+     margin-top:5px;margin-bottom:5px;
+    }
+    #mdinp3cad4{
+         height:5vh
+    }
+    #mdbtncad4{
+    margin-bottom:1.5vh;
+    height:5.5vh;
+    margin-top:2vh;
+
+    }
+}
+@media screen and (max-height:500px) {
+
+    #mdtxt1cad4{
+        margin-top:20px;font-size:30px;font-weight:bolder; margin-bottom:20px
+    }
+    #mdtxt2cad4{
+margin-top:5px;margin-bottom:5px; 
+    }
+    #mdinpcad4{
+    padding:0px 10px; height:6.5vh;margin-bottom:2vh; 
+    }
+    #mdtxt3cad4{
+margin-top:5px;margin-bottom:5px;
+    }
+    #mdinp2cad4{
+        padding:0px 10px; height:3vh;margin-bottom:0vh;
+    }
+    #mdtxt4cad4{
+     margin-top:5px;margin-bottom:5px;
+    }
+    #mdinp3cad4{
+         height:4.5vh
+    }
+    #mdbtncad4{
+        width: 30vw;
+    margin-bottom:1.5vh;
+    height:5.5vh;
+    margin-top:2vh;
+
+    }
 }

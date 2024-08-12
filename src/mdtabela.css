@@ -60,3 +60,948 @@ font-weight: bold;
     justify-content: center;
     align-items: center;
 }
+.mdTABDOWN{
+            gap:20px;
+    width:120px; border-radius:10px; height:35px;
+
+}
+.mdTABDOWNBI{
+            gap:20px;
+    font-size: 16px;
+    width:100px; border-radius:10px; height:40px; 
+}   
+.mdtabpages{
+    width: 25px;
+    height: 25px;
+}
+.mdTabUPLOADSVG{
+
+    width: 15px;
+    height: 15px;
+}
+#mdtabopagesdiv{
+    gap: 20px;
+}
+@media screen and (max-width: 1400px) {
+    #mdivfaixa1{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        text-align: center;
+        margin-left: 80px;
+    }
+    #mdivfaixa1 p{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #mdDivTabela{
+        margin-top: 20px;
+        border-radius: 20px;
+        width: 82vw;
+        background-color: white;
+        height: 80vh;
+    }
+    #mddivconTab{
+    display:flex;
+    justify-content: center;
+    }
+    .mdselectspantab{
+    font-size: 14px;
+    font-weight: bold;
+    
+    }
+    #mdNavTab{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 10vh;
+        border-bottom: 1px solid #C3C3C3;
+    }
+    #mdNavTab p{
+        font-size: 15px;
+    }
+    #mdSelectstab{
+    
+    }
+    #mdselectfilter{
+        border: 0px;
+        background-color:#0075E8
+    }
+    .mdselecttab{
+     gap: 10px;
+     border-radius: 8px;
+     width: 13vw;
+     height: 2.5vw;
+     background-color: #AAAAAA;
+     color: white;
+    }
+    #mdfoottab{
+        width: 80vw;
+        height: 8vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #C3C3C3;
+        text-align: center;
+    }
+    #mdfoottab div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .mdTABDOWN{
+                gap:20px;
+        width:120px; border-radius:10px; height:35px;
+    
+    }
+    .mdTABDOWNBI{
+                gap:20px;
+        font-size: 16px;
+        width:110px; border-radius:10px; height:40px; 
+    }
+    .mdtabpages{
+        width: 25px;
+        height: 25px;
+    }
+    .mdTabUPLOADSVG{
+
+       width: 20px;
+       height: 20px;
+    }
+    #mdtabopagesdiv{
+        gap: 20px;
+    }
+}
+@media screen and (max-width: 1100px) {
+    #mdivfaixa1{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        text-align: center;
+        margin-left: 80px;
+    }
+    #mdivfaixa1 p{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #mdDivTabela{
+        margin-top: 20px;
+        border-radius: 20px;
+        width: 82vw;
+        background-color: white;
+        height: 80vh;
+    }
+    #mddivconTab{
+    display:flex;
+    justify-content: center;
+    }
+    .mdselectspantab{
+    font-size: 14px;
+    font-weight: bold;
+    
+    }
+    #mdNavTab{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 10vh;
+        border-bottom: 1px solid #C3C3C3;
+    }
+    #mdNavTab p{
+        font-size: 15px;
+    }
+    #mdSelectstab{
+    
+    }
+    #mdselectfilter{
+        border: 0px;
+        background-color:#0075E8
+    }
+    .mdselecttab{
+     gap: 10px;
+     border-radius: 8px;
+     width: 13vw;
+     height: 2.5vw;
+     background-color: #AAAAAA;
+     color: white;
+    }
+    #mdfoottab{
+        width: 80vw;
+        height: 8vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #C3C3C3;
+        text-align: center;
+    }
+    #mdfoottab div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .mdTABDOWN{
+                gap:20px;
+        font-size: 16px;
+        width:100px; border-radius:10px; height:40px; 
+    }
+    .mdTABDOWNBI{
+                gap:20px;
+        font-size: 16px;
+        width:110px; border-radius:10px; height:40px; 
+    }
+    .mdtabpages{
+        width: 25px;
+        height: 25px;
+    }
+    .mdTabUPLOADSVG{
+
+       width: 20px;
+       height: 20px;
+    }
+    .mdtabpages{
+        width: 25px;
+        height: 25px;
+    }
+    .mdTabUPLOADSVG{
+
+       width: 20px;
+       height: 20px;
+    }
+    #mdtabopagesdiv{
+        gap: 20px;
+    }
+}
+@media screen and (max-width: 1000px) {
+    #mdivfaixa1{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        text-align: center;
+        margin-left: 80px;
+    }
+    #mdivfaixa1 p{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #mdDivTabela{
+        margin-top: 20px;
+        border-radius: 20px;
+        width: 82vw;
+        background-color: white;
+        height: 80vh;
+    }
+    #mddivconTab{
+    display:flex;
+    justify-content: center;
+    }
+    .mdselectspantab{
+    font-size: 14px;
+    font-weight: bold;
+    
+    }
+    #mdNavTab{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 10vh;
+        border-bottom: 1px solid #C3C3C3;
+    }
+    #mdNavTab p{
+        font-size: 16px;
+        width: 180px;
+    }
+    #mdSelectstab{
+    
+    }
+    #mdselectfilter{
+        border: 0px;
+        background-color:#0075E8
+    }
+    .mdselecttab{
+     gap: 10px;
+     border-radius: 8px;
+     width: 17vw;
+     height: 3vw;
+     background-color: #AAAAAA;
+     color: white;
+    }
+    .mdselecttab select{
+        width: 12vw;
+    }
+    #mdfoottab{
+        width: 80vw;
+        height: 8vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #C3C3C3;
+        text-align: center;
+    }
+    #mdfoottab div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .mdTABDOWN{
+                gap:20px;
+        font-size: 16px;
+        width:100px; border-radius:10px; height:40px; 
+    }
+    .mdTABDOWNBI{
+                gap:20px;
+        font-size: 16px;
+        width:110px; border-radius:10px; height:40px; 
+    }
+    .mdtabpages{
+        width: 25px;
+        height: 25px;
+    }
+    .mdTabUPLOADSVG{
+
+       width: 20px;
+       height: 20px;
+    }
+    #mdtabopagesdiv{
+        gap: 20px;
+    }
+}
+@media screen and (max-width: 900px) {
+    #mdivfaixa1{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        text-align: center;
+        margin-left: 80px;
+    }
+    #mdivfaixa1 p{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #mdDivTabela{
+        margin-top: 20px;
+        border-radius: 20px;
+        width: 82vw;
+        background-color: white;
+        height: 80vh;
+    }
+    #mddivconTab{
+    display:flex;
+    justify-content: center;
+    }
+    .mdselectspantab{
+    font-size: 14px;
+    font-weight: bold;
+    
+    }
+    #mdNavTab{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 10vh;
+        border-bottom: 1px solid #C3C3C3;
+    }
+    #mdNavTab p{
+        font-size: 16px;
+        width: 180px;
+    }
+    #mdSelectstab{
+    
+    }
+    #mdselectfilter{
+        border: 0px;
+        background-color:#0075E8
+    }
+    .mdselecttab{
+     gap: 10px;
+     border-radius: 8px;
+     width: 17vw;
+     height: 3vw;
+     background-color: #AAAAAA;
+     color: white;
+    }
+    .mdselecttab select{
+        width: 12vw;
+    }
+    #mdfoottab{
+        width: 80vw;
+        height: 8vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #C3C3C3;
+        text-align: center;
+    }
+    #mdfoottab div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .mdTABDOWN{
+                gap:20px;
+        font-size: 16px;
+        width:100px; border-radius:10px; height:40px; 
+    }
+    .mdTABDOWNBI{
+                gap:20px;
+        font-size: 16px;
+        width:110px; border-radius:10px; height:40px; 
+    }
+    .mdtabpages{
+        width: 22px;
+        height: 22px;
+    }
+    .mdTabUPLOADSVG{
+
+        width: 20px;
+        height: 20px;
+    }
+    #mdtabopagesdiv{
+        gap: 16px;
+    }
+}
+@media screen and (max-width: 800px) {
+    #mdivfaixa1{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        text-align: center;
+        margin-left: 80px;
+    }
+    #mdivfaixa1 p{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #mdDivTabela{
+        margin-top: 20px;
+        border-radius: 20px;
+        width: 82vw;
+        background-color: white;
+        height: 80vh;
+    }
+    #mddivconTab{
+    display:flex;
+    justify-content: center;
+    }
+    .mdselectspantab{
+    font-size: 14px;
+    font-weight: bold;
+    
+    }
+    #mdNavTab{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 10vh;
+        border-bottom: 1px solid #C3C3C3;
+    }
+    #mdNavTab p{
+        font-size: 16px;
+        width: 180px;
+    }
+    #mdSelectstab{
+    
+    }
+    #mdselectfilter{
+        border: 0px;
+        background-color:#0075E8
+    }
+    .mdselecttab{
+     gap: 10px;
+     border-radius: 8px;
+     width: 17vw;
+     height: 3vw;
+     background-color: #AAAAAA;
+     color: white;
+    }
+    .mdselecttab select{
+        width: 12vw;
+    }
+    #mdfoottab{
+        width: 80vw;
+        height: 8vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #C3C3C3;
+        text-align: center;
+    }
+    #mdfoottab div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .mdTABDOWN{
+                gap:20px;
+        font-size: 16px;
+        width:90px; border-radius:10px; height:40px; 
+    }
+    .mdTABDOWNBI{
+                gap:20px;
+        font-size: 16px;
+        width:100px; border-radius:10px; height:40px; 
+    }
+    .mdtabpages{
+        width: 21px;
+        height: 21px;
+    }
+    .mdTabUPLOADSVG{
+
+        width: 20px;
+        height: 20px;
+    }
+    #mdtabopagesdiv{
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #mdivfaixa1{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        text-align: center;
+        margin-left: 80px;
+    }
+    #mdivfaixa1 p{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #mdDivTabela{
+        margin-top: 20px;
+        border-radius: 20px;
+        width: 82vw;
+        background-color: white;
+        height: 80vh;
+    }
+    #mddivconTab{
+    display:flex;
+    justify-content: center;
+    }
+    .mdselectspantab{
+    font-size: 14px;
+    font-weight: bold;
+    
+    }
+    #mdNavTab{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 10vh;
+        border-bottom: 1px solid #C3C3C3;
+    }
+    #mdNavTab p{
+        font-size: 16px;
+        width: 180px;
+    }
+    #mdSelectstab{
+    
+    }
+    #mdselectfilter{
+        border: 0px;
+        background-color:#0075E8
+    }
+    .mdselecttab{
+     gap: 10px;
+     border-radius: 8px;
+     width: 16vw;
+     height: 3vw;
+     background-color: #AAAAAA;
+     color: white;
+    }
+    .mdselecttab select{
+        width: 11vw;
+    }
+    #mdselectazulfilter{
+        border-radius: 8px;
+        width: 17vw;
+        height: 3vw;
+    }
+    #mdselectazulfilter select {
+        width: 11vw;
+
+    }
+    #mdfoottab{
+        width: 80vw;
+        height: 8vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #C3C3C3;
+        text-align: center;
+    }
+    #mdfoottab div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .mdTABDOWN{
+                gap:20px;
+        font-size: 15px;
+        width:75px; border-radius:10px; height:40px; 
+    }
+    .mdTABDOWNBI{
+                gap:20px;
+        font-size: 15px;
+        width:95px; border-radius:10px; height:40px; 
+    }
+    .mdtabpages{
+        width: 19px;
+        height: 19px;
+    }
+    .mdTabUPLOADSVG{
+
+        width: 15px;
+        height: 15px;
+    }
+    #mdtabopagesdiv{
+        gap: 13.5px;
+    }
+}
+@media screen and (max-width: 650px) {
+    #mdivfaixa1{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        text-align: center;
+        margin-left: 80px;
+    }
+    #mdivfaixa1 p{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #mdDivTabela{
+        margin-top: 20px;
+        border-radius: 20px;
+        width: 82vw;
+        background-color: white;
+        height: 80vh;
+    }
+    #mddivconTab{
+    display:flex;
+    justify-content: center;
+    }
+    .mdselectspantab{
+    font-size: 14px;
+    font-weight: bold;
+    
+    }
+    #mdNavTab{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 10vh;
+        border-bottom: 1px solid #C3C3C3;
+    }
+    #mdNavTab p{
+        font-size: 16px;
+        width: 180px;
+    }
+    #mdSelectstab{
+    
+    }
+    #mdselectfilter{
+        border: 0px;
+        background-color:#0075E8
+    }
+    .mdselecttab{
+     gap: 10px;
+     border-radius: 8px;
+     width: 16vw;
+     height: 3vw;
+     background-color: #AAAAAA;
+     color: white;
+    }
+    .mdselecttab select{
+        width: 11vw;
+    }
+    #mdselectazulfilter{
+        border-radius: 8px;
+        width: 17vw;
+        height: 3vw;
+    }
+    #mdselectazulfilter select {
+        width: 11vw;
+
+    }
+    #mdfoottab{
+        width: 80vw;
+        height: 8vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #C3C3C3;
+        text-align: center;
+    }
+    #mdfoottab div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .mdTABDOWN{
+                gap:0px;
+        justify-content: center;
+        display: flex;
+        align-items: center;text-align: center;
+        gap:0px;
+        font-size: 15px;
+        width:65px; border-radius:10px; height:40px; 
+    }
+    .mdTABDOWNBI{
+        justify-content: center;
+        display: flex;
+        align-items: center;text-align: center;
+        gap:0px;
+        font-size: 15px;
+        width:65px; border-radius:10px; height:40px; 
+    }
+    .mdtabpages{
+        width: 19px;
+        height: 19px;
+    }
+    .mdTabUPLOADSVG{
+
+        width: 0px;
+        height: 0px;
+    }
+    #mdtabopagesdiv{
+        gap: 13.5px;
+    }
+}
+@media screen and (max-width: 600px) {
+    #mdivfaixa1{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        text-align: center;
+        margin-left: 80px;
+    }
+    #mdivfaixa1 p{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #mdDivTabela{
+        margin-top: 20px;
+        border-radius: 20px;
+        width: 82vw;
+        background-color: white;
+        height: 80vh;
+    }
+    #mddivconTab{
+    display:flex;
+    justify-content: center;
+    }
+    .mdselectspantab{
+    font-size: 14px;
+    font-weight: bold;
+    
+    }
+    #mdNavTab{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 10vh;
+        border-bottom: 1px solid #C3C3C3;
+    }
+    #mdNavTab p{
+        font-size: 16px;
+        width: 180px;
+    }
+    #mdSelectstab{
+    
+    }
+    #mdselectfilter{
+        border: 0px;
+        background-color:#0075E8
+    }
+    .mdselecttab{
+     gap: 10px;
+     border-radius: 8px;
+     width: 16vw;
+     height: 3vw;
+     background-color: #AAAAAA;
+     color: white;
+    }
+    .mdselecttab select{
+        width: 11vw;
+    }
+    #mdselectazulfilter{
+        border-radius: 8px;
+        width: 17vw;
+        height: 3vw;
+    }
+    #mdselectazulfilter select {
+        width: 11vw;
+
+    }
+    #mdfoottab{
+        width: 80vw;
+        height: 8vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #C3C3C3;
+        text-align: center;
+    }
+    #mdfoottab div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .mdTABDOWN{
+        justify-content: center;
+        display: flex;
+        align-items: center;text-align: center;
+        gap:0px;
+        font-size: 12px;
+        width:60px; border-radius:10px; height:40px; 
+    }
+    .mdTABDOWNBI{
+        justify-content: center;
+        display: flex;
+        align-items: center;text-align: center;
+        gap:0px;
+        font-size: 12px;
+        width:60px; border-radius:10px; height:40px; 
+    }
+    .mdTABDOWNBI button{
+        width: 50px;
+    }
+    .mdtabpages{
+        width: 17px;
+        height: 17px;
+    }
+    .mdTabUPLOADSVG{
+
+        width: 0px;
+        height: 0px;
+    }
+    #mdtabopagesdiv{
+        gap: 12px;
+    }
+}
+@media screen and (max-width: 550px) {
+    #mdivfaixa1{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        text-align: center;
+        margin-left: 80px;
+    }
+    #mdivfaixa1 p{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #mdDivTabela{
+        margin-top: 20px;
+        border-radius: 20px;
+        width: 82vw;
+        background-color: white;
+        height: 80vh;
+    }
+    #mddivconTab{
+    display:flex;
+    justify-content: center;
+    }
+    .mdselectspantab{
+    font-size: 12px;
+    font-weight: bold;
+    
+    }
+    #mdNavTab{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 10vh;
+        border-bottom: 1px solid #C3C3C3;
+    }
+    #mdNavTab p{
+        font-size: 15px;
+        width: 180px;
+    }
+    #mdSelectstab{
+    
+    }
+    #mdselectfilter{
+        border: 0px;
+        background-color:#0075E8
+    }
+    .mdselecttab{
+     gap: 10px;
+     border-radius: 8px;
+     width: 15vw;
+     height: 4vw;
+     background-color: #AAAAAA;
+     color: white;
+    }
+    .mdselecttab select{
+        width: 11vw;
+    }
+    #mdselectazulfilter{
+        border-radius: 8px;
+        width: 16vw;
+        height: 4vw;
+    }
+    #mdselectazulfilter select {
+        width: 12vw;
+        height: 4vw;
+
+    }
+    #mdselectazulfilter svg{
+        width: 0px;
+        height: 0px;
+    }
+    #mdfoottab{
+        width: 80vw;
+        height: 8vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #C3C3C3;
+        text-align: center;
+    }
+    #mdfoottab div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .mdTABDOWN{
+        justify-content: center;
+        display: flex;
+        align-items: center;text-align: center;
+        gap:0px;
+        font-size: 12px;
+        width:60px; border-radius:10px; height:40px; 
+    }
+    .mdTABDOWNBI{
+        justify-content: center;
+        display: flex;
+        align-items: center;text-align: center;
+        gap:0px;
+        font-size: 12px;
+        width:60px; border-radius:10px; height:40px; 
+    }
+    .mdTABDOWNBI button{
+        width: 50px;
+    }
+    .mdtabpages{
+        width: 17px;
+        height: 17px;
+    }
+    .mdTabUPLOADSVG{
+
+        width: 0px;
+        height: 0px;
+    }
+    #mdtabopagesdiv{
+        gap: 12px;
+    }
+}
