@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./tabela.css";
+import "./mdlistausu.css"
 import Cookies from "js-cookie";
 import { Input } from "./input";
 import { Button } from "./button";
@@ -247,22 +248,22 @@ document.addEventListener("keyup",(e)=>{
               <div style={{  display:"flex",flexDirection:"row",backgroundColor:"#f5ebe0", width:"92vw", height:"92vh", msScrollLimitXMax:"0px"}}>
               <div style={{justifyContent:"left",alignItems:"center",display:"flex",flexDirection:"column", width:"100vw"}}>
               <div style={{display:"flex", justifyContent:"center", gap:"65vw"}}>
-              <p className="EcoIconLetter" style={{ fontSize:"30px",marginTop:"20px"}}>Tabela de funcionario</p>
+              <p className="EcoIconLetter" id="mdlisttit" >Tabela de funcionario</p>
               <span></span>
 
               </div>
 <div style={{display:"flex",alignItems:"center",justifyContent:"center",flexDirection:"column"}}>
 
-<div style={{background:"white", borderColor:"white",border:"1px solid black", height:"80vh"}}>
-<div style={{gap:"35vw",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly",margin:"20px", paddingBottom:"20px", borderBottom: "1px solid #F5F1ED"}}>
-<div style={{fontSize:"28px", fontWeight:"bold"}}>
+<div id="mdlistusucon" style={{background:"white", borderColor:"white",border:"1px solid black"}}>
+<div id="mdlistusudiv1" style={{display:"flex",alignItems:"center",justifyContent:"space-evenly",borderBottom: "1px solid #F5F1ED"}}>
+<div id="mdlistusuPmembros" style={{fontWeight:"bold"}}>
   Membros
 </div>
-<div style={{display:"flex", gap:"20px"}}>
-<div style={{background:"#C2C2C2",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",textAlign:"center",height:"60px",width:"370px",borderRadius:"10px" }}>
+<div id="mdListusuGap20px" style={{display:"flex"}}>
+<div id="mdlistusuFilter" style={{background:"#C2C2C2",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",textAlign:"center",borderRadius:"10px" }}>
 
-<input style={{marginLeft:"20px",borderRadius:"10px", backgroundColor:"#C2C2C2", width:"300px"}} onChange={handleFilter} value={filterNome} placeholder="Pesquise dados do usuario" type="text" name="" id="selectfunc" />
-<svg style={{marginRight:"20px",width:"40px"}}
+<input style={{marginLeft:"20px",borderRadius:"10px", backgroundColor:"#C2C2C2", }} onChange={handleFilter} value={filterNome} placeholder="Pesquise dados do usuario" type="text" name="" id="selectfunc" />
+<svg id="mdlistusulupa" style={{}}
 version="1.0" xmlns="http://www.w3.org/2000/svg"
 width="20px" height="20px" viewBox="0 0 1244.000000 1280.000000"
 preserveAspectRatio="xMidYMid meet">
@@ -285,7 +286,7 @@ fill="#000000" stroke="none">
 </g>
 </svg>
 </div>
-<div style={{display:"flex",flexDirection:"row",justifyContent:"center",background:"#0075E8", alignItems:"center",height:"60px",width:"270px", border:"1px solid black", borderRadius:"10px"}}>
+<div id="mdlistusudiv2" style={{display:"flex",flexDirection:"row",justifyContent:"center",background:"#0075E8", alignItems:"center", border:"1px solid black", borderRadius:"10px"}}>
 <svg style={{rotate:"90deg",marginLeft:"20px", marginRight:"10px"}}  version="1.0" xmlns="http://www.w3.org/2000/svg"
 width="20px" height="20px" viewBox="0 0 1280.000000 1209.000000"
 preserveAspectRatio="xMidYMid meet">
@@ -308,7 +309,7 @@ c3898 4 4702 7 4735 19 151 50 293 169 358 299 151 304 30 659 -274 802 -139
 -7 -90 -15z"/>
 </g>
 </svg>
-<select name="" id="" style={{background:"#0075E8",border:"0px", marginRight:"20px", width:"200px"}} onChange={(e)=>{
+<select name="" id="mdlistususelect" style={{background:"#0075E8",border:"0px", marginRight:"20px", }} onChange={(e)=>{
 setFilterSelect(e.target.value)
 }}>
 <option value="">Ordenar por ID crescente</option>
@@ -321,7 +322,7 @@ setFilterSelect(e.target.value)
 
 </select>
 </div>
-<div style={{backgroundColor:"#FF6300",height:"60px",width:"60px",display:"flex",justifyContent:"center",alignItems:"center",borderRadius:"10px"}} onClick={()=>{
+<div id="mdlistusudivlixo" style={{backgroundColor:"#FF6300",display:"flex",justifyContent:"center",alignItems:"center",borderRadius:"10px"}} onClick={()=>{
   for (let index = 0; index < iddict.length; index++) {
     console.log(idMap[iddict[index]])
     axios.delete(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/91/user/${idMap[iddict[index]]}`, headers)
@@ -454,12 +455,11 @@ l3 -3035 23 -57 c28 -68 110 -163 160 -183 46 -20 198 -20 243 -1 44 19 162
 
 
 
-
 <div style={{display:"flex",flexDirection:"row", borderRadius:"10px", alignItems:"center", justifyContent:"center"}}>
       
       <div style={{ display:"flex",flexDirection:"column", textAlign:"center",alignItems:'center', marginRight:"20px", borderRadius:"10px", height:"55vh", overflow:"hidden",overflowY:"scroll", padding:"10px"}}>
 
-      <table  style={{width:"80vw",}} >
+      <table id="mdlistausutable" >
   <thead  >
       <tr  >
         <th></th>
@@ -496,16 +496,16 @@ l3 -3035 23 -57 c28 -68 110 -163 160 -183 46 -20 198 -20 243 -1 44 19 162
 
 
 
-<div style={{borderTop:"1px solid #C3C3C3",  fontSize:"26px", display:"flex", justifyContent:"center", alignItems:"center",textAlign:'center',height:"100px",gap:"20px"}}>
-<div style={{backgroundColor:"#0075E8", width:"40px", height:"40px", justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"white", }}>1</div>
+<div  style={{borderTop:"1px solid #C3C3C3",  display:"flex", justifyContent:"center", alignItems:"center",textAlign:'center', fontSize:"26px",height:"100px",gap:"20px"}}>
+<div className="mdlistusupages" style={{backgroundColor:"#0075E8",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"white", }}>1</div>
  {Datapages.map((res,index)=>{
   console.log(Datapages.length-1)
   console.log(index)
   if((Datapages.length) == index+1){
     return(
       <>
-<div style={{backgroundColor:"#BBD6F0",color:"#0075E8", width:"40px", height:"40px", justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center", }}>{res+1}</div>
-    <div style={{backgroundColor:"#BBD6F0",color:"#0075E8", width:"40px", height:"40px", justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center", }}>{`>`}</div>
+<div className="mdlistusupages" style={{backgroundColor:"#BBD6F0",color:"#0075E8", justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center", }}>{res+1}</div>
+    <div className="mdlistusupages" style={{backgroundColor:"#BBD6F0",color:"#0075E8",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center", }}>{`>`}</div>
 
 </>
     )
@@ -513,17 +513,17 @@ l3 -3035 23 -57 c28 -68 110 -163 160 -183 46 -20 198 -20 243 -1 44 19 162
     console.log(index)
     if(index == 2){
       return <>
-    <div onClick={()=>{
+    <div className="mdlistusupages" onClick={()=>{
       navigate(`/listausuarios/${res+1}`)
-    }}style={{backgroundColor:"#BBD6F0",color:"#0075E8", width:"40px", height:"40px", justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center", }}>{res+1}</div>
+    }}style={{backgroundColor:"#BBD6F0",color:"#0075E8",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center", }}>{res+1}</div>
     <span>...</span>
     </>
     }
     else{
       return <>
-    <div onClick={()=>{
+    <div  className="mdlistusupages" onClick={()=>{
       navigate(`/listausuarios/${res+1}`)
-    }}style={{backgroundColor:"#BBD6F0",color:"#0075E8", width:"40px", height:"40px", justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center", }}>{res+1}</div>
+    }}style={{backgroundColor:"#BBD6F0",color:"#0075E8",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center", }}>{res+1}</div>
     
     </>
     }

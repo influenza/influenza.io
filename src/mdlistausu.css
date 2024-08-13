@@ -1,0 +1,557 @@
+#mdlisttit{
+ font-size:30px;margin-top:20px
+}
+#mdlistusucon{
+    height: 80vh;
+}
+#mdlistusudiv1{
+    margin:20px; padding-bottom :20px; gap:35vw;
+}
+#mdlistusuPmembros{ font-size:28px;}
+#mdlistusuFilter{height:60px;width:370px}
+#selectfunc{
+    width:300px
+}
+#mdlistusulupa{
+    margin-right:20px;width:40px
+}
+#mdListusuGap20px{
+    gap: 20px;
+}
+#mdlistusudiv2{
+    height:60px;width:270px
+}
+#mdlistususelect{
+width:200px
+}
+#mdlistusudivlixo{
+    height:60px;width:60px
+}
+.mdlistusupages{
+    width:40px; height:40px
+}
+#mdlistausutable{
+    width: 80vw;
+}
+@media screen and (max-width:1600px) {
+    #mdlisttit{
+        font-size:30px;margin-top:20px
+       }
+       #mdlistusucon{
+           height: 80vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:25vw;
+       }
+       #mdlistusuPmembros{ font-size:28px;}
+       #mdlistusuFilter{height:60px;width:370px}
+       #selectfunc{
+           width:300px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 20px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:270px
+       }
+       #mdlistususelect{
+       width:200px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:60px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 80vw;
+    }
+}
+@media screen and (max-width:1380px) {
+    #mdlisttit{
+        font-size:30px;margin-top:20px
+       }
+       #mdlistusucon{
+           height: 80vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:20vw;
+       }
+       #mdlistusuPmembros{ font-size:28px;}
+       #mdlistusuFilter{height:60px;width:350px}
+       #selectfunc{
+           width:300px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 20px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:260px
+       }
+       #mdlistususelect{
+       width:200px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:60px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 80vw;
+    }
+}
+@media screen and (max-width:1250px) {
+    #mdlisttit{
+        font-size:30px;margin-top:20px
+       }
+       #mdlistusucon{
+           height: 80vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:18vw;
+       }
+       #mdlistusuPmembros{ font-size:26px;}
+       #mdlistusuFilter{height:60px;width:320px}
+       #selectfunc{
+           width:300px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 20px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:260px
+       }
+       #mdlistususelect{
+       width:200px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:60px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 80vw;
+    }
+}
+@media screen and (max-width:1150px) {
+    #mdlisttit{
+        font-size:26px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 80vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:16vw;
+       }
+       #mdlistusuPmembros{ font-size:26px;}
+       #mdlistusuFilter{height:60px;width:300px}
+       #selectfunc{
+           width:300px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 16px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:240px
+       }
+       #mdlistususelect{
+       width:200px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:60px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 80vw;
+    }
+}
+@media screen and (max-width:1050px) {
+    #mdlisttit{
+        font-size:25.5px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 80vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:14.5vw;
+       }
+       #mdlistusuPmembros{ font-size:26px;}
+       #mdlistusuFilter{height:60px;width:290px}
+       #selectfunc{
+           width:300px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 15px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:230px
+       }
+       #mdlistususelect{
+       width:200px
+       }
+       #mdlistusudivlixo{
+           height:55px;width:55px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 80vw;
+    }
+}
+@media screen and (max-width:1000px) {
+    #mdlisttit{
+        font-size:24px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 80vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:13vw;
+       }
+       #mdlistusuPmembros{ font-size:26px;}
+       #mdlistusuFilter{height:60px;width:270px}
+       #selectfunc{
+           width:300px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 15px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:220px
+       }
+       #mdlistususelect{
+       width:200px
+       }
+       #mdlistusudivlixo{
+           height:55px;width:55px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 80vw;
+    }
+}
+@media screen and (max-width:950px) {
+    #mdlisttit{
+        font-size:22px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 80vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:12vw;
+       }
+       #mdlistusuPmembros{ font-size:26px;}
+       #mdlistusuFilter{height:60px;width:250px}
+       #selectfunc{
+           width:300px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 13px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:210px
+       }
+       #mdlistususelect{
+       width:200px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:60px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 80vw;
+    }
+}
+@media screen and (max-width:900px) {
+    #mdlisttit{
+        font-size:21px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 80vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:10vw;
+       }
+       #mdlistusuPmembros{ font-size:26px;}
+       #mdlistusuFilter{height:60px;width:240px}
+       #selectfunc{
+           width:300px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 13px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:210px
+       }
+       #mdlistususelect{
+       width:200px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:60px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 80vw;
+    }
+}
+@media screen and (max-width:850px) {
+    #mdlisttit{
+        font-size:20px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 80vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:9vw;
+       }
+       #mdlistusuPmembros{ font-size:26px;}
+       #mdlistusuFilter{height:60px;width:210px}
+       #selectfunc{
+           width:300px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 13px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:190px
+       }
+       #mdlistususelect{
+       width:180px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:60px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 80vw;
+    }
+}
+@media screen and (max-width:800px) {
+    #mdlisttit{
+        font-size:19px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 80vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:8vw;
+       }
+       #mdlistusuPmembros{ font-size:23px;}
+       #mdlistusuFilter{height:60px;width:200px}
+       #selectfunc{
+           width:300px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 13px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:190px
+       }
+       #mdlistususelect{
+       width:180px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:60px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 80vw;
+    }
+}
+@media screen and (max-width:750px) {
+    #mdlisttit{
+        font-size:17px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 80vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:7vw;
+       }
+       #mdlistusuPmembros{ font-size:23px;}
+       #mdlistusuFilter{height:60px;width:180px}
+       #selectfunc{
+           width:300px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 11px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:180px
+       }
+       #mdlistususelect{
+       width:170px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:60px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 80vw;
+    }
+}
+@media screen and (max-width:700px) {
+    #mdlisttit{
+        font-size:15px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 80vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:7vw;
+       }
+       #mdlistusuPmembros{ font-size:20px;}
+       #mdlistusuFilter{height:60px;width:160px}
+       #selectfunc{
+           width:150px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 11px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:160px
+       }
+       #mdlistususelect{
+       width:150px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:60px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 80vw;
+    }
+}
+@media screen and (max-width:650px) {
+    #mdlisttit{
+        font-size:15px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 80vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:6vw;
+       }
+       #mdlistusuPmembros{ font-size:18px;}
+       #mdlistusuFilter{height:60px;width:150px}
+       #selectfunc{
+           width:140px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 10px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:150px
+       }
+       #mdlistususelect{
+       width:140px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:60px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 80vw;
+    }
+}
+@media screen and (max-width:600px) {
+    #mdlisttit{
+        font-size:14px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusudiv1{flex-direction:column;}
+       #mdlistusudiv1 #mdlistusuPmembros{
+        margin-bottom: 10px;
+       }
+       #mdlistusucon{
+           height: 82vh;
+       }
+       #mdlistusudiv1{
+           margin:10px; padding-bottom :20px; gap:0vw;
+       }
+       #mdlistusuPmembros{ font-size:15px;}
+       #mdlistusuFilter{height:60px;width:130px}
+       #selectfunc{
+           width:120px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 10px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:130px
+       }
+       #mdlistususelect{
+       width:120px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:50px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 10vw;
+    }
+}

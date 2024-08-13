@@ -20,33 +20,47 @@ import axios from "axios";
         const [dia,setdata]= useState("");
         const [mes,setmes]=useState(3);
         const [ano,setano]=useState(2024);
-        const linhas = Array.from({ length: 700 }, (_,index) => index  );
-        console.log(linhas)
-        const [Pages,setPages]=useState((linhas.length/100).toFixed());
-        let arraypages=[]
-        for (let i = 0; i < Pages; i++) {
-            arraypages.push(i+1)            
-        }
-        Cookies.set("dataar",[1,2,3,4,5,arraypages.length])
-
-        const data ={2:28,4:30, 6:30, 9:30, 11:30}
-        const [imageperfil, setImageperfil] = useState(null);
-        const [text ,settext] =useState("normal")
-        const handleImageChange = (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                    setImageperfil(reader.result);
-                };
-                reader.readAsDataURL(file);
-            }
+        const [width, setWidth] = useState(window.innerWidth);
+        const [height, setHeight] = useState(window.innerHeight);
+      
+        // Atualiza a largura e altura da tela
+        const handleResize = () => {
+          setWidth(window.innerWidth);
+          setHeight(window.innerHeight);
         };
-        
-        useEffect(()=>{
-          setdata({"_embedded":{"mQ135ReadingVOList":[{"id":1,"teamHandle":"ecosynergyofc","value":567.8,"timestamp":"2024-07-26T00:07:25Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/1"}}},{"id":2,"teamHandle":"ecosynergyofc","value":1.07373E9,"timestamp":"2024-07-26T14:40:33Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/2"}}},{"id":3,"teamHandle":"ecosynergyofc","value":1.07373E9,"timestamp":"2024-07-26T14:40:53Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/3"}}},{"id":4,"teamHandle":"ecosynergyofc","value":712.0,"timestamp":"2024-07-26T14:40:55Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/4"}}},{"id":5,"teamHandle":"ecosynergyofc","value":714.0,"timestamp":"2024-07-26T14:40:56Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/5"}}},{"id":6,"teamHandle":"ecosynergyofc","value":717.0,"timestamp":"2024-07-26T14:40:57Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/6"}}},{"id":7,"teamHandle":"ecosynergyofc","value":713.0,"timestamp":"2024-07-26T14:40:59Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/7"}}},{"id":8,"teamHandle":"ecosynergyofc","value":714.0,"timestamp":"2024-07-26T14:41:00Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/8"}}},{"id":9,"teamHandle":"ecosynergyofc","value":714.0,"timestamp":"2024-07-26T14:41:01Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/9"}}},{"id":10,"teamHandle":"ecosynergyofc","value":713.0,"timestamp":"2024-07-26T14:41:03Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/10"}}},{"id":11,"teamHandle":"ecosynergyofc","value":715.0,"timestamp":"2024-07-26T14:41:04Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/11"}}},{"id":12,"teamHandle":"ecosynergyofc","value":715.0,"timestamp":"2024-07-26T14:41:05Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/12"}}},{"id":13,"teamHandle":"ecosynergyofc","value":716.0,"timestamp":"2024-07-26T14:41:07Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/13"}}},{"id":14,"teamHandle":"ecosynergyofc","value":715.0,"timestamp":"2024-07-26T14:41:08Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/14"}}},{"id":15,"teamHandle":"ecosynergyofc","value":714.0,"timestamp":"2024-07-26T14:41:09Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/15"}}},{"id":16,"teamHandle":"ecosynergyofc","value":714.0,"timestamp":"2024-07-26T14:41:10Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/16"}}},{"id":17,"teamHandle":"ecosynergyofc","value":715.0,"timestamp":"2024-07-26T14:41:12Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/17"}}},{"id":18,"teamHandle":"ecosynergyofc","value":715.0,"timestamp":"2024-07-26T14:41:13Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/18"}}},{"id":19,"teamHandle":"ecosynergyofc","value":740.0,"timestamp":"2024-07-26T14:41:14Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/19"}}},{"id":20,"teamHandle":"ecosynergyofc","value":557.0,"timestamp":"2024-07-26T14:41:16Z","_links":{"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/20"}}}]},"_links":{"first":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1?limit=20&direction=timestamp%3A%20ASC&page=0&size=20&sort=timestamp,asc"},"self":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1?page=0&limit=20&direction=timestamp%3A%20ASC"},"next":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1?limit=20&direction=timestamp%3A%20ASC&page=1&size=20&sort=timestamp,asc"},"last":{"href":"http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1?limit=20&direction=timestamp%3A%20ASC&page=2&size=20&sort=timestamp,asc"}},"page":{"size":20,"totalElements":51,"totalPages":3,"number":0}})  
-          console.log(dia["_embedded"])
-        },[])
+      
+        // Adiciona o listener de resize
+        useEffect(() => {
+          window.addEventListener("resize", handleResize);
+      
+          // Remove o listener quando o componente é desmontado
+          return () => {
+            window.removeEventListener("resize", handleResize);
+          };
+        }, []); // O array de dependências vazio faz com que o efeito seja executado apenas uma vez
+      
+        const linhas = Array.from({ length: 700 }, (_, index) => index);
+        console.log(linhas);
+        const [Pages, setPages] = useState((linhas.length / 100).toFixed());
+        let arraypages = [];
+        for (let i = 0; i < Pages; i++) {
+          arraypages.push(i + 1);
+        }
+        Cookies.set("dataar", [1, 2, 3, 4, 5, arraypages.length]);
+      
+        const data = { 2: 28, 4: 30, 6: 30, 9: 30, 11: 30 };
+        const [imageperfil, setImageperfil] = useState(null);
+        const [text, settext] = useState("normal");
+        const handleImageChange = (e) => {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+              setImageperfil(reader.result);
+            };
+            reader.readAsDataURL(file);
+          }
+        };
         return(
             <>
             <Navbar3></Navbar3>
@@ -63,7 +77,7 @@ import axios from "axios";
                 <div id="mdDivTabela">
                 <div id="mdNavTab">
                 <p>TABELA DE EMISSÕES ECOSYNERGY</p>
-                <div style={{display:"flex", justifyContent:"center", flexDirection:"row", gap:"20px"}}>
+                <div id="mdgapselect" style={{display:"flex", justifyContent:"center", flexDirection:"row",}}>
                 <div id="mdSelectstab">
                     <div style={{display:"flex", flexDirection:"column"}}>
                     <span className="mdselectspantab">Tabela por:</span>
@@ -90,13 +104,13 @@ import axios from "axios";
                     <div style={{display:"flex", flexDirection:"column"}}>
                     <span className="mdselectspantab" style={{color:"white"}}>Se:</span>
 
-                    <div name="" id="mdselectazulfilter" style={{backgroundColor:"#0075E8", display:'flex', justifyContent:"space-around", alignItems:"center", textAlign:"center", borderRadius:"8px",marginRight:"10px"}} >
+                    <div name="" id="mdselectazulfilter" style={{backgroundColor:"#0075E8", display:'flex',      alignItems:"center", textAlign:"center", borderRadius:"8px",marginRight:"10px"}} >
                     <svg width="20px" height="20px" style={{marginLeft:"5px"}} viewBox="0 0 29 23" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M7.47401 0.151733L0.394043 8.43017H5.1617V22.2276H9.92935V8.43017H14.697L7.47401 0.151733Z" fill="white"/>
 <path d="M19.4649 0.151733V14.0284H14.6973L21.9203 22.3543L29.0002 14.0284H24.2326V0.151733H19.4649Z" fill="white"/>
 </svg>
 
-                    <select id="mdselectfilter" value="">
+                    <select id="mdselectfilter" className="mdselectazul" value="">
                         
                         <option value="MenorData">Mais recente</option>
                         <option value="Mensal">Mais antigos</option>
@@ -112,7 +126,7 @@ import axios from "axios";
                 </div>
                 <div style={{ display:"flex",flexDirection:"column", textAlign:"center",alignItems:'center', borderRadius:"10px", width:"", height:"62vh", overflow:"hidden",overflowY:"scroll",}}>
         
-        <table  style={{width:"80vw", height:"62vh"}} >
+        <table  style={{width:"80vw", height:"82%"}} >
     <thead  >
         <tr style={{backgroundColor:"#edede9"}} >
     <th>ID</th>
@@ -210,12 +224,34 @@ return null;
                    }
                 }
                 else{
-                    return(
-                        <div  onClick={()=>{
-                            navigate(`/tabela/${page}`)
-                        }} className="mdtabpages" id={`mdpagebutton${page}`}style={{backgroundColor:"#BBD6F0",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}>{page}</div>
-                        
-                                        )   
+                    if(page==4){
+                        if(width>600){
+                        return(
+                            <div  onClick={()=>{
+                                navigate(`/tabela/${page}`)
+                            }} className="mdtabpages" id={`mdpagebutton${page}`}style={{backgroundColor:"#BBD6F0",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}>{page}</div>
+                            
+                                            )   
+                                        }
+                    }
+                    else if(page==3){
+                        if(width>450 ){
+                        return(
+                            <div  onClick={()=>{
+                                navigate(`/tabela/${page}`)
+                            }} className="mdtabpages" id={`mdpagebutton${page}`}style={{backgroundColor:"#BBD6F0",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}>{page}</div>
+                            
+                                            )   
+                                        }
+                    }
+                    else{
+                        return(
+                            <div  onClick={()=>{
+                                navigate(`/tabela/${page}`)
+                            }} className="mdtabpages" id={`mdpagebutton${page}`}style={{backgroundColor:"#BBD6F0",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}>{page}</div>
+                            
+                                            )  
+                    }
                 }
             })}
             </div>
