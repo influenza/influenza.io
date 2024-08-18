@@ -45,12 +45,11 @@ function Metas() {
   <img src={`${letraverde}`} style={{width:"200px", height:"200px"}} alt="" /></div>
 
     </div>
-    <div style={{backgroundColor:"white", width:"25vw", borderRadius:"17px",boxShadow:"4px 4px 4px 3px rgba(0, 0, 0, 0.2)",  height:"60vh"}}>
-      <p style={{marginTop:"30px", marginBottom:"20px",fontSize:"30px", fontWeight:"bolder"}}>Defina suas metas de gases personalizadas</p>
-      <p style={{marginTop:"15px",marginLeft:"1.5vw", fontSize:"25px",textAlign:"left"}}>Tipo da meta</p>
-    <select
+    <div id="mdcon" style={{backgroundColor:"white", borderRadius:"17px",boxShadow:"4px 4px 4px 3px rgba(0, 0, 0, 0.2)"}}>
+      <p id="mdlogP1" style={{ fontWeight:"bolder"}}>Defina suas metas de gases personalizadas</p>
+      <p className="diverro" style={{textAlign:"left"}}>Tipo da meta</p>
+    <select id="mdinp3cad4"
           name="metaPorTem"
-          id="metaPorTem"
           onChange={(e) => {
             if (e.target.value === "dia") {
               setTempo(0);
@@ -62,7 +61,7 @@ function Metas() {
               setTempo(3);
             }
           }}
-          style={{ padding:"0px 10px",border:"2px solid #aaa",borderRadius:"16px",fontSize:"18px",  height:"4.5vh",marginBottom:"5px", width:"22vw"}}
+          style={{ padding:"0px 10px",border:"2px solid #aaa",borderRadius:"16px",fontSize:"18px",  }}
         >
           <option value="dia">Diaria</option>
           
@@ -73,9 +72,9 @@ function Metas() {
         
 
         </select>
-        <p style={{marginTop:"15px",marginLeft:"1.5vw", fontSize:"25px",textAlign:"left"}}>Valor da meta</p>
-        <Input type="number" value={metavalue} style={{ padding:"0px 10px",border:"2px solid #aaa",borderRadius:"16px",fontSize:"18px",  height:"4.5vh",marginBottom:"5px", width:"21vw"}}  Onchange={handleMetaChange} /><br />
-        <Button text="Definir esta meta" style={{width:"15vw",marginTop:"15px",height:"5vh", backgroundColor:"#279301",color:"white", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}} func={()=>{
+        <p className="diverro" style={{textAlign:"left"}}>Valor da meta</p>
+        <Input type="number" className="inplog" value={metavalue} style={{ padding:"0px 10px",border:"2px solid #aaa",borderRadius:"16px",fontSize:"18px",}}  Onchange={handleMetaChange} /><br />
+        <Button text="Definir esta meta" id="mdbtncad4" style={{ backgroundColor:"#279301",color:"white", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}} func={()=>{
             meta[tempo]=metavalue
 
            Cookies.set("Metas",meta)
@@ -85,8 +84,8 @@ function Metas() {
         }}></Button>
         <hr></hr>
         <p>Defina suas metas como padrão</p>
-        <div style={{display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center"}}>
-          <Button func={()=>{
+        <div style={{display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center", gap:"20px",margin:"0px 10px"}}>
+          <Button id="mdbtncad4" func={()=>{ 
                       if(tempo == 0){
                         meta[0]="10000"
                       }
@@ -105,7 +104,7 @@ function Metas() {
           }
 
           }
-          style={{width:"11.5vw",marginRight:"20px",marginTop:"15px",height:"5vh", backgroundColor:"#279301",color:"white", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}} text="Definir essa meta"> </Button>
+          style={{backgroundColor:"#279301",color:"white", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}} text="Definir essa"> </Button>
           <Button func={()=>{
             meta[0]="10000"
             meta[1]="70000"
@@ -113,7 +112,7 @@ function Metas() {
             meta[3]="3600000"
             Cookies.set("Metas",meta)
 
-          }}style={{width:"11.5vw",marginTop:"15px",height:"5vh", backgroundColor:"#279301",color:"white", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}}   text="Definir todas as metas"> </Button>
+          }} id="mdbtncad4" style={{ backgroundColor:"#279301",color:"white", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}}   text="Definir todas "> </Button>
         </div>
     </div>
           </div>

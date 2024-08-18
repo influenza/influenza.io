@@ -1,4 +1,7 @@
-
+#btncadastro{
+    height: 50px;
+    width: 60px;
+}
 
 #mdlogcad {
     width: 50vw;
@@ -9,12 +12,13 @@
     margin-right: 20px;
     font-size: 20px;
 }
+.imgsmargins{
+    flex-direction: row;
+}
 #mdlogdiv{
     width:50vw; display:flex; align-items:center; text-align:left;justify-content:left; margin-right:20px; font-size:20px
      }
-#mdlogcad span {
-    margin-left: 20vw;
-}
+
 .mdlogimg{width:150px; margin-right:20px}
 
 #mdlogcad button {
@@ -111,7 +115,7 @@
 #mdlogEnviar{
     width:22vw ; background-color:#279301; color:white;  font-weight:bold; border-radius:10px; border:0px solid white;
 }
-@media screen and (max-width:1000px) {
+@media screen and (max-width:1200px) {
     
 
 #mdlogcad {
@@ -147,6 +151,9 @@
     }
 
 #mdlogP1 {
+    padding-left: 10px;
+    padding-right: 10px;
+
     font-size: 38px;
     font-weight: bolder;
 }
@@ -922,14 +929,13 @@
                         
                         }
                         @media screen and (max-width:550px) {
-    
 
                             #mdlogcad {
+                                margin:-10px;
                                 display: flex;
                                 align-items: center;
                                 text-align: center;
-                                justify-content: right;
-                                margin-left: -20px;
+                                justify-content: center;
                             }
                             
                             #mdlogcad span {
@@ -937,7 +943,9 @@
                         
                             }
                                                     .mdlogimg{width:120px; margin-right:20px}
-    
+                            #SemConta{
+                                font-size: 15px;
+                            }
                             #mdlogcad button {
             
                                 font-size: 12px;
@@ -946,7 +954,7 @@
                                 color: white;
                                 font-weight: bold;
                                 border-radius: 10px;
-                                margin-left: 20px;
+                                margin-left: 0px;
                                 border: 0px solid white;
                             }
                             
@@ -1037,7 +1045,12 @@
                             
                             }
                             @media screen and (max-width:550px) {
-    
+                                #btncadastro{
+                                    width: 150px;
+                                }
+                                .imgsmargins{
+                                    flex-direction: column;
+                                }
                                 #mdlogdiv{
                                width:50vw; display:flex; align-items:center; text-align:left;justify-content:left; margin-right:20px; font-size:20px
                                 }
@@ -1154,7 +1167,12 @@
                                 
                                 }
                                 @media screen and (max-width:500px) {
-    
+                                    #btncadastro{
+                                        width: 140px;
+                                    }
+                                    #SemConta{
+                                        font-size: 14px;
+                                    }
                                     #mdlogdiv{
                                    width:50vw; display:flex; align-items:center; text-align:left;justify-content:left; margin-right:20px; font-size:20px
                                     }
@@ -1169,7 +1187,7 @@
                                         font-size: 10px;
                                 
                                     }
-                                                            .mdlogimg{width:110px; margin-right:20px}
+                                                            .mdlogimg{width:110px;}
             
                                     #mdlogcad button {
                     
@@ -1274,7 +1292,12 @@
                                     }
                                     
                                         @media screen and (max-width:450px) {
-    
+                                            #btncadastro{
+                                                width: 130px;
+                                            }
+                                            #SemConta{
+                                                font-size: 13px;
+                                            }
                                             #mdlogdiv{
                                            width:49vw; display:flex; align-items:center; text-align:left;justify-content:left; margin-right:20px; font-size:20px
                                             }
@@ -1393,7 +1416,13 @@
                                             
                                             }
                                             @media screen and (max-width:400px) {
-    
+                                                #btncadastro{
+                                                    width: 125px;
+                                                }
+                                                #SemConta{
+                                                    font-size: 12px;
+                                                    width: 110px;
+                                                }
                                                 #mdlogdiv{
                                                width:58vw; display:flex; align-items:center; text-align:left;justify-content:left; margin-right:20px; font-size:20px
                                                 }
@@ -1514,7 +1543,13 @@
                                                 }
                                                 }
                                                 @media screen and (max-width:350px) {
-    
+                                                    #SemConta{
+                                                        font-size: 11px;
+                                                        width: 100px;
+                                                    }
+                                                    #btncadastro{
+                                                        width: 120px;
+                                                    }
                                                     #mdlogdiv{
                                                    width:59vw; display:flex; align-items:center; text-align:left;justify-content:left; margin-right:20px; font-size:20px
                                                     }
@@ -1682,6 +1717,10 @@
                                     height:5.5vh;  
                                 }
                                 @media screen and (max-height:1080px){
+                                    #imgsmargins{
+                                        margin-bottom:0px
+        
+                                    }
                                     #mdlogmartop{
                                         margin-top: -22vh;
                                     }
@@ -1878,6 +1917,10 @@
                                     }
                                 }    
                                 @media screen and (max-height:800px){
+                                    .imgsmargins{
+                                        margin-bottom:10px
+        
+                                    }
                                     #mdlogmartop{
                                         margin-top: -7vh;
                                     }
@@ -1927,6 +1970,13 @@
                                     }
                                 } 
                                 @media screen and (max-height:750px){
+                                    .imgsmargins{
+                                        margin-bottom:15px
+        
+                                    }
+                                    #btncadastro{
+                                        height: 40px;
+                                    }
                                     .mdlogimg{ height:150px;}
                                     #mdlogmartop{
                                         margin-top: -4vh;
@@ -1975,6 +2025,14 @@
                                     }
                                 }   
                                 @media screen and (max-height:700px){
+                                    .imgsmargins{
+                                        margin-bottom:20px
+        
+                                    }
+                                    .mdconclasslog{
+                                        margin-top:50px
+
+                                    }
                                     #mdlogmartop{
                                         margin-top: -2vh;
                                     }
@@ -2024,19 +2082,25 @@
                                     }
                                 }                            
                                 @media screen and (max-height:650px){
+                                    .mdconclasslog{
+                                        margin-top:30px
+
+                                    }
                                     #mdlogmartop{
                                         margin-top: 2vh;
                                     }
-                                    .mdlogimg{ height:150px;}
+                                    .mdlogimg{ height:130px;}
 
-                                
+                                    #btncadastro{
+                                        height: 30px;
+                                    }
                                     #mdlogdiv1 {
-                                        height: 85vh;
+                                        height: 80vh;
                                     }
                                     
                                     #mdlogP1 {
                                         margin-bottom: 25px;
-                                        margin-top: 45px;
+                                        margin-top: 30px;
     
                                     }
                                     

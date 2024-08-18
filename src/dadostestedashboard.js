@@ -41,7 +41,6 @@ export function DataDash(mes){
         };
         
     }
-    return DataDash(31)
 
     const date = new Date();
     const currentYear = date.getFullYear();
@@ -56,34 +55,6 @@ export function DataDash(mes){
         }
         datames.push(index+today)
     }
-    for(let x=0; x in jsondata;x++){
-        if(mes == 24){
-            if((jsondata[x].timestamp.slice(8,10) ==today )&& (jsondata[x].timestamp.slice(5,7) ==currentMonth)){
-                console.log(jsondata[x].value)
-            }
 
-        }
-        else if(mes == 31){
-
-            if(jsondata[x].timestamp.slice(5,7)==currentMonth){
-                console.log(jsondata[x])
-
-            }
-        }
-        else if(mes == 12 ){
-
-            if(jsondata[x].timestamp.slice(0,5)==currentMonth){
-                console.log(jsondata[x])
-
-            }
-        }
-    }
-    const mesdata = { mes: [],
-                      data: Dadosteste(31)
-     };
-    for (let index = 0; index < 12; index++) {
-        mesdata.mes.push({[`Mes${index}`]: Dadosteste(31).final });
-    }
-    return mesdata
 
 }

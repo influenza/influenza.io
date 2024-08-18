@@ -8,6 +8,21 @@ export function Navbar3(props) {
     const [EquiSelect, SetEquiSelect] = useState(0);
     const [Notificacao, SetNotificacao] = useState(false);
     const [EquiSelectindex, SetEquiSelectindex] = useState(false);
+    const [width, setWidth] = useState(window.innerWidth);
+    const [height, setHeight] = useState(window.innerHeight);
+    const handleResize = () => {
+        setWidth(window.innerWidth);
+      };
+    
+      // Adiciona o listener de resize
+      useEffect(() => {
+        window.addEventListener("resize", handleResize);
+    
+        // Remove o listener quando o componente é desmontado
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
     function handleNavigate(){  
         navigate("/Enviar")
     }
@@ -22,9 +37,7 @@ export function Navbar3(props) {
         axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${Cookies.get().ID}`, headers)
             .then(res => {
                 console.log(res.data[EquiSelect])
-                Cookies.set("IndexEqui",EquiSelect)
-                Cookies.set("NomeEqui2",res.data[EquiSelect].name)
-                Cookies.set("NomeEquiID",res.data[EquiSelect].id)
+
 
                 console.log(Cookies.get())
                 SetEqui(res.data);
@@ -43,22 +56,32 @@ export function Navbar3(props) {
                     <select  id={EquiSelect} className="SelectEqui" onChange={(e)=>{
                             console.log(e.target.value)
                             SetEquiSelect(e.target.value)
+                            Cookies.set("IndexEqui",EquiSelect)
+
                             }}  >
                         <option value="">Workspace</option>
-                        {Equi.map((linha, index) => (
+                        {Equi.map((linha, index) => {
+                        if(EquiSelect == index){
+                            Cookies.set("NomeEqui2",linha.name)
+                            Cookies.set("NomeEquiID",linha.id)
+                            Cookies.get()
+                        }
+                return(
                             <option key={linha.id} value={index} >{linha.name}</option>
-                        ))}
+                )
+            }
+                    )}
                     </select>
                 </span>
             </div>
             <div  id="mdnav12equihome">
                 <button onClick={handleNavigate} id="mdbtnconequihome">
-                    <svg width="20px" height="20px" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {     width >500 &&   <svg id="mdsvgConvida" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19 7.5C19 11.6421 15.6421 15 11.5 15C7.35786 15 4 11.6421 4 7.5C4 3.35786 7.35786 0 11.5 0C15.6421 0 19 3.35786 19 7.5Z" fill="white" />
                         <circle cx="11.5" cy="7.5" r="4.5" fill="#3AB110" />
                         <path d="M0 26C0 22.5522 1.2116 19.2456 3.36827 16.8076C5.52494 14.3696 8.45001 13 11.5 13C14.55 13 17.4751 14.3696 19.6317 16.8076C21.7884 19.2456 23 22.5522 23 26L11.5 26H0Z" fill="white" />
                         <path d="M3.00001 26C3.00001 23.3478 3.89554 20.8043 5.4896 18.9289C7.08366 17.0536 9.24567 16 11.5 16C13.7543 16 15.9164 17.0536 17.5104 18.9289C19.1045 20.8043 20 23.3478 20 26L11.5 26H3.00001Z" fill="#3AB110" />
-                    </svg>
+                    </svg>}
                     Convide
                 </button>
 
@@ -122,9 +145,7 @@ export function Navbar3(props) {
         </div>
         <div style={{ height:"0.0001px", justifyContent:"center",display:"flex", gap:"80vw" }}>
             <div></div>
-            {Notificacao && 
-                <div style={{    backgroundColor: "#FFFBFB", zIndex:"1", width:"20vw",   height:"92vh",}}>a</div>
-            }
+
      </div>
         </>
     );

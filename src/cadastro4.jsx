@@ -21,12 +21,20 @@ export function Cadastro4(props){
     const [genero, setGenero] = useState("")
     const [Nome, setNome] = useState("")
     const [cadastro, setcadastro] = useState(true)
+    useEffect(()=>{
+      console.log(Cookies.get().Nome)
 
+      if(!Cookies.get().Nome){
+        console.log(Cookies.get().Nome)
+        navigate("/cadastro2")
+      }
+    },[])
     const  handleEnviar = async ()=>{
       let erros = document.getElementsByClassName("erros")
       let erro = document.getElementsByClassName("erro")
       
       let inputs = document.getElementsByClassName("inplog" )
+  
       console.log(inputs)
       console.log(genero)
       console.log(nacionalidade)
@@ -68,7 +76,9 @@ export function Cadastro4(props){
     "gender": genero,
     "nationality": nacionalidade
   };
-  
+  console.log(Cookies.get().Nome)
+
+
   
    axios.post('http://ec2-44-220-83-117.compute-1.amazonaws.com/auth/signup', data,)
     .then(response =>{
@@ -107,6 +117,8 @@ export function Cadastro4(props){
       }
       function handleNome(event){
         console.log(event.target.value)
+        console.log(Cookies.get().Nome)
+
         setNome(event.target.value)
       }
     return(
@@ -184,7 +196,7 @@ fill="#FF6300" stroke="none">
 <select id="mdinp3cad4" className="inplog" onChange={handleChangeNacionalidade}   value={nacionalidade}>
 <option value="" disabled={true} >Selecione sua nacionalidade</option>
   {paises && paises.map((nome)=>(
-  <option value={nome.nome}>{nome.nome}</option>
+  <option key={nome.nome} value={nome.nome}>{nome.nome}</option>
   ))}
 <option value="naoind">Prefiro não indentificar</option>
 </select>    

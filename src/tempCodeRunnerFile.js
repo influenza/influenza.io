@@ -1,1 +1,1 @@
-jsondata
+date.getFullYear();

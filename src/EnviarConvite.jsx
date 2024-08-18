@@ -67,7 +67,7 @@ function handleEnviar(){
             erros.style.opacity = "1"
             erros.append("Email inexistente")
           }  )
-          axios.post(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/${91}/user/${55}`, {headers})
+          axios.post(`https://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/${91}/user/${55}`, {headers})
           .then(res => {
             console.log(res)
           }).catch(res=>console.log(res))
@@ -89,11 +89,11 @@ function handleEnviar(){
 </div>
 
     </div>
-    <div id='md22con' style={{backgroundColor:"#D9D9D9",borderRadius:"20px",  height:"20vw",boxShadow:"4px 4px 4px 3px rgba(0, 0, 0, 0.2)"}}>
-      <p id="mdtxtgeral" style={{ fontWeight:"bolder",fontSize:"22px" }}>Convide pessoas para participipar de sua equipe</p>
-    <p style={{ fontWeight:"bolder",fontSize:"22px" }} id='mdtxtem'>Ensira o email do usuario que queira convidar, coloque-o abaixo</p>
-    <div id="mdbotaodiv" style={{display:"flex",justifyContent:"center",alignItems:"center",marginTop:"8vh"}}>
-        <input style={{borderRadius:"20px", height:"4vh", width:"20vw"}} value={Email} onChange={handlEmail}></input>
+    <div id='md2con' style={{backgroundColor:"white",borderRadius:"20px", boxShadow:"4px 4px 4px 3px rgba(0, 0, 0, 0.2)"}}>
+      <p id="mdtxtgeral" style={{ fontWeight:"bolder" }}>Convide pessoas para sua equipe</p>
+    <p  style={{ fontWeight:"bolder" }} id='mdtxtem'>Insira o email do usuario que queira convidar, </p>
+    <div id="mdbotaodiv" style={{display:"flex",justifyContent:"center",alignItems:"center",marginTop:"3vh"}}>
+        <input className="inplog" style={{borderRadius:"20px", background:"#DDD9CE"}} value={Email} onChange={handlEmail}></input>
     </div>
     <div id='erro'  style={{opacity:"0",display:"flex",flexDirection:"column",justifyContent:"center"}}>
         </div>
@@ -119,7 +119,7 @@ fill="#FF6300" stroke="none">
       </div>
       
       <div id='mdbotoeslogin1'>
-      <Button id="md2btn" text={"Enviar"} func={handleEnviar} style={{ backgroundColor:"#279301",color:"white", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}}>Enviar</Button>
+      <Button id="md2btn" text={"Enviar"} func={handleEnviar} style={{ backgroundColor:"#279301",color:"white",marginTop:"-20px", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}}>Enviar</Button>
 
         </div>
         

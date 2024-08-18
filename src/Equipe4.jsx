@@ -12,6 +12,7 @@ import logo from "./logo.png"
 import letraverde from "./letraverde.png"
 import { Navigate, useNavigate } from 'react-router-dom'
 import { paises } from './paises'
+import "./mdEqui2.css"
 import { estados } from './pestados'
 
 function Equipe4() {
@@ -90,23 +91,23 @@ setnacioNalidade(event.target.value)
   return (
     <>
 
-    <div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"", justifyContent:"center",alignItems:"center",textAlign:"center"}}>
-    <div style={{display:"flex",flexDirection:"row",marginTop:"-15vh", width:"100vw",}}>
-<div style={{width:"50vw", display:"flex", alignItems:"center", textAlign:"left",justifyContent:"left", marginRight:"20px", fontSize:"20px"}}>  
-<img src={`${logo}`} style={{width:"150px", height:"150px", marginRight:"20px"}} alt="" />
-  <img src={`${letraverde}`} style={{width:"200px", height:"200px"}} alt="" /></div>
+<div  style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"",textAlign:"center"}}>
 
-    </div>
-    <div style={{backgroundColor:"white", width:"25vw", borderRadius:"17px",boxShadow:"4px 4px 4px 3px rgba(0, 0, 0, 0.2)",  height:`${hdiv}`}}>
-      <p style={{fontSize:"40px",marginBottom:"25px",marginTop:"45px", fontWeight:"bolder"}}>Crie sua equipe em segundos</p>
+<div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",height:"15vh",justifyContent:"center",alignItems:"center",marginBottom:"20px"}}>
+<img src={`${logo}`} className='img'alt="" />
+    <img src={`${letraverde}`} className='img'   alt="" /></div>
+    <div style={{display:"flex", justifyContent:"center",flexDirection:"column", alignItems:"center"}}>
+      
+    <div id="mdcon" style={{backgroundColor:"white",  borderRadius:"17px",boxShadow:"4px 4px 4px 3px rgba(0, 0, 0, 0.2)",   }}>
+      <p id='mdtxt1' style={{fontWeight:'bold'}}>Crie sua equipe em segundos</p>
       <div style={{ justifyContent:"center", alignItems:"center",textAlign:"center", }}>
 
 </div>
       <div style={{display:"flex", textAlign:"center",justifyContent:"space-between",alignItems:"center"}}>
-      <span style={{fontSize:"18px", marginLeft:"1.5vw", marginTop:"10px",marginBottom:"1.5vh", textAlign:"left"}}>NOME DA EQUIPE</span><span style={{marginRight:"2vw",fontSize:"30px"}}>*</span>
+      <span className='diverro' >NOME DA EQUIPE</span><span style={{marginRight:"2vw",fontSize:"30px"}}>*</span>
       </div>
 
-      <Input className="inplog" value={nomeEqui}  style={{ padding:"0px 10px",border:"2px solid #aaa",borderRadius:"16px",fontSize:"18px",  height:"4.5vh",marginBottom:"0.5vh", width:"21vw"}} Onchange={handleChangeEmail}/>
+      <Input className="inplog" value={nomeEqui}  style={{ padding:"0px 10px",border:"2px solid #aaa",borderRadius:"16px",fontSize:"18px",}} Onchange={handleChangeEmail}/>
       <div className='diverro' style={{justifyContent:"left",alignItems:"center",display:"flex",flexDirection:"row"}}>
      <div className='erro' style={{opacity:"0"}}>
          <svg className='mdsinal' style={{marginRight:"20px"}} version="1.0" mlns="http://www.w3.org/2000/svg"
@@ -133,8 +134,8 @@ fill="#FF6300" stroke="none">
       
      </div>
       <div>
-      <p style={{fontSize:"18px", marginLeft:"1.5vw", textAlign:"left",marginBottom:"1.5vh"}}>SETOR DA INDUSTRIA</p>
-      <select name="setor" id="setor" style={{ padding:"0px 10px",border:"2px solid #aaa",borderRadius:"16px",fontSize:"18px",  height:"4.5vh",marginBottom:"0.5vh", width:"22vw"}}  onChange={(e)=>{
+      <p  className="diverro"  style={{ textAlign:"left",marginBottom:"5px"}}>SETOR DA INDUSTRIA</p>
+      <select name="setor" id="mdinp3cad4" style={{ padding:"0px 10px",border:"2px solid #aaa",borderRadius:"16px",fontSize:"18px"}}  onChange={(e)=>{
         setArea(e.target.value)
       }}>
           <option value="textil">Textil </option>
@@ -181,8 +182,8 @@ fill="#FF6300" stroke="none">
      </div>
       </div>
       <div>
-      <p style={{fontSize:"18px", marginLeft:"1.5vw", textAlign:"left",marginBottom:"5px"}}>QUANTIDADE DE FUNCIONARIOS</p>
-      <select name="setor" id="setor" style={{ padding:"0px 10px",border:"2px solid #aaa",borderRadius:"16px",fontSize:"18px",  height:"4.5vh",marginBottom:"0.5vh", width:"22vw"}}  onChange={(e)=>{
+      <p className="diverro" style={{ textAlign:"left",marginBottom:"5px"}}>QUANTIDADE DE FUNCIONARIOS</p>
+      <select name="setor" id="mdinp3cad4" style={{ padding:"0px 10px",border:"2px solid #aaa",borderRadius:"16px",fontSize:"18px"}}  onChange={(e)=>{
         setNumfunc(e.target.value)
       }}>
                   <option value="1-50"> 1-50 </option>
@@ -223,9 +224,9 @@ fill="#FF6300" stroke="none">
      </div>
       </div>
       <div>
-      <p style={{fontSize:"18px", marginLeft:"1.5vw", textAlign:"left",marginBottom:"5px"}}>SEDE DA EMPRESA</p>
+      <p className="diverro" style={{  textAlign:"left",marginBottom:"5px"}}>SEDE DA EMPRESA</p>
   
-   <select id="nacionalidade" onChange={handleChangeNacionalidade}  style={{ padding:"0px 10px",border:"2px solid #aaa",borderRadius:"16px",fontSize:"18px",  height:"4.5vh",marginBottom:"15px", width:"21vw"}} value={nacionalidade}>
+   <select id="mdinp3cad4" onChange={handleChangeNacionalidade}  style={{ padding:"0px 10px",border:"2px solid #aaa",borderRadius:"16px",fontSize:"18px", }} value={nacionalidade}>
             {paises && paises.map((nome)=>(
           <option value={nome.nome}>{nome.nome}</option>
           ))}
@@ -266,12 +267,12 @@ fill="#FF6300" stroke="none">
         
         </div>
           <div>
-          <Button func={handleEnviar} text={"Entrar"} style={{width:"18vw",height:"5.5vh", backgroundColor:"#279301",color:"white", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}}>Enviar</Button>
+          <Button func={handleEnviar} text={"Entrar"} id="mdbtncad4" style={{ backgroundColor:"#279301",color:"white", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}}>Enviar</Button>
 
           </div>
         
     </div>
-    
+    </div>
           </div>
     </>
   )

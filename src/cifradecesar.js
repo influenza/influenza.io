@@ -6,7 +6,6 @@ export function cifracesar(palavra){
       let letras = palavra.toUpperCase().split("")
       let cesar =[]
       for(let x of letras){
-        console.log(x)
         cesar.push(cifra[x])
       }
       return cesar.join("")

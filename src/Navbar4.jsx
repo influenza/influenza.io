@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useLocation } from 'react-router-dom';
 import Cookies from "js-cookie"
 import { Navigate, useNavigate } from 'react-router-dom'
+import { cifracesar } from "./cifradecesar";
 
 export function Navbar4(props){
+    let codNomeEqui =cifracesar(Cookies.get().NomeEqui2)
     const location = useLocation();
     const [idarr, setarr] = useState(['','','','']);
     idarr[props.es]="chosen"
@@ -17,18 +19,12 @@ export function Navbar4(props){
 
         <div className="mdnav2hr"></div>
             <div id="mdiconeequihomequi" onClick={()=>{navigate("/HomeEquiTem")}}>
-            {Cookies.get().NomeEqui2[0]}
+            {Cookies.get().NomeEqui2?Cookies.get().NomeEqui2[0]:""}
             </div>
             <div className="mdnav2hr"></div>
             </div>
-            <div id="mdequihomenav22">
-            <div id={idarr[0]} onClick={()=>{navigate("/perfil")}} style={{width:"4vw",borderRadius:"0.8vw", height:"6vh",justifyContent:"center",display:"flex",alignItems:"center"}}  className="navbar" >
-<svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="12" cy="7" r="5" stroke="#000000" stroke-width="2"/>
-<path d="M17 14H17.3517C18.8646 14 20.1408 15.1266 20.3285 16.6279L20.719 19.7519C20.8682 20.9456 19.9374 22 18.7344 22H5.26556C4.06257 22 3.1318 20.9456 3.28101 19.7519L3.67151 16.6279C3.85917 15.1266 5.13538 14 6.64835 14H7" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-</div>    
-<div  id={idarr[1]} onClick={()=>{navigate("/dashboard")}} style={{width:"4vw",borderRadius:"0.8vw", height:"6vh",justifyContent:"center",display:"flex",alignItems:"center"}}  className="navbar" ><svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div id="mdequihomenav22">  
+<div  id={idarr[1]} onClick={()=>{navigate(`/dashboard/${codNomeEqui}`)}} style={{width:"4vw",borderRadius:"0.8vw", height:"6vh",justifyContent:"center",display:"flex",alignItems:"center"}}  className="navbar" ><svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M4 5V19C4 19.5523 4.44772 20 5 20H19" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M18 9L13 13.9999L10.5 11.4998L7 14.9998" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>    

@@ -415,17 +415,17 @@ margin-bottom: 10px;
     }
     #divAssinatura{display:flex;flex-direction:row;gap: 20px;}
     #mddivplano{
-        font-size:1.7vw
+        font-size:3vw
     }
     #mddivpreco{
         margin-top:20px; margin-bottom:20px
     
     }
     #mddivpreco span{
-        font-size: 1.7vw;
+        font-size: 3vw;
     }
     #mddivpreco span span{
-        font-size: 2.3vw;
+        font-size: 3vw;
     }
     #mddivlista{
         display: flex;
@@ -461,7 +461,7 @@ margin-bottom: 10px;
     }
     #divAssinatura{display:flex;flex-direction:row;gap: 20px;}
     #mddivplano{
-        font-size:1.7vw
+        font-size:3vw
     }
     #mddivpreco{
         margin-top:20px; margin-bottom:20px
@@ -471,7 +471,7 @@ margin-bottom: 10px;
         font-size: 1.7vw;
     }
     #mddivpreco span span{
-        font-size: 2.3vw;
+        font-size: 3vw;
     }
     #mddivlista{
         display: flex;
@@ -489,4 +489,143 @@ margin-bottom: 10px;
         margin-top:10px; font-size:3vw;
  margin-left: 10px; margin-right: 10px;   }
 }
+@media screen and (max-width:450px) {
+    #mdequi3txt1{
+        font-size:3vw;
+        margin-left: 10px;
+        margin-right: 10px
+    }
+    #mdequi3txt0{
+        font-size:4vw;margin-top:-30px
+    }
+    .mdAnuMendiv{ width:19vw}
+    .mdAnuMen{
+    font-size:3vw
+    }
+    #Assinatura{
+    width:21vw;margin-top: 2vh;
+    }
+    #divAssinatura{display:flex;flex-direction:row;gap: 15px;}
+    #mddivplano{
+        font-size:3vw
+    }
+    #mddivpreco{
+        margin-top:10px; margin-bottom:20px
+    
+    }
+    #mddivpreco span{
+        font-size: 2.5vw;
+    }
+    #mddivpreco span span{
+        font-size: 2.3vw;
+    }
+    #mddivlista{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #mddivlista ul{
+        padding: 0px;
+    }
+    #mddivlista ul li,#txtGratis{
+        font-size:11px;
+    margin-bottom: 10px;
+    }
+    #mddivavisoequi{
+        margin-top:10px; font-size:3vw;
+ margin-left: 10px; margin-right: 10px;   }
+}
+@media screen and (max-width:400px) {
+    #mdequi3txt1{
+        font-size:3vw;
+        margin-left: 10px;
+        margin-right: 10px
+    }
+    #mdequi3txt0{
+        font-size:4vw;margin-top:-30px
+    }
+    .mdAnuMendiv{ width:19vw}
+    .mdAnuMen{
+    font-size:3vw
+    }
+    #Assinatura{
+    width:20vw;margin-top: 2vh;
+    padding: 3px;
+    }
+    #divAssinatura{display:flex;flex-direction:row;gap: 12px;}
+    #mddivplano{
+        font-size:3vw
+    }
+
+    #mddivpreco span{
+        font-size: 2.5vw;
+    }
+    #mddivpreco span span{
+        font-size: 3vw;
+    }
+    #mddivlista{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #mddivlista ul{
+        padding: 0px;
+    }
+    #mddivlista ul li,#txtGratis{
+        font-size:10px;
+    margin-bottom: 10px;
+    }
+    #mddivavisoequi{
+        margin-top:10px; font-size:3vw;
+ margin-left: 10px; margin-right: 10px;   }
+}
+@media screen and (max-width:350px) {
+    #mdequi3txt1{
+        font-size:3vw;
+        margin-left: 10px;
+        margin-right: 10px
+    }
+    #mdequi3txt0{
+        font-size:4vw;margin-top:-30px
+    }
+    .mdAnuMendiv{ width:19vw}
+    .mdAnuMen{
+    font-size:3vw
+    }
+    #Assinatura{
+    width:19.5vw;margin-top: 2vh;
+    padding: 3px;
+    }
+    #divAssinatura{display:flex;flex-direction:row;gap: 12px;}
+    #mddivplano{
+        font-size:3vw
+    }
+    #mddivpreco{
+        margin-top:10px; margin-bottom:10px
+    
+    }
+    #mddivpreco span{
+        font-size: 3vw;
+    }
+    #mddivpreco span span{
+        font-size: 2.3vw;
+    }
+    #mddivlista{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #mddivlista ul{
+        padding: 0px;
+    }
+    #mddivlista ul li,#txtGratis{
+        font-size:9px;
+    margin-bottom: 10px;
+    }
+    #mddivavisoequi{
+        margin-top:10px; font-size:3vw;
+ margin-left: 10px; margin-right: 10px;   }
+}
+
+
 

@@ -26,23 +26,12 @@ export function Listausu(props) {
   const [indexEqui, Setindexequi] = useState(document.getElementsByClassName("SelectEqui")[0])
   const [IDmembers, setIDmembers] = useState()
   const [Roles, setRoles] = useState()
-  const [Datapages, setDatapages] = useState([])
+  const [Datapages2, setDatapages2] = useState([])
   const [umaVez, setumaVez] = useState(true)
+  const [width,setWidth] = useState(window.innerWidth)
   let navigate=useNavigate()
 
-  if(umaVez){
-    if(Cookies.get().NumeroEqui.split(",").length >= 2){
-      let pages = 18/2
-      console.log(pages)
-      for (let index = 0; index <  pages; index++) {
-        if(index != 0){
-          Datapages.push(index)
 
-        }
-      }
-      setumaVez(false)
-    }
-  }
 
   
   console.log(Cookies.get().IndexEqui)
@@ -93,11 +82,20 @@ export function Listausu(props) {
       })
       console.log(idmembers)
       console.log(idmembers)
-      const userPromises = idmembers.map(id => axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/user/v1/findId/${id}`, headers));
-      console.log(userPromises)
+      const userPromises = idmembers.map(id => axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/user/v1/id/${id}`, headers));
+      console.log(userPromises.length)
       const userResponses = await Promise.all(userPromises);
       console.log(userResponses)
-
+          let pages = Math.floor(userPromises.length/50)
+      console.log(pages)
+          for (let index = 0; index <  pages; index++) {
+              console.log(index)
+              Datapages2.push(index)
+    
+          }
+        console.log(Datapages2)
+        
+      
       const userDetails = [];
       const newIdMap = {};
       let counter = 0;
@@ -120,7 +118,19 @@ export function Listausu(props) {
       console.error(error);
     }
   };
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
 
+  // Adiciona o listener de resize
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    // Remove o listener quando o componente é desmontado
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   useEffect(() => {
     fetchUsers()
     const intervalId = setInterval(() => {
@@ -131,7 +141,6 @@ export function Listausu(props) {
     // Limpeza do intervalo quando o componente é desmontado
     return () => clearInterval(intervalId);
   }, [indexEqui]);
-  
 
   const CargosDict = { "Membro":["Gerente","Gestor"],
     "Gestor":["Membro","Gerente"],
@@ -239,14 +248,22 @@ document.addEventListener("keyup",(e)=>{
     if (filterSelect === "Alfadecre") return b.nome.localeCompare(a.nome);
     return a.id - b.id;
   });
+  useEffect(()=>{
+    console.log(Cookies.get().Nome)
+
+    if(!Cookies.get().NomeEqui2){
+      console.log(Cookies.get().Nome)
+      navigate("/equipevisao")
+    }
+  },[])
   return (
     <>
            <Navbar3 funcEqui={handleindexEqui}></Navbar3>
          <div style={{display:"flex", flexDirection:"row", overflow:"hidden"}}>
           
           <Navbar4 es={3}></Navbar4>
-              <div style={{  display:"flex",flexDirection:"row",backgroundColor:"#f5ebe0", width:"92vw", height:"92vh", msScrollLimitXMax:"0px"}}>
-              <div style={{justifyContent:"left",alignItems:"center",display:"flex",flexDirection:"column", width:"100vw"}}>
+              <div id="mdconlistaus" style={{  display:"flex",flexDirection:"row",backgroundColor:"#f5ebe0", width:"92vw",  msScrollLimitXMax:"0px"}}>
+              <div style={{justifyContent:"left",alignItems:"center",display:"flex",flexDirection:"column", width:"100vw",}}>
               <div style={{display:"flex", justifyContent:"center", gap:"65vw"}}>
               <p className="EcoIconLetter" id="mdlisttit" >Tabela de funcionario</p>
               <span></span>
@@ -256,8 +273,9 @@ document.addEventListener("keyup",(e)=>{
 
 <div id="mdlistusucon" style={{background:"white", borderColor:"white",border:"1px solid black"}}>
 <div id="mdlistusudiv1" style={{display:"flex",alignItems:"center",justifyContent:"space-evenly",borderBottom: "1px solid #F5F1ED"}}>
-<div id="mdlistusuPmembros" style={{fontWeight:"bold"}}>
-  Membros
+  
+<div id="mdlistusuPmembros" style={{fontWeight:"bold", justifyContent:"center",display:"flex", alignItems:"center", textAlign:"center",gap:"10px"}}>
+
 </div>
 <div id="mdListusuGap20px" style={{display:"flex"}}>
 <div id="mdlistusuFilter" style={{background:"#C2C2C2",display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",textAlign:"center",borderRadius:"10px" }}>
@@ -323,10 +341,10 @@ setFilterSelect(e.target.value)
 </select>
 </div>
 <div id="mdlistusudivlixo" style={{backgroundColor:"#FF6300",display:"flex",justifyContent:"center",alignItems:"center",borderRadius:"10px"}} onClick={()=>{
-  for (let index = 0; index < iddict.length; index++) {
-    console.log(idMap[iddict[index]])
-    axios.delete(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/91/user/${idMap[iddict[index]]}`, headers)
-  }
+for (let index = 0; index < iddict.length; index++) {
+  console.log(idMap[iddict[index]])
+  axios.delete(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/91/user/${idMap[iddict[index]]}`, headers)
+}
 }}>
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
 width="30px" height="30px" viewBox="0 0 946.000000 1280.000000"
@@ -451,13 +469,16 @@ l3 -3035 23 -57 c28 -68 110 -163 160 -183 46 -20 198 -20 243 -1 44 19 162
 </div>
 
 </div>
+
+
+
 </div>
 
 
 
-<div style={{display:"flex",flexDirection:"row", borderRadius:"10px", alignItems:"center", justifyContent:"center"}}>
+<div style={{display:"flex",flexDirection:"row", borderRadius:"10px", alignItems:"center", }}>
       
-      <div style={{ display:"flex",flexDirection:"column", textAlign:"center",alignItems:'center', marginRight:"20px", borderRadius:"10px", height:"55vh", overflow:"hidden",overflowY:"scroll", padding:"10px"}}>
+      <div id="mdlistusudiv" style={{ display:"flex",flexDirection:"column", textAlign:"center", marginRight:"20px", borderRadius:"10px", height:"55vh", overflow:"scroll",overflowY:"scroll", padding:"10px"}}>
 
       <table id="mdlistausutable" >
   <thead  >
@@ -498,10 +519,9 @@ l3 -3035 23 -57 c28 -68 110 -163 160 -183 46 -20 198 -20 243 -1 44 19 162
 
 <div  style={{borderTop:"1px solid #C3C3C3",  display:"flex", justifyContent:"center", alignItems:"center",textAlign:'center', fontSize:"26px",height:"100px",gap:"20px"}}>
 <div className="mdlistusupages" style={{backgroundColor:"#0075E8",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"white", }}>1</div>
- {Datapages.map((res,index)=>{
-  console.log(Datapages.length-1)
-  console.log(index)
-  if((Datapages.length) == index+1){
+ {Datapages2.map((res,index)=>{
+
+  if((Datapages2.length) == index+1){
     return(
       <>
 <div className="mdlistusupages" style={{backgroundColor:"#BBD6F0",color:"#0075E8", justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center", }}>{res+1}</div>
@@ -511,13 +531,44 @@ l3 -3035 23 -57 c28 -68 110 -163 160 -183 46 -20 198 -20 243 -1 44 19 162
     )
   }else if(index<3){
     console.log(index)
-    if(index == 2){
+    if(index == 1 ){
+      if( width<500 && width>350 ){
+        return <>
+      <div className="mdlistusupages" onClick={()=>{
+        navigate(`/listausuarios/${res+1}`)
+      }}style={{backgroundColor:"#BBD6F0",color:"#0075E8",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center", }}>{res+1}</div>
+      <span>...</span>
+      </>
+      }
+      else if(width<=350){
+        <>a</>
+      }
+      else{
+        return <>
+        <div  className="mdlistusupages" onClick={()=>{
+          navigate(`/listausuarios/${res+1}`)
+        }}style={{backgroundColor:"#BBD6F0",color:"#0075E8",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center", }}>{res+1}</div>
+        
+        </>
+      }
+    }
+    else if(index == 0 && width<=350){
       return <>
-    <div className="mdlistusupages" onClick={()=>{
-      navigate(`/listausuarios/${res+1}`)
-    }}style={{backgroundColor:"#BBD6F0",color:"#0075E8",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center", }}>{res+1}</div>
-    <span>...</span>
-    </>
+      <div className="mdlistusupages" onClick={()=>{
+        navigate(`/listausuarios/${res+1}`)
+      }}style={{backgroundColor:"#BBD6F0",color:"#0075E8",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center", }}>{res+1}</div>
+      <span>...</span>
+      </>
+    }
+    else if(index == 2){
+      if(width>500){
+      return <>
+      <div className="mdlistusupages" onClick={()=>{
+        navigate(`/listausuarios/${res+1}`)
+      }}style={{backgroundColor:"#BBD6F0",color:"#0075E8",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center", }}>{res+1}</div>
+      <span>...</span>
+      </>
+      }
     }
     else{
       return <>

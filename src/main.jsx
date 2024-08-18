@@ -74,7 +74,7 @@ ReactDOM.render(
       <Route path='/equipevisao' element={<EquipeVisao/>}/>
       <Route path='/tabela' element={<Tabela />} /> 
       <Route path='/tabela/:pag' element={<TabelaPag />} /> 
-      <Route path='/dashboard' element={< Dashboard/>} /> 
+      <Route path='/dashboard/:equipeNome' element={< Dashboard/>} /> 
       <Route path='metas' element={<Metas/>}/>
       <Route path='/404' element={<Notfound />} /> 
       <Route path='*' element={<Notfound/>}/>

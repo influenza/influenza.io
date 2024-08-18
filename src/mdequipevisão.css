@@ -1011,7 +1011,7 @@ border-radius:10px; ;width:200px;
     #mdcondiv1EquiVIS2
     {gap:20px}
     #mdconP1EquiVIS2
-    {font-size:18px;margin-left: 20px;}
+    {font-size:17px;margin-left: 20px;}
     #Gap200px
     {width:10px}
     #mdcondivFOTOEquiVIS2{
@@ -1061,7 +1061,7 @@ border-radius:10px; ;width:200px;
     #mdcondiv1EquiVIS2
     {gap:20px}
     #mdconP1EquiVIS2
-    {font-size:18px;margin-left: 20px;}
+    {font-size:15px;margin-left: 5px;}
     #Gap200px
     {width:10px}
     #mdcondivFOTOEquiVIS2{
@@ -1074,7 +1074,7 @@ border-radius:10px; ;width:200px;
         font-size:11px;
     }
     #mdinputNomeEqui{
-        font-size:16px; width:75px;;margin-bottom:20px;
+        font-size:16px; width:70px;;margin-bottom:20px;
     }
     #txtAvisoEquiVis{
         width:100px;font-size:10px
@@ -1094,7 +1094,7 @@ border-radius:10px; ;width:200px;
     border-radius:10px; ;width:160px;
     }
     #inputMDEquiVIS{
-        padding:10px; font-size:20px;  width:75px;
+        padding:10px; font-size:20px;  width:70px;
     }
     #mddivEquiVIS2{
         gap:40px;
@@ -1111,7 +1111,7 @@ border-radius:10px; ;width:200px;
     #mdcondiv1EquiVIS2
     {gap:20px}
     #mdconP1EquiVIS2
-    {font-size:18px;margin-left: 20px;}
+    {font-size:14px;margin-left: 5px;}
     #Gap200px
     {width:10px}
     #mdcondivFOTOEquiVIS2{
@@ -1124,10 +1124,11 @@ border-radius:10px; ;width:200px;
         font-size:10px;
     }
     #mdinputNomeEqui{
-        font-size:16px; width:65px;;margin-bottom:20px;
+        font-size:16px; width:60px;;margin-bottom:20px;
+
     }
     #txtAvisoEquiVis{
-        width:80px;font-size:9.5px
+        width:80px;font-size:8.5px
     }
     #txtdescEquiVis{
         font-size: 24px;
@@ -1144,13 +1145,40 @@ border-radius:10px; ;width:200px;
     border-radius:10px; ;width:160px;
     }
     #inputMDEquiVIS{
-        padding:10px; font-size:20px;  width:65px;
+        padding:10px; font-size:20px;  width:60px;
+        margin-left: -20px;
     }
     #mddivEquiVIS2{
         gap:40px;
         margin-right: -40px;
     }
 }
+#mdconP1EquiVIS2
+{margin-top:20px;margin-bottom:20px;}
+
+#mdcondivdivFOTOEquiVIS2{
+height:200px;}
+#mdinputNomeEqui{
+    height: 30px;
+}
+
+#descinpEquiVIS
+{  height: 240px; margin-top:35px;margin-bottom: 30px;  }
+
+#btnAdicionarEquiVIS2{
+    height: 30px;
+
+}
+#inputMDEquiVIS{
+    padding:10px; 
+    height: 30px;
+
+}
+#mddivEquiVIS2{
+    gap:40px;
+    margin-right: -60px;
+}
+
 @media screen and (max-height:1200px) {
 
     #mdconP1EquiVIS2
@@ -1212,9 +1240,7 @@ height:110px;}
 
 }
 @media screen and (max-height:800px) {
-    #mdEquiVis2Conger{
-        height:100%
-    }
+
 
     #mdconP1EquiVIS2
     {margin-top:20px;margin-bottom:20px;}
@@ -1244,4 +1270,38 @@ height:110px;}
         gap:20px;
     }
 
+}
+@media screen and (max-height:750px) {
+
+
+    #mdconP1EquiVIS2
+    {margin-top:20px;margin-bottom:20px;}
+
+    #mdcondivdivFOTOEquiVIS2{
+height:110px;}
+#mdinputNomeEqui{
+        height: 20px;
+    }
+
+    #descinpEquiVIS
+    {  height: 200px; margin-top:30px;}
+
+    #btnAdicionarEquiVIS2{
+        margin-top: 30px;
+        margin-bottom: 30px;
+
+        height: 30px;
+
+    }
+    #inputMDEquiVIS{
+        padding:10px; 
+        height: 30px;
+
+    }
+    #mddivEquiVIS2{
+        gap:20px;
+    }
+    #mdEquiVis2Conger{
+        height:100%
+    }
 }

@@ -1,9 +1,10 @@
 #mdlisttit{
  font-size:30px;margin-top:20px
 }
-#mdlistusucon{
-    height: 80vh;
+#mdconlistaus{
+    height: 92vh;
 }
+#mdlistusucon{margin-top: -10px;}
 #mdlistusudiv1{
     margin:20px; padding-bottom :20px; gap:35vw;
 }
@@ -38,8 +39,7 @@ width:200px
         font-size:30px;margin-top:20px
        }
        #mdlistusucon{
-           height: 80vh;
-       }
+    margin-bottom: 10px;       }
        #mdlistusudiv1{
            margin:20px; padding-bottom :20px; gap:25vw;
        }
@@ -75,8 +75,7 @@ width:200px
         font-size:30px;margin-top:20px
        }
        #mdlistusucon{
-           height: 80vh;
-       }
+    margin-bottom: 10px;       }
        #mdlistusudiv1{
            margin:20px; padding-bottom :20px; gap:20vw;
        }
@@ -112,8 +111,7 @@ width:200px
         font-size:30px;margin-top:20px
        }
        #mdlistusucon{
-           height: 80vh;
-       }
+    margin-bottom: 10px;       }
        #mdlistusudiv1{
            margin:20px; padding-bottom :20px; gap:18vw;
        }
@@ -149,8 +147,7 @@ width:200px
         font-size:26px;margin-top:20px; margin-left: 5px;
        }
        #mdlistusucon{
-           height: 80vh;
-       }
+    margin-bottom: 10px;       }
        #mdlistusudiv1{
            margin:20px; padding-bottom :20px; gap:16vw;
        }
@@ -186,8 +183,7 @@ width:200px
         font-size:25.5px;margin-top:20px; margin-left: 5px;
        }
        #mdlistusucon{
-           height: 80vh;
-       }
+    margin-bottom: 10px;       }
        #mdlistusudiv1{
            margin:20px; padding-bottom :20px; gap:14.5vw;
        }
@@ -223,8 +219,7 @@ width:200px
         font-size:24px;margin-top:20px; margin-left: 5px;
        }
        #mdlistusucon{
-           height: 80vh;
-       }
+    margin-bottom: 10px;       }
        #mdlistusudiv1{
            margin:20px; padding-bottom :20px; gap:13vw;
        }
@@ -260,8 +255,7 @@ width:200px
         font-size:22px;margin-top:20px; margin-left: 5px;
        }
        #mdlistusucon{
-           height: 80vh;
-       }
+    margin-bottom: 10px;       }
        #mdlistusudiv1{
            margin:20px; padding-bottom :20px; gap:12vw;
        }
@@ -297,8 +291,7 @@ width:200px
         font-size:21px;margin-top:20px; margin-left: 5px;
        }
        #mdlistusucon{
-           height: 80vh;
-       }
+    margin-bottom: 10px;       }
        #mdlistusudiv1{
            margin:20px; padding-bottom :20px; gap:10vw;
        }
@@ -334,8 +327,7 @@ width:200px
         font-size:20px;margin-top:20px; margin-left: 5px;
        }
        #mdlistusucon{
-           height: 80vh;
-       }
+    margin-bottom: 10px;       }
        #mdlistusudiv1{
            margin:20px; padding-bottom :20px; gap:9vw;
        }
@@ -371,8 +363,7 @@ width:200px
         font-size:19px;margin-top:20px; margin-left: 5px;
        }
        #mdlistusucon{
-           height: 80vh;
-       }
+    margin-bottom: 10px;       }
        #mdlistusudiv1{
            margin:20px; padding-bottom :20px; gap:8vw;
        }
@@ -408,8 +399,7 @@ width:200px
         font-size:17px;margin-top:20px; margin-left: 5px;
        }
        #mdlistusucon{
-           height: 80vh;
-       }
+    margin-bottom: 10px;       }
        #mdlistusudiv1{
            margin:20px; padding-bottom :20px; gap:7vw;
        }
@@ -445,8 +435,7 @@ width:200px
         font-size:15px;margin-top:20px; margin-left: 5px;
        }
        #mdlistusucon{
-           height: 80vh;
-       }
+    margin-bottom: 10px;       }
        #mdlistusudiv1{
            margin:20px; padding-bottom :20px; gap:7vw;
        }
@@ -482,10 +471,10 @@ width:200px
         font-size:15px;margin-top:20px; margin-left: 5px;
        }
        #mdlistusucon{
-           height: 80vh;
+           height: 85vh;
        }
        #mdlistusudiv1{
-           margin:20px; padding-bottom :20px; gap:6vw;
+           margin:20px; padding-bottom :20px; gap:1vw;
        }
        #mdlistusuPmembros{ font-size:18px;}
        #mdlistusuFilter{height:60px;width:150px}
@@ -513,22 +502,154 @@ width:200px
        #mdlistausutable{
         width: 80vw;
     }
+    #mdlistusudiv1{flex-direction:column;}
+    #mdlistusudiv{
+        width: 80vw;
+    }
 }
 @media screen and (max-width:600px) {
     #mdlisttit{
-        font-size:14px;margin-top:20px; margin-left: 5px;
-       }
-       #mdlistusudiv1{flex-direction:column;}
-       #mdlistusudiv1 #mdlistusuPmembros{
-        margin-bottom: 10px;
+        font-size:15px;margin-top:20px; margin-left: 5px;
        }
        #mdlistusucon{
-           height: 82vh;
+           height: 85vh;
        }
        #mdlistusudiv1{
-           margin:10px; padding-bottom :20px; gap:0vw;
+           margin:20px; padding-bottom :20px; gap:1vw;
        }
-       #mdlistusuPmembros{ font-size:15px;}
+       #mdlistusuPmembros{ font-size:18px;}
+       #mdlistusuFilter{height:60px;width:150px}
+       #selectfunc{
+           width:140px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 10px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:150px
+       }
+       #mdlistususelect{
+       width:140px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:60px
+       }
+       .mdlistusupages{
+           width:35px; height:35px
+       }
+       #mdlistausutable{
+        width: 70vw;
+    }
+    #mdlistusudiv1{flex-direction:column;}
+    #mdlistusudiv{
+        padding: 20px;
+        width: 300px;
+        overflow-x: scroll;
+    }
+
+}
+@media screen and (max-width:550px) {
+    #mdlisttit{
+        font-size:15px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 85vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:1vw;
+       }
+       #mdlistusuPmembros{ font-size:18px;}
+       #mdlistusuFilter{height:60px;width:150px}
+       #selectfunc{
+           width:140px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 10px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:150px
+       }
+       #mdlistususelect{
+       width:140px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:60px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+       #mdlistausutable{
+        width: 80vw;
+    }
+    #mdlistusudiv{
+        font-size: 11px;
+        padding: 0px;
+        width: 417px;
+        overflow-x: scroll;
+    }
+    #mdlistusudiv1{flex-direction:column;}
+
+}
+@media screen and (max-width:500px) {
+    #mdlisttit{
+        font-size:15px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 85vh;
+       }
+       #mdlistusudiv1{
+           margin:20px; padding-bottom :20px; gap:1vw;
+       }
+       #mdlistusuPmembros{ font-size:18px;}
+       #mdlistusuFilter{height:60px;width:150px}
+       #selectfunc{
+           width:140px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 10px;
+       }
+       #mdlistusudiv2{
+           height:60px;width:150px
+       }
+       #mdlistususelect{
+       width:140px
+       }
+       #mdlistusudivlixo{
+           height:60px;width:60px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+
+    #mdlistusudiv{
+        font-size: 11px;
+        padding: 0px;
+        width: 380px;
+        overflow-x: scroll;
+    }
+    #mdlistusudiv1{flex-direction:column;}
+
+}
+@media screen and (max-width:450px) {
+    #mdlisttit{
+        font-size:15px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 85vh;
+       }
+       #mdlistusudiv1{
+           margin:10px; padding-bottom :20px; 
+       }
+       #mdlistusuPmembros{ font-size:18px;}
        #mdlistusuFilter{height:60px;width:130px}
        #selectfunc{
            width:120px
@@ -546,12 +667,121 @@ width:200px
        width:120px
        }
        #mdlistusudivlixo{
-           height:60px;width:50px
+           height:60px;width:60px
        }
        .mdlistusupages{
            width:40px; height:40px
        }
-       #mdlistausutable{
-        width: 10vw;
+
+    #mdlistusudiv{
+        font-size: 11px;
+        padding: 0px;
+        width: 320px;
+        overflow-x: scroll;
+    }
+    #mdlistusudiv1{flex-direction:column;}
+
+}
+@media screen and (max-width:400px) {
+    #mdlisttit{
+        font-size:15px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 85vh;
+       }
+       #mdlistusudiv1{
+           margin:10px; padding-bottom :20px; 
+       }
+       #mdlistusuPmembros{ font-size:18px;}
+       #mdlistusuFilter{height:50px;width:120px}
+       #selectfunc{
+           width:110px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 7px;
+       }
+       #mdlistusudiv2{
+           height:50px;width:120px
+       }
+       #mdlistususelect{
+       width:110px
+       }
+       #mdlistusudivlixo{
+           height:50px;width:50px
+       }
+       .mdlistusupages{
+           width:40px; height:40px
+       }
+
+    #mdlistusudiv{
+        font-size: 11px;
+        padding: 0px;
+        width: 270px;
+        overflow-x: scroll;
+    }
+    #mdlistusudiv1{flex-direction:column;}
+
+}
+@media screen and (max-width:350px) {
+    #mdlisttit{
+        font-size:15px;margin-top:20px; margin-left: 5px;
+       }
+       #mdlistusucon{
+           height: 85vh;
+       }
+       #mdlistusudiv1{
+           margin:10px 5px; padding-bottom :20px; 
+       }
+       #mdlistusuPmembros{ font-size:18px;}
+       #mdlistusuFilter{height:50px;width:110px}
+       #selectfunc{
+           width:100px
+       }
+       #mdlistusulupa{
+           margin-right:20px;width:40px
+       }
+       #mdListusuGap20px{
+           gap: 4px;
+       }
+       #mdlistusudiv2{
+           height:50px;width:110px
+       }
+       #mdlistususelect{
+       width:100px
+       }
+       #mdlistusudivlixo{
+           height:50px;width:45px
+       }
+       .mdlistusupages{
+           width:35px; height:35px
+       }
+
+    #mdlistusudiv{
+        font-size: 11px;
+        padding: 0px;
+        width: 220px;
+        overflow-x: scroll;
+    }
+    #mdlistusudiv1{flex-direction:column;}
+
+}
+@media screen and (max-height:800px) {
+    #mdconlistaus{
+        height: 100%;
+        
+    }
+    #mdlistusucon{
+        height: 90vh;
+    }
+}
+@media screen and (max-height:600px) {
+    #mdconlistaus{
+        height: 100%;
+    }
+    #mdlistusucon{
+        height: 110vh;
     }
 }

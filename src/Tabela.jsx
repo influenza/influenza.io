@@ -11,24 +11,153 @@ import Navbar2 from "./navbarlateral2";
 import { Navbar3 } from "./navbar3";
 import { Navbar4 } from "./Navbar4";
 import axios from "axios";
+let erroSemEmi
+let diadict = {"01": [],"02": [],"03": [],"04": [],"05": [],"06": [],"07": [],"08": [],"09": [],"10": [],"11": [],"12": [],"13": [],"14": [],"15": [],"16": [],"17": [],"18": [],"19": [],"20": [],"21": [],"22": [],"23": [],"24": []}
+let arrayhora = [
+     "01", "02", "03", "04", "05", "06", "07", "08", "09",
+    "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
+    "20", "21", "22", "23","24"
+  ]
+  let Mesdict = {
+    "01": [], "02": [], "03": [], "04": [],
+    "05": [], "06": [], "07": [], "08": [],
+    "09": [], "10": [], "11": [], "12": []
+};
+let Mesarray = [
+    "01", "02", "03", "04", "05", "06",
+    "07", "08", "09", "10", "11", "12"
+];
+let mes2dict = {
+    "01": [], "02": [], "03": [], "04": [], "05": [],
+    "06": [], "07": [], "08": [], "09": [], "10": [],
+    "11": [], "12": [], "13": [], "14": [], "15": [],
+    "16": [], "17": [], "18": [], "19": [], "20": [],
+    "21": [], "22": [], "23": [], "24": [], "25": [],
+    "26": [], "27": [], "28": [], "29": [], "30": [],
+    "31": []
+};
 
+let arrayMes2 = [
+    "01", "02", "03", "04", "05", "06", "07", "08", 
+    "09", "10", "11", "12", "13", "14", "15", "16", 
+    "17", "18", "19", "20", "21", "22", "23", "24", 
+    "25", "26", "27", "28", "29", "30", "31"
+];
+let datavalue=[]
+let diaarraychosen =[]
+let mesarraychosen =[]
 
-
+let mes2arraychosen =[]
+let totaldia =0
     export function Tabela(props){
   let navigate=useNavigate()
+  useEffect(()=>{
+
+    if(!Cookies.get().NomeEqui2){
+      navigate("/equipevisao")
+    }
+  },[])
+
 
         const [dia,setdata]= useState("");
         const [mes,setmes]=useState(3);
         const [ano,setano]=useState(2024);
         const [width, setWidth] = useState(window.innerWidth);
         const [height, setHeight] = useState(window.innerHeight);
-      
-        // Atualiza a largura e altura da tela
+        const [Data,setData]=useState([]);
+        const [DataSelect,setDataSelect]=useState([]);
+        const [TabelaType,setTabelaType]=useState("Emissao");
+        const [Filtro,setFiltro]=useState("MenorData");
+
+        const [UmaVez,SetUmaVez]=useState(true);
+        const [NomeEqui, SetEqui] = useState(document.getElementsByClassName("SelectEqui")[0])
+        useEffect(()=>{
+            funcData()
+            const intervalId = setInterval(() => {
+
+                SetEqui(document.getElementsByClassName("SelectEqui")[0].id);
+              }, 2000);
+            
+              // Limpeza do intervalo quando o componente é desmontado
+              return () => clearInterval(intervalId);
+            }, [NomeEqui]);
+        const funcData = async () => {
+            const headers = {
+                headers: {
+                    "Authorization": `Bearer ${Cookies.get().Token}`
+                }
+            };
+
+            axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/team/${Cookies.get().NomeEqui2}?page=1&direction=asc`, headers)
+
+                .then((res) => {
+                    const dataList = res.data._embedded.mQ135ReadingVOList;
+                    setData(dataList);
+                    console.log(data)
+                    console.log(res.data._embedded)
+                    for (let x = 0; x < dataList.length; x++) {
+                        if(datavalue.length<dataList.length){
+                            datavalue.push([dataList[x].value, dataList[x].timestamp])
+
+                        }
+                        const hour = dataList[x].timestamp.slice(11, 13);
+                        const date = dataList[x].timestamp.slice(0, 10);
+                        const date2 = dataList[x].timestamp.slice(5, 10);
+
+                        const mes = dataList[x].timestamp.slice(5, 7);
+                        const dia = dataList[x].timestamp.slice(8, 10);
+
+                        Mesdict[mes].push(dataList[x])
+                        if(!mesarraychosen.includes(mes)){
+                            mesarraychosen.push(mes)
+                        }
+                        if(!mes2arraychosen.includes(dia)){
+                            mes2arraychosen.push(dia)
+                        }
+                        if(!mes2dict[dia].includes(date2)){
+                            mes2dict[dia].push(date2)
+
+                        }
+                        mes2dict[dia].push(dataList[x])
+                        if (diadict[hour][0] === date) {
+                            diadict[hour].push(dataList[x]);
+                            if(!diaarraychosen.includes(hour)){
+                                diaarraychosen.push(hour)
+
+                            }
+
+                        } else {
+                            diadict[hour] = [date, dataList[x]];
+                            if(!diaarraychosen.includes(hour)){
+                                diaarraychosen.push(hour)
+
+                            }
+                            
+                        }
+                      diaarraychosen.forEach((item)=>{
+                        let total=0
+                        for(let x of mes2dict[item]){
+                            if(typeof(x) != "string"){
+                                total+=x.value
+                                }
+                            }
+                      })
+                      erroSemEmi = ""
+
+                    }
+                }).catch(()=>{
+                    erroSemEmi = "Não existe nenhuma emissão desse sensor"
+                })
+
+        }
+
         const handleResize = () => {
           setWidth(window.innerWidth);
           setHeight(window.innerHeight);
         };
-      
+        const handleTableType = (e)=>{
+            setTabelaType(e.target.value)
+            }
         // Adiciona o listener de resize
         useEffect(() => {
           window.addEventListener("resize", handleResize);
@@ -38,16 +167,19 @@ import axios from "axios";
             window.removeEventListener("resize", handleResize);
           };
         }, []); // O array de dependências vazio faz com que o efeito seja executado apenas uma vez
-      
-        const linhas = Array.from({ length: 700 }, (_, index) => index);
-        console.log(linhas);
+
+        console.log(Data)
+        const linhas = Array.from({ length: Data.length }, (_, index) => index);
         const [Pages, setPages] = useState((linhas.length / 100).toFixed());
-        let arraypages = [];
-        for (let i = 0; i < Pages; i++) {
-          arraypages.push(i + 1);
-        }
+  
+        let arraypages = []
+        console.log("dasfsa")
+     
         Cookies.set("dataar", [1, 2, 3, 4, 5, arraypages.length]);
-      
+        console.log(Pages)
+        for (let index = 0; index < (linhas.length/100).toFixed(); index++) {
+            arraypages.push(index+1)
+        }
         const data = { 2: 28, 4: 30, 6: 30, 9: 30, 11: 30 };
         const [imageperfil, setImageperfil] = useState(null);
         const [text, settext] = useState("normal");
@@ -61,6 +193,45 @@ import axios from "axios";
             reader.readAsDataURL(file);
           }
         };
+        console.log(arraypages)
+        let datavaluehora=[]
+        let mesvaluehora=[]
+
+        let totalHora=0
+        let totalMes=0
+
+        let DataHora=0
+        let DataMes=0
+
+        for(let x of diaarraychosen){
+            totalHora =0
+
+            if (diadict[x]) {
+                for (let y of diadict[x]) {
+
+                    if (typeof y !== "string") {
+                        totalHora += y.value;  // Acumula o valor em totalHora
+                        DataHora = y.timestamp
+                    }
+                }
+                datavaluehora.push([totalHora,DataHora])
+            }
+        }
+        for(let x of mes2arraychosen){
+            totalMes =0
+
+            if (mes2dict[x]) {
+                for (let y of mes2dict[x]) {
+
+                    if (typeof y !== "string") {
+                        totalMes += y.value;  // Acumula o valor em totalHora
+                        DataMes = y.timestamp
+                    }
+                }
+                mesvaluehora.push([totalMes,DataMes])
+            }
+        }
+        
         return(
             <>
             <Navbar3></Navbar3>
@@ -81,10 +252,12 @@ import axios from "axios";
                 <div id="mdSelectstab">
                     <div style={{display:"flex", flexDirection:"column"}}>
                     <span className="mdselectspantab">Tabela por:</span>
-                    <select name="" id="" className="mdselecttab">
-                        <option value="Semanal">Semana</option>
-                        <option value="Mensal">Més</option>
-                        <option value="Anual">Ano</option>
+                    <select name="" onChange={handleTableType} id="" className="mdselecttab">
+                    <option value="Emissao">Emissao</option>
+
+                    <option value="Hora">Hora</option>
+                        <option value="Dia">Dia</option>
+                        <option value="Mes">Mes</option>
 
                     </select>
                     </div>
@@ -110,12 +283,14 @@ import axios from "axios";
 <path d="M19.4649 0.151733V14.0284H14.6973L21.9203 22.3543L29.0002 14.0284H24.2326V0.151733H19.4649Z" fill="white"/>
 </svg>
 
-                    <select id="mdselectfilter" className="mdselectazul" value="">
+                    <select id="mdselectfilter" onChange={(e)=>{
+                        setFiltro(e.target.value)
+                    }} className="mdselectazul" value={Filtro}>
                         
                         <option value="MenorData">Mais recente</option>
-                        <option value="Mensal">Mais antigos</option>
-                        <option value="Anual">Maior Emissão</option>
-                        <option value="Anual">Menor Emissão</option>
+                        <option value="MaiorData">Mais antigos</option>
+                        <option value="MaiorEmissao">Maior Emissão</option>
+                        <option value="MenorEmissao">Menor Emissão</option>
 
                     </select>
 
@@ -135,25 +310,198 @@ import axios from "axios";
         </tr>
     </thead>
     <tbody >
-    {linhas &&
+    {linhas && TabelaType == "Emissao" && !erroSemEmi &&
+     
 linhas.map((item, index) => {
 
-if(index<=100){
-    return (
-        <tr>
-        <td>{item}</td>
-        <td>{"21/03/2007"}</td>
-        <td>{"100000"}</td>
-        </tr>
+// Ordena datavalue em ordem decrescente
+let datavalue1 =datavalue.sort((a, b) => b[0] - a[0]);
+
+
+if (index <= 100) {
+    if (Filtro == "MenorEmissao") {
+        return (
+            <tr>
+                <td>{item}</td>
+                <td>{`${datavalue1[item][1].slice(0, 10)}/${datavalue1[item][1].slice(11, 16)}`}</td>
+                <td>{datavalue1[item][0]}</td>
+            </tr>
+        );
+    }
     
-      );
+    // Cria uma cópia do datavalue e ordena em ordem crescente
+    let datavalue2 = [...datavalue].sort((a, b) => a[0] - b[0]);
+
+     if (Filtro == "MaiorEmissao") {
+        return (
+            <tr>
+                <td>{item}</td>
+                <td>{`${datavalue2[item][1].slice(0, 10)}/${datavalue2[item][1].slice(11, 16)}`}</td>
+                <td>{datavalue2[item][0]}</td>
+            </tr>
+        );
+    } 
+    else if(Filtro == "MaiorData" ){
+
+        return (
+            <tr>
+                <td>{linhas.length-item}</td>
+                <td>{`${Data[linhas.length-item-1].timestamp.slice(0, 10)}/${Data[linhas.length-item-1].timestamp.slice(11, 16)}`}</td>
+                <td>{Data[linhas.length-item-1].value}</td>
+            </tr>
+        );
+    }
+    else if(Filtro=="MenorData") {
+        return (
+            <tr>
+                <td>{item}</td>
+                <td>{`${Data[item].timestamp.slice(0, 10)}/${Data[item].timestamp.slice(11, 16)}`}</td>
+                <td>{Data[item].value}</td>
+            </tr>
+        );
+    }
 }
 
-// Retorna null se o índice não for múltiplo de 4 para evitar renderização extra
+
 return null;
 })
-}
 
+}
+{diaarraychosen && TabelaType =="Hora" && !erroSemEmi &&
+
+    diaarraychosen.map((item, index) =>{
+        let array =[]
+        let datavaluehora1 = [...datavaluehora].sort((a,b)=>{return(a[0]-b[0])})
+
+        if (Filtro == "MenorEmissao") {
+
+
+            return(
+                <tr>
+                <td>{index}</td>
+                <td>{`${datavaluehora[index][1].slice(0,10)}/${datavaluehora[index][1].slice(11,13)}`}</td>
+                <td>{datavaluehora1[index][0]/2}</td>
+                </tr>
+            
+            )
+        }
+        if (Filtro == "MaiorEmissao") {
+            let datavaluehora2 = [...datavaluehora].sort((a, b) => b[0] - a[0]);
+            return(
+                <tr>
+                <td>{index}</td>
+                <td>{`${datavaluehora[index][1].slice(0,10)}/${datavaluehora[index][1].slice(11,13)}`}</td>
+                <td>{datavaluehora2[index][0]/2}</td>
+                </tr>
+            
+            )
+        }
+        else if(Filtro =="MenorData"){
+            return(
+                <tr>
+                <td>{index}</td>
+                <td>{`${datavaluehora[index][1].slice(0,10)}/${datavaluehora[index][1].slice(11,13)}`}</td>
+                <td>{datavaluehora[index][0]/2}</td>
+                </tr>
+            
+            )
+        }
+        else if(Filtro =="MaiorData"){
+            return(
+                <tr>
+                <td>{diaarraychosen.length-index-1}</td>
+                <td>{`${datavaluehora[diaarraychosen.length-index-1][1].slice(0,10)}/${datavaluehora[diaarraychosen.length-index-1][1].slice(11,13)}`}</td>
+                <td>{datavaluehora[diaarraychosen.length-index-1][0]/2}</td>
+                </tr>
+            
+            )
+        }
+       
+    })
+}
+{mes2dict && TabelaType =="Dia" && !erroSemEmi &&
+    mes2arraychosen.map((item, index) =>{
+     
+        
+            
+        if(Filtro =="MenorData"){
+                     
+        return(
+            <tr>
+            <td>{index}</td>
+            <td>{`${mesvaluehora[index][1].slice(0,10)}`}</td>
+            <td>{mesvaluehora[index][0]/2}</td>
+            </tr>
+        
+        )
+                }
+                else if(Filtro =="MaiorData"){
+                    return(
+                        <tr>
+                        <td>{mes2arraychosen.length-index-1}</td>
+                        <td>{`${mesvaluehora[mes2arraychosen.length-index-1][1].slice(0,10)}`}</td>
+                        <td>{mesvaluehora[mes2arraychosen.length-index-1][0]/2}</td>
+                        </tr>
+                    
+                    )
+                }
+                
+        else if (Filtro == "MenorEmissao") {
+            let mesvaluehora1 = [...mesvaluehora].sort((a,b)=>{return(a[0]-b[0])})
+
+
+            return(
+                <tr>
+                <td>{index}</td>
+                <td>{`${mesvaluehora1[index][1].slice(0,10)}`}</td>
+                <td>{mesvaluehora1[index][0]/2}</td>
+                </tr>
+            
+            )
+        }
+        if (Filtro == "MaiorEmissao") {
+            let mesvaluehora2 = [...datavaluehora].sort((a, b) => b[0] - a[0]);
+            return(
+                <tr>
+                <td>{index}</td>
+                <td>{`${mesvaluehora2[index][1].slice(0,10)}`}</td>
+                <td>{mesvaluehora2[index][0]/2}</td>
+                </tr>
+            
+            )
+        }
+
+    })
+}
+{Mesdict && TabelaType =="Mes" && !erroSemEmi &&
+    mesarraychosen.map((item, index) =>{
+        let array =[]
+        let total=0
+        for(let x of Mesdict[item]){
+            console.log(typeof(x.value))
+            if(typeof(x) != "string"){
+                total+=x.value
+                }
+            
+
+        }
+        return(
+            <tr>
+            <td>{index}</td>
+            <td>{`${Mesdict[item][0].timestamp.slice(0,7)}`}</td>
+            <td>{total/2}</td>
+            </tr>
+        
+        )
+    })
+}
+{erroSemEmi && [""].map(()=>{
+return(
+    <tr>
+    {erroSemEmi}
+    </tr>
+)
+}) }
     </tbody>
 </table>
 

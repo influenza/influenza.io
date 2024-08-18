@@ -31,23 +31,23 @@ function Equipe3() {
   return (
     <>
 
-    <div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"", justifyContent:"center",alignItems:"center",textAlign:"center"}}>
-    <div style={{display:"flex",flexDirection:"row",marginTop:"-8vh", width:"100vw",}}>
-<div style={{width:"50vw", display:"flex", alignItems:"center", textAlign:"left",justifyContent:"left", marginRight:"20px", fontSize:"20px"}}>  
-<img src={`${logo}`} style={{width:"150px", height:"150px", marginRight:"20px"}} alt="" />
-  <img src={`${letraverde}`} style={{width:"200px", height:"200px"}} alt="" /></div>
+<div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"",textAlign:"center"}}>
 
-    </div>
+<div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",height:"15vh",justifyContent:"center",alignItems:"center",marginBottom:"20px"}}>
+<img src={`${logo}`} className='img'alt="" />
+    <img src={`${letraverde}`} className='img'   alt="" /></div>
+
+    <div style={{display:"flex", justifyContent:"center", flexDirection:"column"}}>
     <div>
       <p id='mdequi3txt0' style={{fontWeight:"bold"}}>Escolha seu plano</p>
       
     </div>
     <div >
-      <p id='mdequi3txt1' >Voce esta a um passo do seu futuro mais verde? Escolha um plano ecosynergy.</p>
+      <p id='mdequi3txt1' >Voce esta a um passo do seu futuro mais verde!!00000 Escolha um plano ecosynergy.</p>
     </div>
 
     {!assina &&
-    <div style={{display:"flex",flexDirection:"row"}}>          
+    <div style={{display:"flex",flexDirection:"row",justifyContent:"center"}}>          
           <div onClick={()=>{
             setassina(0)
           }}
@@ -59,7 +59,7 @@ function Equipe3() {
     </div>
     }
       {assina == 1 &&
-    <div className="mdAnuMendiv" style={{display:"flex",flexDirection:"row"}}>          
+    <div className="mdAnuMendiv" style={{display:"flex",flexDirection:"row", justifyContent:"center,", width:"100vw"}}>          
           <div onClick={()=>{
             setassina(0)
           }}
@@ -70,7 +70,7 @@ function Equipe3() {
     </div>
     }
 
-    <div id="divAssinatura" >
+    <div id="divAssinatura" style={{display:"flex", justifyContent:"center"}} >
     <Assinatura assinatura="Gratis" preco="R$ 0" listas={[]} />
        
        <Assinatura assinatura="Basico" preco={assina == 0? "R$ 72,99": "R$ 111,99"} listas={[]} />
@@ -81,6 +81,7 @@ function Equipe3() {
 ]} />   
     </div>
     <div id="mddivavisoequi" style={{ fontWeight:"bold"}}>Ao Assinar estou fico ciente da necessidade do uso dos sensores MQ7 e MQ135 para o pleno funcionamento</div>
+    </div>
        </div>
 
     </>

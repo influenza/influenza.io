@@ -13,16 +13,40 @@ import Navbar2 from "./navbarlateral2";
 import { Navbar4 } from "./Navbar4";
 import { Navbar3 } from "./navbar3";
 import "./mdequipevisão.css"
+import axios from "axios";
 export function HomeTem(props){
     let navigate=useNavigate()
+    const [width, setWidth] = useState(window.innerWidth);
+    const [height, setHeight] = useState(window.innerHeight);
+    useEffect(()=>{
+      console.log(Cookies.get().Nome)
+  
+      if(!Cookies.get().NomeEqui2){
+        console.log(Cookies.get().Nome)
+        navigate("/equipevisao")
+      }
+    },[])
+    
     const [imageperfil, setImageperfil] = useState(null);
     const [text ,settext] =useState("normal")
     const [nacionalidade, setNacionalidade] = useState(0)
     const [genero, setGenero] = useState(0)
     const [NomeEqui,SetNomeEqui]=useState(Cookies.get().NomeEqui2)
-    const [handleEqui, SethandleEqui]=useState(Cookies.get().NomeEqui2.toLowerCase())
-    const [Setor,SetSetor] = useState(Cookies.get().Area)
-
+    const [handleEqui, SethandleEqui]=useState(Cookies.get().NomeEqui2?Cookies.get().NomeEqui2.toLowerCase():"")
+    const [Setor,SetSetor] = useState()
+    const [Func,SetFunc] = useState()
+    const [fusohorario, SetfusoHorario] = useState()
+    const headers = {
+      headers: {
+          "Authorization": `Bearer ${Cookies.get().Token}`
+      }
+  };
+    axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${Cookies.get().ID}`, headers)
+    .then((res)=>{
+      SetSetor(res.data[0].activity.sector)
+      SetFunc(res.data[0].members.length)
+      SetfusoHorario(res.data[0].timeZone)
+    })
     function handleCon(e){
     if(genero && nacionalidade){
     Cookies.set("nacionalidade",nacionalidade)
@@ -89,7 +113,7 @@ function handlePular(e){
               <div style={{justifyContent:"left"}}>
       <div id="mdcondivFOTOEquiVIS2" style={{justifyContent:"center",display:"flex"}}>
       <div id="mdcondivdivFOTOEquiVIS2"style={{ fontWeight:"bold",backgroundImage:`url(${imageperfil})`,textAlign:"center", backgroundSize:"cover", backgroundPositionX:"center", backgroundPositionY:"center", backgroundColor:"#14B57A",   borderRadius: "20%",justifyContent:"center",alignItems:"center", display:"flex"}}>
-  {Cookies.get().NomeEqui2.split("")[0].toUpperCase()}
+  {Cookies.get().NomeEqui2? Cookies.get().NomeEqui2.split("")[0].toUpperCase():""}
 </div>
 <div style={{display:"flex", justifyContent:"center",flexDirection:"column"}}>
   <div id="mdcondiv1EquiVIS2" style={{display:"flex",flexDirection:"column", justifyContent:"center", alignItems:"center",}}>
@@ -103,11 +127,7 @@ function handlePular(e){
 <input id="mdinputNomeEqui" type="text" value={handleEqui} style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA", textAlign:"center",}}/>
   </div>
 <div id="txtAvisoEquiVis" style={{listStyle:"none",  color:"#A6A6A6"}}>
-  <ul>
-    <li>
-    Atenção com todos os dados inseridos nessa sessão, muda-los constantemente trará consequências.
-    </li>
-  </ul>
+
 </div>
 </div>
       </div>
@@ -145,7 +165,7 @@ Descrição
             <div style={{display:"flex",flexDirection:"column",gap:"10px", justifyContent:"center"}}>
             <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>FUNCIONÁRIOS </span>
 
-<input type="text" value={Setor} id="inputMDEquiVIS"  style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
+<input type="text" value={Func} id="inputMDEquiVIS"  style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
             
             </div>
             <div style={{display:"flex",flexDirection:"column",gap:"10px", justifyContent:"center"}}>
@@ -163,15 +183,10 @@ Descrição
             <div style={{display:"flex",flexDirection:"column",gap:"10px", justifyContent:"center"}}>
             <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>FUSO HORÁRIO</span>
 
-<input type="text" value={Setor} id="inputMDEquiVIS" style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
+<input type="text" value={fusohorario} id="inputMDEquiVIS" style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
             
             </div>
-            <div style={{display:"flex",flexDirection:"column",gap:"10px", justifyContent:"center"}}>
-            <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>E-MAIL </span>
 
-<input type="text" value={Setor} id="inputMDEquiVIS" style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
-            
-            </div>
             </div>
 
             </div>
