@@ -59,7 +59,7 @@ export function EquipeVisao(props){
       };
       axios.get("http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1",headers).then((res)=>{console.log(res)})
       axios.get("http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/handle/ecosynergyofc", headers).then((res)=>{console.log(res)})
-      axios.put(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/89/user/45`,headers)
+      axios.post(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/89/user/45`,headers)
 
       axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/user/v1/email/${Cookies.get().Email}`, headers)
         .then(res => {
@@ -132,7 +132,7 @@ export function EquipeVisao(props){
 
                     </div>
                       {width<500 && 
-                                          <div style={{position:"fixed", width:"100vw", height:"4vh",backgroundColor:"white", justifyContent:"center",alignItems:"center",textAlign:"center",display:"flex",marginTop:"-4vh"}}>Instale nosso aplicativo Android  <a href="../Ecosynergy.apk" download><button style={{marginLeft:"10px", borderRadius:"10px"}}><svg width="15px" height="15px" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <div style={{position:"fixed", width:"100vw", height:"4vh",backgroundColor:"white", justifyContent:"center",alignItems:"center",textAlign:"center",display:"flex",marginTop:"-4vh"}}>Instale nosso aplicativo Android  <a href="/apk/Ecosynergy.apk" download><button style={{marginLeft:"10px", borderRadius:"10px"}}><svg width="15px" height="15px" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M16.0171 2C16.0171 1.0335 15.2336 0.25 14.2671 0.25C13.3006 0.25 12.5171 1.0335 12.5171 2H16.0171ZM12.5171 2V17.84H16.0171V2H12.5171Z" fill="black"/>
                                           <path d="M15.1317 20.1604C14.7377 20.5567 14.0962 20.5543 13.7067 20.1551L6.768 13.0436C6.14896 12.4091 6.60266 11.3413 7.48987 11.3446L21.4451 11.3969C22.3323 11.4002 22.7743 12.4714 22.1483 13.1012L15.1317 20.1604Z" fill="black"/>
                                           <path d="M2.5332 24H24.9332" stroke="black" stroke-width="3.5" stroke-linecap="round"/>

@@ -20,12 +20,15 @@ function Login() {
   console.log(Cookies.get())
   const [Nome, setNome] = useState("")
   const [cadastro, setcadastro] = useState(false)
+  const [cadastrouser, setcadastrouser] = useState(false)
+  const [cadastroEmail, setcadastroEmail] = useState(false)
+
   const [email, setEmail] = useState("")
   const [consenha, setConSenha] = useState("")
   const [senha, setSenha] = useState("")
   const [olho, setOlho] = useState(true)
   const [type, settype] = useState("password")
-
+  
   const [olho2, setOlho2] = useState(true)
 
   let navigate=useNavigate()
@@ -150,8 +153,11 @@ if(cadastro == true){
       erro[1].style.opacity = "1"
       erros[1].style.opacity = "1"
       erros[1].append("EMAIL EM USO")
-      return false
+      setcadastroEmail(false)
     }
+    }).catch((res)=>{
+      console.log(res)
+      setcadastroEmail(true)
     })
     const data2 = {            
       "identifier": Nome,
@@ -164,9 +170,13 @@ if(cadastro == true){
       erro[0].style.opacity = "1"
       erros[0].style.opacity = "1"
       erros[0].append("USERNAME EM USO")
-      return false
+      setcadastrouser(false)
     }
+  }).catch((res)=>{
+    console.log(res)
+    setcadastrouser(true)
   })
+ if(cadastroEmail == true && cadastrouser == true){
   erros[0].style.opacity = "0"
   erros[1].style.opacity = "0"
 
@@ -174,6 +184,7 @@ if(cadastro == true){
   Cookies.set("Email",email)
   Cookies.set("Senha",senha)
   navigate("/cadastro4")
+ }
 }
   }
   function handleCancelar(){
