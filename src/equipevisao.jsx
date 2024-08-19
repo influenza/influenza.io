@@ -57,9 +57,10 @@ export function EquipeVisao(props){
           "Authorization": `Bearer ${Cookies.get().Token}`
         }
       };
-              axios.post(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/90/user/47`, headers )
-          .then((res) => console.log(res.data))
-          .catch((error) => console.log('Axios error:', error));
+      axios.get("http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1",headers).then((res)=>{console.log(res)})
+      axios.get("http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/handle/ecosynergyofc", headers).then((res)=>{console.log(res)})
+      axios.put(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/89/user/45`,headers)
+
       axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/user/v1/email/${Cookies.get().Email}`, headers)
         .then(res => {
           console.log(res)
