@@ -44,6 +44,10 @@ function handleEnviar(){
     erros.style.opacity = "0"
          }
          else{
+          axios.post(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/${91}/user/${55}`, headers)
+          .then(res => {
+            console.log(res)
+          }).catch(res=>console.log(res))
           axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/user/v1/findEmail/${Email}`, headers).then(res=>{
             console.log(res)
             axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${res.data.id}`, headers).then(res=>{
@@ -67,10 +71,7 @@ function handleEnviar(){
             erros.style.opacity = "1"
             erros.append("Email inexistente")
           }  )
-          axios.post(`https://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/${91}/user/${55}`, {headers})
-          .then(res => {
-            console.log(res)
-          }).catch(res=>console.log(res))
+
         }
         
          }

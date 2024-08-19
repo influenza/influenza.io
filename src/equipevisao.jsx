@@ -51,22 +51,24 @@ export function EquipeVisao(props){
 
   }
     useEffect(()=>{
+      
       const headers = {
         headers: {
           "Authorization": `Bearer ${Cookies.get().Token}`
         }
       };
-      
+              axios.post(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/90/user/47`, headers )
+          .then((res) => console.log(res.data))
+          .catch((error) => console.log('Axios error:', error));
       axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/user/v1/email/${Cookies.get().Email}`, headers)
         .then(res => {
           console.log(res)
           console.log(res.data.id)
           Cookies.set("ID", res.data.id)
         })
-        axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${47}`,headers).then((res)=>{console.log(res)}).catch((res)=>console)
 
-        axios.post(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/91/user/47`, null ,headers).then((res)=>console.log(res)).catch((res)=>console.log(res))
 
+        
     },[])
     return(
       <>

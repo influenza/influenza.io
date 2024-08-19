@@ -169,9 +169,9 @@ let arrayhora = [
             }
 
             console.log(diaValue)
-            console.log(dia-1)
+            console.log(dia)
             console.log(diadicttrue)
-            if(!horarraychosen.includes(horavalue )&& diaValue == dia-2){
+            if(!horarraychosen.includes(horavalue )&& diaValue == dia){
               horarraychosen.push(horavalue)
             }
         }
@@ -199,7 +199,7 @@ let arrayhora = [
           total2 =0
           for (let y of diadicttrue[x]){
           console.log(y)
-          if(y[1] ==dia-2){
+          if(y[1] ==dia){
             total2+=y[0]
             console.log(total2)
           }
@@ -565,7 +565,7 @@ let arrayhora = [
    </div>
 </div>
    {width>550 && <>
-    <div  style={{display:"flex", justifyContent:"center", flexDirection:"row", }}>
+    <div  style={{display:"flex", justifyContent:"center", flexDirection:"row",gap:"1vw" }}>
 
     <div className="mdDashinfodiv" style={{ backgroundColor: "white"}}>
   <div style={{ flexDirection: "column", display: "flex" }}>
@@ -582,15 +582,15 @@ let arrayhora = [
 <span>
 
 {total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]) >= 0
-?<div style={{color:"rgb(20, 181, 122)"}}>{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])}</div>
-:<div style={{color:"red"}}>{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])}</div>}
+?<div className="spaninfodash" style={{color:"rgb(20, 181, 122)"}}>{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])}</div>
+:<div className="spaninfodash"  style={{color:"red"}}>{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])}</div>}
 
 </span>
 <span>
   
 {total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]) >= 0
-?<div style={{color:"rgb(20, 181, 122)"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])-1)*100).toFixed(2)}%`}</div>
-:<div style={{color:"red"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])-1)*100).toFixed(2)}%`}</div>}
+?<div className="spaninfodash" style={{color:"rgb(20, 181, 122)"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])-1)*100).toFixed(2)}%`}</div>
+:<div className="spaninfodash" style={{color:"red"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])-1)*100).toFixed(2)}%`}</div>}
 
 
 </span>
@@ -613,7 +613,7 @@ let arrayhora = [
     </select></div>               
   </div>
     <div className="restinfoDash" style={{display:"flex",alignItems:"center",justifyContent:"center", alignItems:"center"}}>
-    <span style={{ fontSize: "26px", fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#4A9AE9",}}>{Metrica == "Media" ? `${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
+    <span style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#4A9AE9",}}>{Metrica == "Media" ? `${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
 
     </div>
   
@@ -632,19 +632,22 @@ let arrayhora = [
     <div className="mdDashinfodiv" style={{ backgroundColor: "white"}}>
   <div style={{ flexDirection: "column", display: "flex", gap:"1vw" }}>
    <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
-   <span  id="mdtittempDash" style={{ textAlign: "left", fontFamily: "Krona One , sans-serif", fontWeight: "bold"}}>Diferenca meta: 
+   <span  id="mdtittempDash" style={{ textAlign: "left", fontFamily: "Krona One , sans-serif", fontWeight: "bold"}}>Revisão da meta:<span style={{color:"#4A9AE9"}} className="spaninfodash">
+{Cookies.get().Metas?Cookies.get().Metas.split(",")[dictemp[temp]]:0}
+
+</span>
     </span><Link to="/metas"><button id="btnMetas" style={{backgroundColor: "#D3D3D3", }}>Definir meta</button></Link>
       
   </div>
   <div className="restinfoDash" style={{display:"flex",textAlign:"center",justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
-{Cookies.get().Metas?Cookies.get().Metas.split(",")[dictemp[temp]]:0}
 
-<span>
+
+<span className="spaninfodash">
 
 {Cookies.get().Metas?total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]):0}
 
 </span>
-<span>
+<span className="spaninfodash">
 {Cookies.get().Metas?`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])-1)*100).toFixed(2)}%`:0}
 
 </span>
@@ -667,7 +670,7 @@ let arrayhora = [
     </select></div>               
   </div>
     <div className="restinfoDash" style={{display:"flex",alignItems:"center",justifyContent:"center", alignItems:"center"}}>
-    <span style={{ fontSize: "26px", fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#14B57A",}}>{Metrica == "Media" ? `${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
+    <span className="spaninfodash" style={{  fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#14B57A",}}>{Metrica == "Media" ? `${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
 
     </div>
   

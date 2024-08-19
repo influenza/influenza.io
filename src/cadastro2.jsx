@@ -186,7 +186,7 @@ if(cadastro == true){
   return (
     <>
 
-    <div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"", }}>
+    <div id='divconcad2' style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`,  height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"", }}>
     <div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",height:"15vh",justifyContent:"center",alignItems:"center"}}>
 <div id="imgs" >  
 <img src={`${logo}`} className='img'alt="" />
