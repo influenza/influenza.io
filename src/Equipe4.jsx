@@ -137,6 +137,7 @@ fill="#FF6300" stroke="none">
       <p  className="diverro"  style={{ textAlign:"left",marginBottom:"5px"}}>SETOR DA INDUSTRIA</p>
       <select name="setor" id="mdinp3cad4" style={{ padding:"0px 10px",border:"2px solid #aaa",borderRadius:"16px",fontSize:"18px"}}  onChange={(e)=>{
         setArea(e.target.value)
+        Cookies.set("Area",e.target.value)
       }}>
           <option value="textil">Textil </option>
           <option value="Automobilistica">Automobilistica </option>

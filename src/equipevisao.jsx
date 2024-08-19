@@ -57,12 +57,16 @@ export function EquipeVisao(props){
         }
       };
       
-      axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/user/v1/findEmail/${Cookies.get().Email}`, headers)
+      axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/user/v1/email/${Cookies.get().Email}`, headers)
         .then(res => {
           console.log(res)
           console.log(res.data.id)
           Cookies.set("ID", res.data.id)
         })
+        axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${47}`,headers).then((res)=>{console.log(res)}).catch((res)=>console)
+
+        axios.post(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/91/user/47`, null ,headers).then((res)=>console.log(res)).catch((res)=>console.log(res))
+
     },[])
     return(
       <>
@@ -97,9 +101,8 @@ export function EquipeVisao(props){
                 PARA PROSSEGUIR NA PLATAFORMA ECOSYNERGY É NECESSARIO CRIAR OU ENTRAR EM UMA CONTA
                 </p>
               <div id="mdgapvis" style={{display:"flex",flexDirection:"row"}}>
-              <button id="mdbtncad4" style={{borderRadius:"10px", backgroundColor:"#14B57A", border:'0px solid white', color:"white", fontSize:"20px",fontWeight:"bold"}} onClick={handleEnviar} text={"Criar"}>Criar</button>
-                <button  id="mdbtncad4" style={{borderRadius:"10px", backgroundColor:"#14B57A", border:'0px solid white', color:"white", fontSize:"20px",fontWeight:"bold"}} onClick={handleEnviar2} text={"Entrar"} >Entrar</button>
-
+              <button id="mdbtncad4" style={{borderRadius:"10px", backgroundColor:"#14B57A", border:'0px solid white', color:"white", fontSize:"20px",fontWeight:"bold"}} onClick={()=>navigate("/cadastro2")} text={"Criar"}>Criar</button>
+              <button  id="mdbtncad4" style={{borderRadius:"10px", backgroundColor:"#14B57A", border:'0px solid white', color:"white", fontSize:"20px",fontWeight:"bold"}} onClick={()=>navigate("/login")} text={"Entrar"} >Entrar</button>
               </div>
             </div>
         </div>
@@ -114,8 +117,9 @@ export function EquipeVisao(props){
                 PARA PROSSEGUIR NA PLATAFORMA ECOSYNERGY É NECESSARIO CRIAR OU ENTRAR EM UMA EQUIPE
                 </p>
               <div id="mdgapvis" style={{display:"flex",flexDirection:"row"}}>
-              <button id="mdbtncad4" style={{borderRadius:"10px", backgroundColor:"#14B57A", border:'0px solid white', color:"white", fontSize:"20px",fontWeight:"bold"}} onClick={()=>navigate("/cadastro2")} text={"Criar"}>Criar</button>
-                <button  id="mdbtncad4" style={{borderRadius:"10px", backgroundColor:"#14B57A", border:'0px solid white', color:"white", fontSize:"20px",fontWeight:"bold"}} onClick={()=>navigate("/login")} text={"Entrar"} >Entrar</button>
+              <button id="mdbtncad4" style={{borderRadius:"10px", backgroundColor:"#14B57A", border:'0px solid white', color:"white", fontSize:"20px",fontWeight:"bold"}} onClick={handleEnviar} text={"Criar"}>Criar</button>
+              <button  id="mdbtncad4" style={{borderRadius:"10px", backgroundColor:"#14B57A", border:'0px solid white', color:"white", fontSize:"20px",fontWeight:"bold"}} onClick={handleEnviar2} text={"Entrar"} >Entrar</button>
+
 
               </div>
             </div>

@@ -19,10 +19,12 @@ function handlePlano(){
       "Authorization": `Bearer ${Cookies.get().Token}`
     }
   };
+  console.log(Cookies,get().Area)
   const data = {
     "handle": Cookies.get().NomeEqui.toLowerCase(),
     "name": Cookies.get().NomeEqui,
     "description": "Amo o toby",
+    "activity ": Cookies.get().Area,
     "members": [
 {
    'id': Cookies.get().ID, 
@@ -32,8 +34,8 @@ function handlePlano(){
 }
 
   console.log(headers)
-  console.log(Cookies.get())
-  axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/user/v1/findEmail/${Cookies.get().Email}`, headers)
+  console.log(Cookies.get().Area)
+  axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/user/v1/email/${Cookies.get().Email}`, headers)
     .then(res => {
       console.log(res)
       Cookies.set("ID",res.data.id)

@@ -142,7 +142,10 @@ let arrayhora = [
     };
 
     try {
-      await axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/team/${Cookies.get().NomeEqui2}?page=1&direction=asc`, headers)
+      console.log(temp)
+      console.log(Cookies.get().NomeEqui2)
+      await            axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/team/${Cookies.get().NomeEqui2}?page=1&direction=asc`, headers)
+
       .then((res) => {
         
         console.log(res)
@@ -164,9 +167,11 @@ let arrayhora = [
             if(!mesarraychosen.includes(mesvalue)){
               mesarraychosen.push(mesvalue)
             }
-            console.log(           diaValue = Data1[index].timestamp.slice(8,10) )
-            console.log()
-            if(!horarraychosen.includes(horavalue )&& diaValue == dia){
+
+            console.log(diaValue)
+            console.log(dia-1)
+            console.log(diadicttrue)
+            if(!horarraychosen.includes(horavalue )&& diaValue == dia-2){
               horarraychosen.push(horavalue)
             }
         }
@@ -193,17 +198,18 @@ let arrayhora = [
           console.log(diadicttrue[x])
           total2 =0
           for (let y of diadicttrue[x]){
-          if(y[1] ==dia ){
+          console.log(y)
+          if(y[1] ==dia-2){
             total2+=y[0]
-
+            console.log(total2)
           }
           }
+          console.log(totalarrayHora)
           if(!totalarrayHora.includes(total2) && total2 != 0){
             console.log(total2)
             totalarrayHora.push(total2)
 
           }
-          console.log(totalarrayHora)
 
           
           }
@@ -218,6 +224,7 @@ let arrayhora = [
               totalArrayMes.push(total2)
             }          
            }
+           console.log(temp == "Diaria")
 
       })
       console.log(totalArray)
@@ -322,6 +329,7 @@ let arrayhora = [
       }
       else if(temp == "Diaria"){
         console.log("fsafsaga")
+        console.log(horarraychosen)
         newChartInstance.data.labels = horarraychosen
         newChartInstance.data.datasets[0].data =totalarrayHora
         newChartInstance.update();
@@ -500,20 +508,17 @@ let arrayhora = [
 <div style={{width:"89vw", display:"flex", justifyContent:"space-between"}}>
   
 <p id="TituloMdDash">Graficos Das Emissões</p>
-<div>
-<p id="TituloMdDash">Monitoramento de emissões </p>
-<p id="TituloMdDash2">Em busca de um futuro sustentável</p>
+
 </div>
-</div>
-<div id="faixa1" style={{display: "flex", flexDirection: "row", justifyContent: "center", marginTop:"2vh", gap:"1vw" }}>
-<div  style={{display:"flex", justifyContent:"center", flexDirection:"row", gap:"1vw"}}>
+<div id="faixa1" style={{display: "flex", flexDirection: "row", justifyContent: "center", marginTop:"2vh",  }}>
+<div id="gap550dash" style={{display:"flex", justifyContent:"center", flexDirection:"row", }}>
 <div className="mdDashinfodiv" style={{ backgroundColor: "white",justifyContent:"start"  }}>
   <div style={{ flexDirection: "column", display: "flex" }}>
    <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
    <span id="mdtittempDash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", }}>Total {temp}</span> 
 
    <div><select name="tempo" onChange={tempo} id="tempo" >
-      <option value="Diária">Diária</option>
+      <option value="Diaria">Diária</option>
       <option value="Mensal">Mensal</option>
       <option value="Anual">Anual</option>
 
@@ -559,28 +564,34 @@ let arrayhora = [
 
    </div>
 </div>
-   {width>600 && <>
-    <div  style={{display:"flex", justifyContent:"center", flexDirection:"row", gap:"1vw"}}>
+   {width>550 && <>
+    <div  style={{display:"flex", justifyContent:"center", flexDirection:"row", }}>
 
     <div className="mdDashinfodiv" style={{ backgroundColor: "white"}}>
   <div style={{ flexDirection: "column", display: "flex" }}>
    <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
    <span  id="mdtittempDash" style={{ textAlign: "left", fontFamily: "Krona One , sans-serif", fontWeight: "bold"}}>Revisão da meta:
-   <span style={{color:"#4A9AE9"}}> {5000}</span>
+   <span style={{color:"#4A9AE9"}}> {Cookies.get().Metas?Cookies.get().Metas.split(",")[dictemp[temp]]:0}
+   </span>
 
     </span><Link to="/metas"><button id="btnMetas" style={{backgroundColor: "#D3D3D3", }}>Definir meta</button></Link>
       
   </div>
   <div className="restinfoDash" style={{display:"flex",textAlign:"center",justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
-{Cookies.get().Metas?Cookies.get().Metas.split(",")[dictemp[temp]]:0}
 
 <span>
 
-{Cookies.get().Metas?total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]):0}
+{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]) >= 0
+?<div style={{color:"rgb(20, 181, 122)"}}>{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])}</div>
+:<div style={{color:"red"}}>{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])}</div>}
 
 </span>
 <span>
-{Cookies.get().Metas?`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])-1)*100).toFixed(2)}%`:0}
+  
+{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]) >= 0
+?<div style={{color:"rgb(20, 181, 122)"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])-1)*100).toFixed(2)}%`}</div>
+:<div style={{color:"red"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])-1)*100).toFixed(2)}%`}</div>}
+
 
 </span>
   </div>
@@ -602,7 +613,7 @@ let arrayhora = [
     </select></div>               
   </div>
     <div className="restinfoDash" style={{display:"flex",alignItems:"center",justifyContent:"center", alignItems:"center"}}>
-    <span style={{ fontSize: "26px", fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#14B57A",}}>{Metrica == "Media" ? `${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
+    <span style={{ fontSize: "26px", fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#4A9AE9",}}>{Metrica == "Media" ? `${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
 
     </div>
   
@@ -617,9 +628,9 @@ let arrayhora = [
 
 
 </div>
-{width<600 && <div style={{display:"flex", flexDirection:"row", marginTop:"4vh"}}>
+{width<550 && <div style={{display:"flex", flexDirection:"row", marginTop:"1vh", gap:"2vw"}}>
     <div className="mdDashinfodiv" style={{ backgroundColor: "white"}}>
-  <div style={{ flexDirection: "column", display: "flex" }}>
+  <div style={{ flexDirection: "column", display: "flex", gap:"1vw" }}>
    <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
    <span  id="mdtittempDash" style={{ textAlign: "left", fontFamily: "Krona One , sans-serif", fontWeight: "bold"}}>Diferenca meta: 
     </span><Link to="/metas"><button id="btnMetas" style={{backgroundColor: "#D3D3D3", }}>Definir meta</button></Link>
@@ -667,8 +678,8 @@ let arrayhora = [
 
 <div style={{ flexDirection:"row", display: "flex", justifyContent: "center" , gap:"20px"}}>
 <div>
-<div style={{backgroundColor:"white",borderTopLeftRadius: "10px",borderTopRightRadius: "10px", justifyContent:"space-between",display:"flex",alignItems:"center", textAlign:"center"}}><span > Tipos de Gases</span> <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-<select name="tempo" onChange={graficoMet} id="graficSelect" style={{ backgroundColor: "transparent",color:"white",border:"white", borderRadius: "10px", }}>
+<div style={{backgroundColor:"white",borderTopLeftRadius: "10px",borderTopRightRadius: "10px", justifyContent:"center",display:"flex",alignItems:"center", textAlign:"center"}}><span id="mdtittempDash" > Tipos de Gases</span> <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+<select name="tempo" onChange={graficoMet} id="tempo" style={{ marginTop:"10px",backgroundColor: "transparent",color:"white",border:"white", borderRadius: "10px",marginRight:"10px", }}>
       <option value="Barra">Barra</option>
       <option value="Pizza">Pizza</option>
       <option value="Media">Media</option>
@@ -699,8 +710,8 @@ let arrayhora = [
 </div>
 <div style={{ flexDirection:"row", display: "flex", justifyContent: "center" , gap:"20px"}}>
 <div>
-<div style={{backgroundColor:"white",borderTopLeftRadius: "10px",borderTopRightRadius: "10px", justifyContent:"space-between",display:"flex",alignItems:"center", textAlign:"center"}}><span style={{marginLeft:"10px"}}> Tipos de Gases</span> <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-<select name="tempo" onChange={graficoMet} id="graficSelect" style={{ backgroundColor: "#D3D3D3", borderRadius: "10px", }}>
+<div style={{backgroundColor:"white",borderTopLeftRadius: "10px",borderTopRightRadius: "10px", justifyContent:"space-between",display:"flex",alignItems:"center", textAlign:"center"}}><span id="mdtittempDash" style={{marginLeft:"10px"}}> Tipos de Gases</span> <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+<select name="tempo" onChange={graficoMet} id="tempo" style={{marginTop:"10px", backgroundColor: "#D3D3D3", borderRadius: "10px", }}>
       <option value="Barra">Barra</option>
       <option value="Pizza">Pizza</option>
       <option value="Media">Media</option>
