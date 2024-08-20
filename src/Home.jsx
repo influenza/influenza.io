@@ -17,8 +17,8 @@ function Home(){
             <div style={{display:"flex", flexDirection:"row", justifyContent:"center",alignItems:"center", marginTop:"20px",marginBottom:"20px"}}>
 
             </div>
-            <Link to="/cadastro2"> 
-            <Button text="Cadastro"  ></Button>
+            <Link to="/login"> 
+            <Button text="Login"  ></Button>
             </Link>
             </div>
             </div>
@@ -31,8 +31,8 @@ function Home(){
             <div style={{display:"flex", flexDirection:"row", justifyContent:"center",alignItems:"center", marginTop:"20px",marginBottom:"20px"}}>
 
             </div>
-            <Link to="/login"> 
-            <Button text="Login"  ></Button>
+            <Link to="/cadastro2"> 
+            <Button text="Cadastro"  ></Button>
             </Link>
             </div>
             </div>

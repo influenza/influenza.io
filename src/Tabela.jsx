@@ -87,8 +87,14 @@ let totaldia =0
                     "Authorization": `Bearer ${Cookies.get().Token}`
                 }
             };
-
-            axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/team/${Cookies.get().NomeEqui2}?page=1&direction=asc`, headers)
+            let temhandle
+            await axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${Cookies.get().ID}`, headers).then((res)=>{console.log(res) 
+              console.log(res.data[0].handle)
+              temhandle=res.data[0].handle
+              console.log(temhandle)
+      
+            })
+            axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/team/${temhandle}?page=1&direction=asc`, headers)
 
                 .then((res) => {
                     const dataList = res.data._embedded.mQ135ReadingVOList;
@@ -170,7 +176,7 @@ let totaldia =0
 
         console.log(Data)
         const linhas = Array.from({ length: Data.length }, (_, index) => index);
-        const [Pages, setPages] = useState((linhas.length / 100).toFixed());
+        const [Pages, setPages] = useState((linhas.length ).toFixed());
   
         let arraypages = []
         console.log("dasfsa")
@@ -287,8 +293,8 @@ let totaldia =0
                         setFiltro(e.target.value)
                     }} className="mdselectazul" value={Filtro}>
                         
-                        <option value="MenorData">Mais recente</option>
-                        <option value="MaiorData">Mais antigos</option>
+                        <option value="MenorData">Mais antigos</option>
+                        <option value="MaiorData">Mais recente</option>
                         <option value="MaiorEmissao">Maior Emissão</option>
                         <option value="MenorEmissao">Menor Emissão</option>
 
@@ -318,7 +324,7 @@ linhas.map((item, index) => {
 let datavalue1 =datavalue.sort((a, b) => b[0] - a[0]);
 
 
-if (index <= 100) {
+if (index <= 1000) {
     if (Filtro == "MenorEmissao") {
         return (
             <tr>
@@ -372,36 +378,47 @@ return null;
     diaarraychosen.map((item, index) =>{
         let array =[]
         let datavaluehora1 = [...datavaluehora].sort((a,b)=>{return(a[0]-b[0])})
-
+        console.log(datavaluehora1[index][1].slice(8,10))
+        console.log(datavaluehora1[index][1])
+        let x=0
+        datavaluehora1[index].push((parseInt(datavaluehora1[index][1].slice(5,7) + datavaluehora1[index][1].slice(8,10) + datavaluehora1[index][1].slice(11,13) )))
+        console.log(datavaluehora1[index])
+        let datavaluehora2 = [...datavaluehora].sort((a, b) => b[0] - a[0]);
+        let datavaluehora3 = [...datavaluehora1].sort((a, b) => a[2] - b[2]);
+        console.log(datavaluehora3)
         if (Filtro == "MenorEmissao") {
 
 
             return(
                 <tr>
                 <td>{index}</td>
-                <td>{`${datavaluehora[index][1].slice(0,10)}/${datavaluehora[index][1].slice(11,13)}`}</td>
-                <td>{datavaluehora1[index][0]/2}</td>
+                <td>{`${datavaluehora1[index][1].slice(0,10)}/${datavaluehora1[index][1].slice(11,13)}`}</td>
+                <td>{datavaluehora1[index][0]}</td>
                 </tr>
             
             )
         }
         if (Filtro == "MaiorEmissao") {
-            let datavaluehora2 = [...datavaluehora].sort((a, b) => b[0] - a[0]);
             return(
                 <tr>
                 <td>{index}</td>
-                <td>{`${datavaluehora[index][1].slice(0,10)}/${datavaluehora[index][1].slice(11,13)}`}</td>
-                <td>{datavaluehora2[index][0]/2}</td>
+                <td>{`${datavaluehora2[index][1].slice(0,10)}/${datavaluehora2[index][1].slice(11,13)}`}</td>
+                <td>{datavaluehora2[index][0]}</td>
                 </tr>
             
             )
         }
         else if(Filtro =="MenorData"){
+            console.log(index)
+            
+            console.log(datavaluehora3[index])
             return(
                 <tr>
                 <td>{index}</td>
-                <td>{`${datavaluehora[index][1].slice(0,10)}/${datavaluehora[index][1].slice(11,13)}`}</td>
-                <td>{datavaluehora[index][0]/2}</td>
+                <td>{`${datavaluehora3[index][1].slice(0,10)}/${datavaluehora3[index][1].slice(11,13)}`}</td>
+                <td>{datavaluehora3[index]}</td>
+
+                <td>{datavaluehora3[index][0]}</td>
                 </tr>
             
             )
@@ -411,7 +428,7 @@ return null;
                 <tr>
                 <td>{diaarraychosen.length-index-1}</td>
                 <td>{`${datavaluehora[diaarraychosen.length-index-1][1].slice(0,10)}/${datavaluehora[diaarraychosen.length-index-1][1].slice(11,13)}`}</td>
-                <td>{datavaluehora[diaarraychosen.length-index-1][0]/2}</td>
+                <td>{datavaluehora[diaarraychosen.length-index-1][0]}</td>
                 </tr>
             
             )
@@ -507,101 +524,9 @@ return(
 
         </div>
         <div id="mdfoottab">
-            <div id="mdtabopagesdiv" style={{display:"flex", marginLeft:"5px"}}>
-            <div className="mdTABDOWN" style={{backgroundColor:"#279301", display:"flex", justifyContent:"center"}}>
-            <svg className="mdTabUPLOADSVG" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M16.0171 2C16.0171 1.0335 15.2336 0.25 14.2671 0.25C13.3006 0.25 12.5171 1.0335 12.5171 2H16.0171ZM12.5171 2V17.84H16.0171V2H12.5171Z" fill="white"/>
-<path d="M15.1317 20.1604C14.7377 20.5567 14.0962 20.5543 13.7067 20.1551L6.768 13.0436C6.14896 12.4091 6.60266 11.3413 7.48987 11.3446L21.4451 11.3969C22.3323 11.4002 22.7743 12.4714 22.1483 13.1012L15.1317 20.1604Z" fill="white"/>
-<path d="M2.5332 24H24.9332" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
-<path d="M0.5 24C0.5 24.8284 1.17157 25.5 2 25.5C2.82843 25.5 3.5 24.8284 3.5 24H0.5ZM0.5 17.84L0.5 24H3.5L3.5 17.84H0.5Z" fill="white"/>
-<path d="M24.5 24C24.5 24.8284 25.1716 25.5 26 25.5C26.8284 25.5 27.5 24.8284 27.5 24H24.5ZM24.5 17.84V24H27.5V17.84H24.5Z" fill="white"/>
-</svg>
 
-            <button style={{backgroundColor:"#279301", border:"0px"}}>PDF</button>
-
-            </div>
-            <div className="mdTABDOWN" style={{backgroundColor:"#279301", display:"flex", justifyContent:"center"}}>
-            <svg className="mdTabUPLOADSVG" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M16.0171 2C16.0171 1.0335 15.2336 0.25 14.2671 0.25C13.3006 0.25 12.5171 1.0335 12.5171 2H16.0171ZM12.5171 2V17.84H16.0171V2H12.5171Z" fill="white"/>
-<path d="M15.1317 20.1604C14.7377 20.5567 14.0962 20.5543 13.7067 20.1551L6.768 13.0436C6.14896 12.4091 6.60266 11.3413 7.48987 11.3446L21.4451 11.3969C22.3323 11.4002 22.7743 12.4714 22.1483 13.1012L15.1317 20.1604Z" fill="white"/>
-<path d="M2.5332 24H24.9332" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
-<path d="M0.5 24C0.5 24.8284 1.17157 25.5 2 25.5C2.82843 25.5 3.5 24.8284 3.5 24H0.5ZM0.5 17.84L0.5 24H3.5L3.5 17.84H0.5Z" fill="white"/>
-<path d="M24.5 24C24.5 24.8284 25.1716 25.5 26 25.5C26.8284 25.5 27.5 24.8284 27.5 24H24.5ZM24.5 17.84V24H27.5V17.84H24.5Z" fill="white"/>
-</svg>
-
-            <button style={{backgroundColor:"#279301", border:"0px"}}>Excel</button>
-
-            </div>
-            <div className="mdTABDOWNBI" style={{backgroundColor:"#279301", display:"flex", justifyContent:"center"}}>
-            <svg className="mdTabUPLOADSVG" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M16.0171 2C16.0171 1.0335 15.2336 0.25 14.2671 0.25C13.3006 0.25 12.5171 1.0335 12.5171 2H16.0171ZM12.5171 2V17.84H16.0171V2H12.5171Z" fill="white"/>
-<path d="M15.1317 20.1604C14.7377 20.5567 14.0962 20.5543 13.7067 20.1551L6.768 13.0436C6.14896 12.4091 6.60266 11.3413 7.48987 11.3446L21.4451 11.3969C22.3323 11.4002 22.7743 12.4714 22.1483 13.1012L15.1317 20.1604Z" fill="white"/>
-<path d="M2.5332 24H24.9332" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
-<path d="M0.5 24C0.5 24.8284 1.17157 25.5 2 25.5C2.82843 25.5 3.5 24.8284 3.5 24H0.5ZM0.5 17.84L0.5 24H3.5L3.5 17.84H0.5Z" fill="white"/>
-<path d="M24.5 24C24.5 24.8284 25.1716 25.5 26 25.5C26.8284 25.5 27.5 24.8284 27.5 24H24.5ZM24.5 17.84V24H27.5V17.84H24.5Z" fill="white"/>
-</svg>
-
-            <button style={{backgroundColor:"#279301", border:"0px"}}>PowerBI</button>
-
-            </div>
-     
-            </div>
             <div id="mdtabopagesdiv" style={{display:"flex", justifyContent:"center",}}>
-            {arraypages.map((page, index)=>{
-                if(page == 1){
-                    return(
-                        <div className="mdtabpages" id={`mdpagebutton${page}`}style={{backgroundColor:"#0075E8",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"white", }}>{page}</div>
-                        
-                                        )
-                }else if(page > 4){
-                   console.log(arraypages.lastIndexOf()==page)
-                   console.log(arraypages.lastIndexOf())
-                   if(arraypages.length ==page){
-                    return(
-                        <>
-                        <span style={{fontSize:"20px"}}>...</span>
-                        <div  onClick={()=>{
-                            navigate(`/tabela/${page}`)
-                        }} className="mdtabpages" id={`mdpagebutton${page}`}style={{backgroundColor:"#BBD6F0",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}>{page}</div>
-                       <div  onClick={()=>{
-                            navigate(`/tabela/${2}`)
-                        }} className="mdtabpages" style={{backgroundColor:"#BBD6F0",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}> {">"}</div>
-                       
-                        </>
-                         )
-                   }
-                }
-                else{
-                    if(page==4){
-                        if(width>600){
-                        return(
-                            <div  onClick={()=>{
-                                navigate(`/tabela/${page}`)
-                            }} className="mdtabpages" id={`mdpagebutton${page}`}style={{backgroundColor:"#BBD6F0",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}>{page}</div>
-                            
-                                            )   
-                                        }
-                    }
-                    else if(page==3){
-                        if(width>450 ){
-                        return(
-                            <div  onClick={()=>{
-                                navigate(`/tabela/${page}`)
-                            }} className="mdtabpages" id={`mdpagebutton${page}`}style={{backgroundColor:"#BBD6F0",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}>{page}</div>
-                            
-                                            )   
-                                        }
-                    }
-                    else{
-                        return(
-                            <div  onClick={()=>{
-                                navigate(`/tabela/${page}`)
-                            }} className="mdtabpages" id={`mdpagebutton${page}`}style={{backgroundColor:"#BBD6F0",  justifyContent:"center", display:"flex", textAlign:"center", alignItems:"center",color:"#0075E8", }}>{page}</div>
-                            
-                                            )  
-                    }
-                }
-            })}
+            
             </div>
         </div>
 </div>

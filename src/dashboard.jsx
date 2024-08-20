@@ -76,10 +76,10 @@ export function Dashboard(props) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const [dictemp, setDicttemp] = useState({"Diária":0,"Semanal":1,"Mensal":2,"Anual":3});
+  const [dictemp, setDicttemp] = useState({"Diaria":0,"Semanal":1,"Mensal":2,"Anual":3});
   const [dictempTi, setDicttempTI] = useState({0:"Diario",1:"Semanal",2:"Mensal",3:"Anual"});
 
-  const [dictemp2, setDicttemp2] = useState({"Diária":"Dia","Semanal":"Semana","Mensal":"Mes","Anual":"Ano"});
+  const [dictemp2, setDicttemp2] = useState({"Diaria":"Dia","Semanal":"Semana","Mensal":"Mes","Anual":"Ano"});
   Chart.register(...registerables);
   let navigate = useNavigate()
   console.log(Cookies.get().Metas)
@@ -144,8 +144,14 @@ let arrayhora = [
     try {
       console.log(temp)
       console.log(Cookies.get().NomeEqui2)
-      await            axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/team/${Cookies.get().NomeEqui2}?page=1&direction=asc`, headers)
+      let temhandle
+      await axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${Cookies.get().ID}`, headers).then((res)=>{console.log(res) 
+        console.log(res.data[0].handle)
+        temhandle=res.data[0].handle
+        console.log(temhandle)
 
+      })
+      await axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/team/${temhandle}?page=1&direction=asc`, headers)
       .then((res) => {
         
         console.log(res)
@@ -503,9 +509,9 @@ let arrayhora = [
       <Navbar3></Navbar3>
         <div style={{display:"flex", flexDirection:"row"}}>
               <Navbar4 es={1} style={{}}></Navbar4>
-                <div style={{ display:"flex",backgroundColor:"#f5ebe0" ,flexDirection:"row", zIndex:"0",backgroundColor:"#f5ebe0" , width:"92vw",  height:"100%",alignItems:"center",display:"flex",flexDirection:"column" }}>
+                <div style={{ display:"flex",backgroundColor:"#f5ebe0" ,flexDirection:"row", zIndex:"0",backgroundColor:"#f5ebe0" , width:"92vw",  height:"92vh",alignItems:"center",display:"flex",flexDirection:"column" }}>
 
-<div style={{width:"89vw", display:"flex", justifyContent:"space-between"}}>
+<div style={{width:"92vw", display:"flex", justifyContent:"space-between"}}>
   
 <p id="TituloMdDash">Graficos Das Emissões</p>
 
@@ -580,7 +586,7 @@ let arrayhora = [
   <div className="restinfoDash" style={{display:"flex",textAlign:"center",justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
 
 <span>
-
+  
 {total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]) >= 0
 ?<div className="spaninfodash" style={{color:"rgb(20, 181, 122)"}}>{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])}</div>
 :<div className="spaninfodash"  style={{color:"red"}}>{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])}</div>}
@@ -670,14 +676,14 @@ let arrayhora = [
     </select></div>               
   </div>
     <div className="restinfoDash" style={{display:"flex",alignItems:"center",justifyContent:"center", alignItems:"center"}}>
-    <span className="spaninfodash" style={{  fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#14B57A",}}>{Metrica == "Media" ? `${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
+    <span className="spaninfodash" style={{  fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#14B57A",}}>{Metrica == "Media" ?` ${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
 
     </div>
   
 </div>
    </div>
    </div>}
-<div id="faixa2" style={{display:`flex`,flexDirection:"row",marginTop:"10px",justifyContent:"space-around",}}>
+<div id="faixa2" style={{display:"flex",flexDirection:"row",marginTop:"10px",justifyContent:"space-around"}}>
 
 <div style={{ flexDirection:"row", display: "flex", justifyContent: "center" , gap:"20px"}}>
 <div>
@@ -754,27 +760,7 @@ let arrayhora = [
   
 </div>
             </div>
-            <div style={{display:"flex",flexDirection:"column", justifyContent:"center", marginTop:"1vh"}}>
-            <div>
-<div style={{backgroundColor:"white",borderTopLeftRadius: "10px",borderTopRightRadius: "10px", justifyContent:"center",display:"flex"}}>Emissões de Gases</div> 
-<div id="GraficoGrande" style={{backgroundColor: "white",  height: "32vh", flexDirection:"row",borderEndEndRadius: "10px",display: "flex", justifyContent: "space-between" }}>
-
-<div style={{marginLeft:"20px"}}>
-<div style={{ width: "34vw", height: "30vh", marginLeft:"10px", borderRadius: "10px", marginRight: "20px", marginBottom: "20px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-<span style={{ width: "28vw", height: "30vh",display:"flex"}}>
- 
-<canvas ref={chartRef5} style={{ width: "100%", height: "100%"}}></canvas>
-</span>
-</div>
-</div>
-</div>
-</div>
-<div style={{backgroundColor:"white", marginBottom:"10vh",borderEndEndRadius:"10px", borderBottomLeftRadius:"10px", display:"flex", justifyContent:"center", gap:"20px"}}>
-<button id="adddataset">Adicionar dataset</button>
-<button id="removedataset">Retirar dataset</button>
-
-</div>
-            </div>
+    
 
         </div>
         
