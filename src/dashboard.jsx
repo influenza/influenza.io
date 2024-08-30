@@ -83,7 +83,7 @@ export function Dashboard(props) {
   Chart.register(...registerables);
   let navigate = useNavigate()
   console.log(Cookies.get().Metas)
-  if(!Cookies.get().Metas){
+  if(Cookies.get().Metas == undefined){
     navigate("/metas")
   }
   console.log();
@@ -196,6 +196,7 @@ let arrayhora = [
        }
        if(!totalArray.includes(total2)){
         totalArray.push(total2)
+        console.log(total2)
        }
        
        
@@ -288,7 +289,6 @@ let arrayhora = [
       console.log(mesarraychosen)
       console.log(horarraychosen)
       console.log(totalarrayHora)
-
       const newChartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -505,147 +505,148 @@ let arrayhora = [
       }
     }
   return ( 
+  Cookies.get().Metas != undefined ?(
     <>
-      <Navbar3></Navbar3>
-        <div style={{display:"flex", flexDirection:"row"}}>
-              <Navbar4 es={1} style={{}}></Navbar4>
-                <div style={{ display:"flex",backgroundColor:"#f5ebe0" ,flexDirection:"row", zIndex:"0",backgroundColor:"#f5ebe0" , width:"92vw",  height:"92vh",alignItems:"center",display:"flex",flexDirection:"column" }}>
+    <Navbar3></Navbar3>
+      <div style={{display:"flex", flexDirection:"row"}}>
+            <Navbar4 es={1} style={{}}></Navbar4>
+              <div style={{ display:"flex",backgroundColor:"#f5ebe0" ,flexDirection:"row", zIndex:"0",backgroundColor:"#f5ebe0" , width:"92vw",  height:"92vh",alignItems:"center",display:"flex",flexDirection:"column" }}>
 
 <div style={{width:"92vw", display:"flex", justifyContent:"space-between"}}>
-  
+
 <p id="TituloMdDash">Graficos Das Emissões</p>
 
 </div>
 <div id="faixa1" style={{display: "flex", flexDirection: "row", justifyContent: "center", marginTop:"2vh",  }}>
 <div id="gap550dash" style={{display:"flex", justifyContent:"center", flexDirection:"row", }}>
 <div className="mdDashinfodiv" style={{ backgroundColor: "white",justifyContent:"start"  }}>
-  <div style={{ flexDirection: "column", display: "flex" }}>
-   <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
-   <span id="mdtittempDash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", }}>Total {temp}</span> 
+<div style={{ flexDirection: "column", display: "flex" }}>
+ <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
+ <span id="mdtittempDash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", }}>Total {temp}</span> 
 
-   <div><select name="tempo" onChange={tempo} id="tempo" >
-      <option value="Diaria">Diária</option>
-      <option value="Mensal">Mensal</option>
-      <option value="Anual">Anual</option>
+ <div><select name="tempo" onChange={tempo} id="tempo" >
+    <option value="Diaria">Diária</option>
+    <option value="Mensal">Mensal</option>
+    <option value="Anual">Anual</option>
 
-    </select></div>               
-  </div>
-    <div className="restinfoDash"style={{display:"flex",alignItems:"center",justifyContent:"center",textAlign:"center"}}>
-    <span className="spaninfodash" style={{  fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#14B57A"  }}>{`${total}`}</span>
-
-    </div>
+  </select></div>               
 </div>
-   </div>
+  <div className="restinfoDash"style={{display:"flex",alignItems:"center",justifyContent:"center",textAlign:"center"}}>
+  <span className="spaninfodash" style={{  fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#14B57A"  }}>{`${total}`}</span>
 
-   <div className="mdDashinfodiv" style={{ backgroundColor: "white",  }}>
-  <div style={{ flexDirection: "column", display: "flex" }}>
-   <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
-   <span id="mdtittempDash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", }}>Diferenca {temp}</span> 
-      
   </div>
-  <div className="restinfoDash" style={{display:"flex",textAlign:"center",justifyContent:"center",alignItems:"center"}}>
+</div>
+ </div>
 
-  {(((42580591/total).toFixed(3)-1)*100).toFixed(3) <0 &&
-    <div className="spaninfodash" style={{  fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "red", }}>
+ <div className="mdDashinfodiv" style={{ backgroundColor: "white",  }}>
+<div style={{ flexDirection: "column", display: "flex" }}>
+ <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
+ <span id="mdtittempDash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", }}>Diferenca {temp}</span> 
+    
+</div>
+<div className="restinfoDash" style={{display:"flex",textAlign:"center",justifyContent:"center",alignItems:"center"}}>
 
-    <span >{`${(((4258059/total).toFixed(3)-1)*100).toFixed(2)}% `}</span> <br />
+{(((42580591/total).toFixed(3)-1)*100).toFixed(3) <0 &&
+  <div className="spaninfodash" style={{  fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "red", }}>
+
+  <span >{`${(((4258059/total).toFixed(3)-1)*100).toFixed(2)}% `}</span> <br />
 <span style={{marginTop:"2vh",}}>{`${(total-4258059)} `}</span>
 
 
-    
   
-    </div>
+
+  </div>
 }
-    {(((42580591/total).toFixed(3)-1)*100).toFixed(3)> 0 &&
-    <div className="spaninfodash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "red"}}>
+  {(((42580591/total).toFixed(3)-1)*100).toFixed(3)> 0 &&
+  <div className="spaninfodash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "red"}}>
 <span >{`${((Diffper-1)*100).toFixed(2)}% `}</span> <br />
 <span style={{marginTop:"2vh"}}>{`${Diff} `}</span>
 
-    </div>
+  </div>
 }
 
-  </div>
+</div>
 
 </div>
 
-   </div>
+ </div>
 </div>
-   {width>550 && <>
-    <div  style={{display:"flex", justifyContent:"center", flexDirection:"row",gap:"1vw" }}>
+ {width>550 && <>
+  <div  style={{display:"flex", justifyContent:"center", flexDirection:"row",gap:"1vw" }}>
 
-    <div className="mdDashinfodiv" style={{ backgroundColor: "white"}}>
-  <div style={{ flexDirection: "column", display: "flex" }}>
-   <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
-   <span  id="mdtittempDash" style={{ textAlign: "left", fontFamily: "Krona One , sans-serif", fontWeight: "bold"}}>Revisão da meta:
-   <span style={{color:"#4A9AE9"}}> {Cookies.get().Metas?Cookies.get().Metas.split(",")[dictemp[temp]]:0}
-   </span>
+  <div className="mdDashinfodiv" style={{ backgroundColor: "white"}}>
+<div style={{ flexDirection: "column", display: "flex" }}>
+ <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
+ <span  id="mdtittempDash" style={{ textAlign: "left", fontFamily: "Krona One , sans-serif", fontWeight: "bold"}}>Revisão da meta:
+ <span style={{color:"#4A9AE9"}}> {Cookies.get().Metas?Cookies.get().Metas.split(",")[dictemp[temp]]:0}
+ </span>
 
-    </span><Link to="/metas"><button id="btnMetas" style={{backgroundColor: "#D3D3D3", }}>Definir meta</button></Link>
-      
-  </div>
-  <div className="restinfoDash" style={{display:"flex",textAlign:"center",justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
+  </span><Link to="/metas"><button id="btnMetas" style={{backgroundColor: "#D3D3D3", }}>Definir meta</button></Link>
+    
+</div>
+<div className="restinfoDash" style={{display:"flex",textAlign:"center",justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
 
 <span>
-  
+
 {total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]) >= 0
 ?<div className="spaninfodash" style={{color:"rgb(20, 181, 122)"}}>{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])}</div>
 :<div className="spaninfodash"  style={{color:"red"}}>{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])}</div>}
 
 </span>
 <span>
-  
+
 {total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]) >= 0
 ?<div className="spaninfodash" style={{color:"rgb(20, 181, 122)"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])-1)*100).toFixed(2)}%`}</div>
 :<div className="spaninfodash" style={{color:"red"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])-1)*100).toFixed(2)}%`}</div>}
 
 
 </span>
-  </div>
+</div>
 
 </div>
 
-   </div>
-     
-   <div className="mdDashinfodiv" style={{ backgroundColor: "white"}}>
-  <div style={{ flexDirection: "column", display: "flex" }}>
-  <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
-  <span id="mdtittempDash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", }}>{temp} {Metrica}</span> 
-   <div>
-    <select name="tempo" onChange={metrica} id="tempo" style={{ backgroundColor: "#D3D3D3", marginRight: "10px", borderRadius: "10px",  }}>
-      <option value="Media">Media</option>
-      <option value="Minimo">Minimo</option>
-      <option value="Maximo">Maximo  </option>
+ </div>
+   
+ <div className="mdDashinfodiv" style={{ backgroundColor: "white"}}>
+<div style={{ flexDirection: "column", display: "flex" }}>
+<div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
+<span id="mdtittempDash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", }}>{temp} {Metrica}</span> 
+ <div>
+  <select name="tempo" onChange={metrica} id="tempo" style={{ backgroundColor: "#D3D3D3", marginRight: "10px", borderRadius: "10px",  }}>
+    <option value="Media">Media</option>
+    <option value="Minimo">Minimo</option>
+    <option value="Maximo">Maximo  </option>
 
-    </select></div>               
+  </select></div>               
+</div>
+  <div className="restinfoDash" style={{display:"flex",alignItems:"center",justifyContent:"center", alignItems:"center"}}>
+  <span style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#4A9AE9",}}>{Metrica == "Media" ? `${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
+
   </div>
-    <div className="restinfoDash" style={{display:"flex",alignItems:"center",justifyContent:"center", alignItems:"center"}}>
-    <span style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#4A9AE9",}}>{Metrica == "Media" ? `${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
 
-    </div>
+</div>
+ </div>
+ </div>
+ </>}
+
+
   
-</div>
-   </div>
-   </div>
-   </>}
- 
-
-    
 
 
 
 </div>
 {width<550 && <div style={{display:"flex", flexDirection:"row", marginTop:"1vh", gap:"2vw"}}>
-    <div className="mdDashinfodiv" style={{ backgroundColor: "white"}}>
-  <div style={{ flexDirection: "column", display: "flex", gap:"1vw" }}>
-   <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
-   <span  id="mdtittempDash" style={{ textAlign: "left", fontFamily: "Krona One , sans-serif", fontWeight: "bold"}}>Revisão da meta:<span style={{color:"#4A9AE9"}} className="spaninfodash">
+  <div className="mdDashinfodiv" style={{ backgroundColor: "white"}}>
+<div style={{ flexDirection: "column", display: "flex", gap:"1vw" }}>
+ <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
+ <span  id="mdtittempDash" style={{ textAlign: "left", fontFamily: "Krona One , sans-serif", fontWeight: "bold"}}>Revisão da meta:<span style={{color:"#4A9AE9"}} className="spaninfodash">
 {Cookies.get().Metas?Cookies.get().Metas.split(",")[dictemp[temp]]:0}
 
 </span>
-    </span><Link to="/metas"><button id="btnMetas" style={{backgroundColor: "#D3D3D3", }}>Definir meta</button></Link>
-      
-  </div>
-  <div className="restinfoDash" style={{display:"flex",textAlign:"center",justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
+  </span><Link to="/metas"><button id="btnMetas" style={{backgroundColor: "#D3D3D3", }}>Definir meta</button></Link>
+    
+</div>
+<div className="restinfoDash" style={{display:"flex",textAlign:"center",justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
 
 
 <span className="spaninfodash">
@@ -657,43 +658,43 @@ let arrayhora = [
 {Cookies.get().Metas?`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])-1)*100).toFixed(2)}%`:0}
 
 </span>
-  </div>
+</div>
 
 </div>
 
-   </div>
-     
-   <div className="mdDashinfodiv" style={{ backgroundColor: "white"}}>
-  <div style={{ flexDirection: "column", display: "flex" }}>
-  <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
-  <span id="mdtittempDash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", }}>{temp} {Metrica}</span> 
-   <div>
-    <select name="tempo" onChange={metrica} id="tempo" style={{ backgroundColor: "#D3D3D3", marginRight: "10px", borderRadius: "10px",  }}>
-      <option value="Media">Media</option>
-      <option value="Minimo">Minimo</option>
-      <option value="Maximo">Maximo  </option>
+ </div>
+   
+ <div className="mdDashinfodiv" style={{ backgroundColor: "white"}}>
+<div style={{ flexDirection: "column", display: "flex" }}>
+<div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
+<span id="mdtittempDash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", }}>{temp} {Metrica}</span> 
+ <div>
+  <select name="tempo" onChange={metrica} id="tempo" style={{ backgroundColor: "#D3D3D3", marginRight: "10px", borderRadius: "10px",  }}>
+    <option value="Media">Media</option>
+    <option value="Minimo">Minimo</option>
+    <option value="Maximo">Maximo  </option>
 
-    </select></div>               
-  </div>
-    <div className="restinfoDash" style={{display:"flex",alignItems:"center",justifyContent:"center", alignItems:"center"}}>
-    <span className="spaninfodash" style={{  fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#14B57A",}}>{Metrica == "Media" ?` ${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
-
-    </div>
-  
+  </select></div>               
 </div>
-   </div>
-   </div>}
+  <div className="restinfoDash" style={{display:"flex",alignItems:"center",justifyContent:"center", alignItems:"center"}}>
+  <span className="spaninfodash" style={{  fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#14B57A",}}>{Metrica == "Media" ?` ${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
+
+  </div>
+
+</div>
+ </div>
+ </div>}
 <div id="faixa2" style={{display:"flex",flexDirection:"row",marginTop:"10px",justifyContent:"space-around"}}>
 
 <div style={{ flexDirection:"row", display: "flex", justifyContent: "center" , gap:"20px"}}>
 <div>
 <div style={{backgroundColor:"white",borderTopLeftRadius: "10px",borderTopRightRadius: "10px", justifyContent:"center",display:"flex",alignItems:"center", textAlign:"center"}}><span id="mdtittempDash" > Tipos de Gases</span> <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
 <select name="tempo" onChange={graficoMet} id="tempo" style={{ marginTop:"10px",backgroundColor: "transparent",color:"white",border:"white", borderRadius: "10px",marginRight:"10px", }}>
-      <option value="Barra">Barra</option>
-      <option value="Pizza">Pizza</option>
-      <option value="Media">Media</option>
+    <option value="Barra">Barra</option>
+    <option value="Pizza">Pizza</option>
+    <option value="Media">Media</option>
 
-    </select></div></div> 
+  </select></div></div> 
 
 <div className="Graficos" style={{backgroundColor: "white",  flexDirection:"row",borderEndEndRadius: "10px",display: "flex", justifyContent: "space-between" }}>
 <div >
@@ -706,26 +707,26 @@ let arrayhora = [
 
 
 
-  </div>
-
-    </div>
-
-
-  </div>
 </div>
-  
 
-  
+  </div>
+
+
+</div>
+</div>
+
+
+
 </div>
 <div style={{ flexDirection:"row", display: "flex", justifyContent: "center" , gap:"20px"}}>
 <div>
 <div style={{backgroundColor:"white",borderTopLeftRadius: "10px",borderTopRightRadius: "10px", justifyContent:"space-between",display:"flex",alignItems:"center", textAlign:"center"}}><span id="mdtittempDash" style={{marginLeft:"10px"}}> Tipos de Gases</span> <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
 <select name="tempo" onChange={graficoMet} id="tempo" style={{marginTop:"10px", backgroundColor: "#D3D3D3", borderRadius: "10px", }}>
-      <option value="Barra">Barra</option>
-      <option value="Pizza">Pizza</option>
-      <option value="Media">Media</option>
+    <option value="Barra">Barra</option>
+    <option value="Pizza">Pizza</option>
+    <option value="Media">Media</option>
 
-    </select></div></div> 
+  </select></div></div> 
 
 <div className="Graficos" style={{backgroundColor: "white",  flexDirection:"row",borderEndEndRadius: "10px",display: "flex", justifyContent: "space-between" }}>
 <div>
@@ -738,37 +739,39 @@ let arrayhora = [
 }
 
 {grafico == "Pizza"&&
-  <canvas ref={chartRef2} style={{ width: "100%", height: "100%"}}></canvas>
+<canvas ref={chartRef2} style={{ width: "100%", height: "100%"}}></canvas>
 }
 {grafico == "Media"&&
-  <canvas ref={chartRef3} style={{ width: "100%", height: "100%"}}></canvas>
+<canvas ref={chartRef3} style={{ width: "100%", height: "100%"}}></canvas>
 }
 
 </span>
 
 
 
+</div>
+
   </div>
 
-    </div>
 
-
-  </div>
 </div>
+</div>
+
+
+
+</div>
+          </div>
   
 
-  
-</div>
-            </div>
-    
-
-        </div>
-        
-         
-    
+      </div>
+      
        
-        
-                </div>
-                </>
+  
+     
+      
+              </div>
+              </>)
+  :(<></>)
+
     );
 }
