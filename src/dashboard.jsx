@@ -97,13 +97,25 @@ export function Dashboard(props) {
       "05": [], "06": [], "07": [], "08": [],
       "09": [], "10": [], "11": [], "12": []
   };
+  let Mesdiavaluedict = {
+    "01": 31, "02": 28, "03": 31, "04": 30,
+    "05": 31, "06": 30, "07": 31, "08": 31,
+    "09": 30, "10": 31, "11": 30, "12": 31
+};
   let Mesarray = [
       "01", "02", "03", "04", "05", "06",
       "07", "08", "09", "10", "11", "12"
   ];
   let horas = d.getHours();
   let dia = d.getDate();
-  let mes = d.getMonth() + 1;
+  let mes
+  if(parseInt(d.getMonth())+1 < 10){
+     mes = `0${d.getMonth() + 1}`;
+
+  }else{
+     mes = d.getMonth() + 1;
+
+  }
   let year = d.getFullYear(); 
   let minutos = d.getMinutes();
   
@@ -166,7 +178,9 @@ let arrayhora = [
            diadict[diaValue].push([Data1[index].value , DataDiaMes])
            Mesdict[mesvalue].push([Data1[index].value , DataDiaMes])
           diadicttrue[horavalue].push([Data1[index].value , Data1[index].timestamp.slice(8,10),index])
-           
+           console.log(diadicttrue)
+           console.log(mes)
+           console.log(mesvalue)
             if(!diaarraychosen.includes(diaValue)){
               diaarraychosen.push(diaValue)
             }
@@ -185,35 +199,35 @@ let arrayhora = [
         console.log(umavez)
       }
 
-        let totalarrayMes
+      
 
         for(let x of diaarraychosen){
           total2 =0
-
+          console.log(x)
+          console.log(diaarraychosen)
+          console.log(mes)
+          console.log(Mesdiavaluedict[mesvalue])
+          console.log(diadict)
+          console.log(diadict[x])
+          
        for (let y of diadict[x]){
         total2+=y[0]
-        
        }
        if(!totalArray.includes(total2)){
         totalArray.push(total2)
-        console.log(total2)
        }
-       
-       
         }
+
         for(let x of horarraychosen){
-          console.log(diadicttrue[x])
           total2 =0
           for (let y of diadicttrue[x]){
           console.log(y)
           if(y[1] ==dia){
             total2+=y[0]
-            console.log(total2)
           }
           }
           console.log(totalarrayHora)
           if(!totalarrayHora.includes(total2) && total2 != 0){
-            console.log(total2)
             totalarrayHora.push(total2)
 
           }
@@ -260,7 +274,6 @@ let arrayhora = [
         settotal(totalArray[totalArray.length-1])
         setDiff(totalArray[totalArray.length-1]-totalArray[totalArray.length-2])
         setDiffper(totalArray[totalArray.length-1]/totalArray[totalArray.length-2])
-        console.log(totalArray[totalArray.length-1]+totalArray[totalArray.length-2]/2)
         let somavalor = totalArray.reduce((a,b)=>a+b)
         SetMedia(somavalor/2)
         console.log(somavalor)
@@ -284,11 +297,6 @@ let arrayhora = [
       console.log({"dicionario":diadict})
       const valor = totalArray
       console.log(totalArray)
-      console.log(diaarraychosen)
-      console.log(totalArrayMes)
-      console.log(mesarraychosen)
-      console.log(horarraychosen)
-      console.log(totalarrayHora)
       const newChartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -322,7 +330,7 @@ let arrayhora = [
       console.log(temp)
       if(temp=="Mensal"){
         newChartInstance.data.labels = diaarraychosen
-        newChartInstance.data.datasets[0].data =valor
+        newChartInstance.data.datasets[0].data = valor
         newChartInstance.update();
 
       }

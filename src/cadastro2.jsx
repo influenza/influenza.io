@@ -200,7 +200,7 @@ if(cadastro == true){
     <div id='divconcad2' style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`,  height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"", }}>
     <div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",height:"15vh",justifyContent:"center",alignItems:"center"}}>
 <div id="imgs" >  
-<img src={`${logo}`} className='img'alt="" />
+<img src={`${logo}`} onClick={navigate("/")} className='img'alt="" />
   <img src={`${letraverde}`} className='img'   alt="" /></div>
 
     </div>

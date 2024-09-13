@@ -2,7 +2,7 @@
 
 import "./Login.css"
 import { Button } from './button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import fundo from "./image.png"
 import logo from "./logo.png"
@@ -13,12 +13,11 @@ import axios from 'axios';
 import { Ecosynergy } from './ecosynergy';
 import { Input } from './input';
 import jsCookie from 'js-cookie';
-
 function Metas() {
   const [tempo, setTempo] = useState(0);
   const [metavalue, setMetavalue] = useState('');
   const [meta, setmeta]= useState(["","","","",])
-
+  let navigate = useNavigate()
   useEffect(() => {
     console.log(tempo);
     console.log(metavalue);
@@ -41,7 +40,7 @@ function Metas() {
     <div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"", justifyContent:"center",alignItems:"center",textAlign:"center"}}>
     <div style={{display:"flex",flexDirection:"row",marginTop:"-25vh", width:"100vw",}}>
 <div style={{width:"50vw", display:"flex", alignItems:"center", textAlign:"left",justifyContent:"left", marginRight:"20px", fontSize:"20px"}}>  
-<img src={`${logo}`} style={{width:"150px", height:"150px", marginRight:"20px"}} alt="" />
+<img src={`${logo}`} onClick={navigate("/")} style={{width:"150px", height:"150px", marginRight:"20px"}} alt="" />
   <img src={`${letraverde}`} style={{width:"200px", height:"200px"}} alt="" /></div>
 
     </div>

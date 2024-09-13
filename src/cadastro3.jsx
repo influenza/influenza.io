@@ -109,7 +109,7 @@ function handlecodver(){
     <div style={{display:"flex",flexDirection:"row", width:"100vw",}}>
 <div style={{width:"40vw", display:"flex", alignItems:"center", textAlign:"left",justifyContent:"left", marginRight:"20px", fontSize:"20px"}}>  
 <div id='divimg' style={{width:"50vw", display:"flex", alignItems:"center", textAlign:"left",justifyContent:"left", marginRight:"20px" ,fontSize:"20px"}}>  
-<img src={`${logo}`} style={{width:"150px", height:"150px", marginRight:"20px"}} alt="" />
+<img src={`${logo}`} onClick={navigate("/")} style={{width:"150px", height:"150px", marginRight:"20px"}} alt="" />
   <img src={`${letraverde}`} style={{width:"150px", height:"150px"}} alt="" /></div>
 
 </div>

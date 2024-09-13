@@ -72,7 +72,11 @@ function Login() {
 
 
     for(let x=0; x<inputs.length; x++) {
-
+      if(erros[x].style.opacity =="1"){
+        erros[x]?.removeChild(erros[x].lastChild);
+        erros[x]?.removeChild(erros[x].lastChild);
+        console.log('gas')
+             }
         if(!inputs[x].value){
           console.log("a")
         erro[x].style.opacity = "1"
@@ -130,21 +134,20 @@ function Login() {
               console.log(res)
               Cookies.set("NomeEqui2","")
             })
-            navigate("/equipevisao")
           })
            .catch(error => {
         console.error(error);
       });  
       })
       .catch( RES=>{
-      if(erros[x].textContent !=""){
-        erros[x]?.removeChild(erros[x].lastChild);
-        erro[x].style.opacity = "0"
-        erros[x].style.opacity = "0"
-        erro[x].style.opacity = "1"
-        erros[x].style.opacity = "1"
-        erros[x].append("LOGIN INVALIDO")
-      }
+
+        console.log(RES)
+        erro[0].style.opacity = "1"
+        erros[0].style.opacity = "1"
+              erro[1].style.opacity = "1"
+        erros[1].style.opacity = "1"
+        erros[0].append("LOGIN INVALIDO")
+        erros[1].append("LOGIN INVALIDO")
 
       }
       )
@@ -158,7 +161,7 @@ function Login() {
 
 <div id='imgmargin' className='imgsmargins' style={{display:"flex", width:"100vw",height:"20vh",justifyContent:"center",alignItems:"center"}}>
     <div id='mdlogdiv'>  
-<img src={`${logo}`} className='img' alt="" />
+<img src={`${logo}`} onClick={navigate("/")} className='img' alt="" />
   <img src={`${letraverde}`} className='img' alt="" /></div>
 
      <div  style={{display:"flex", flexDirection:"row", justifyContent:"right", alignItems:"center",width:"50vw",marginRight:"20px"}}><span id='SemConta' >Não possui conta? crie!</span>           <button id="btncadastro" style={{
