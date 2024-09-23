@@ -154,13 +154,10 @@ let arrayhora = [
     };
 
     try {
-      console.log(temp)
-      console.log(Cookies.get().NomeEqui2)
+
       let temhandle
       await axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${Cookies.get().ID}`, headers).then((res)=>{console.log(res) 
-        console.log(res.data[0].handle)
         temhandle=res.data[0].handle
-        console.log(temhandle)
 
       })
       await axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/team/${temhandle}?page=1&direction=asc`, headers)
@@ -178,20 +175,19 @@ let arrayhora = [
            diadict[diaValue].push([Data1[index].value , DataDiaMes])
            Mesdict[mesvalue].push([Data1[index].value , DataDiaMes])
           diadicttrue[horavalue].push([Data1[index].value , Data1[index].timestamp.slice(8,10),index])
-           console.log(diadicttrue)
-           console.log(mes)
-           console.log(mesvalue)
+
             if(!diaarraychosen.includes(diaValue)){
+
+              if(mesvalue == mes){
               diaarraychosen.push(diaValue)
+              }
             }
             if(!mesarraychosen.includes(mesvalue)){
               mesarraychosen.push(mesvalue)
             }
 
-            console.log(diaValue)
-            console.log(dia)
-            console.log(diadicttrue)
-            if(!horarraychosen.includes(horavalue )&& diaValue == dia){
+
+            if(!horarraychosen.includes(horavalue )&& diaValue == dia && mesvalue == mes){
               horarraychosen.push(horavalue)
             }
         }
@@ -203,18 +199,13 @@ let arrayhora = [
 
         for(let x of diaarraychosen){
           total2 =0
-          console.log(x)
-          console.log(diaarraychosen)
-          console.log(mes)
-          console.log(Mesdiavaluedict[mesvalue])
-          console.log(diadict)
-          console.log(diadict[x])
           
        for (let y of diadict[x]){
         total2+=y[0]
        }
        if(!totalArray.includes(total2)){
         totalArray.push(total2)
+        settotal(total2)
        }
         }
 
@@ -248,15 +239,17 @@ let arrayhora = [
            console.log(temp == "Diaria")
 
       })
-      console.log(totalArray)
       if(temp=="Mensal"){
-        settotal(totalArrayMes[totalArrayMes.length-1])
-        setDiff(totalArrayMes[totalArrayMes.length-1]-totalArray[totalArray.length-2])
-        setDiffper(totalArrayMes[totalArray.length-2]?totalArrayMes[totalArray.length-2]/totalArrayMes[totalArrayMes.length-1]:100)
-        console.log((totalArrayMes[totalArrayMes.length-1]+totalArray[totalArray.length-2])/2)
-        SetMinimo(total)
-        SetMaximo(total)
+        console.log()
 
+        settotal(totalArray == []?totalArray.reduce((a,b)=>a+b):0)
+     
+        setDiff(total-totalArrayMes[totalArrayMes.length-2])
+
+        setDiffper(totalArrayMes[totalArrayMes.length-2]?total/totalArrayMes[totalArrayMes.length-2]:total/100)
+        SetMinimo(Math.min(...totalArray))
+        SetMaximo(Math.max(...totalArray))
+        SetMedia(total/totalArray.length)
       }
       else if(temp == "Anual"){
         let totalano = totalArrayMes.reduce((a,b)=>a+b)
@@ -270,17 +263,15 @@ let arrayhora = [
         SetMedia(totalano/2)
       }
       else if(temp == "Diaria"){
-        console.log("fsafsaga")
-        settotal(totalArray[totalArray.length-1])
-        setDiff(totalArray[totalArray.length-1]-totalArray[totalArray.length-2])
-        setDiffper(totalArray[totalArray.length-1]/totalArray[totalArray.length-2])
-        let somavalor = totalArray.reduce((a,b)=>a+b)
-        SetMedia(somavalor/2)
-        console.log(somavalor)
+        console.log(totalarrayHora)
+        settotal(totalarrayHora ==[]? totalarrayHora.reduce((a,b)=>a+b):0)
+        console.log(total)
+        setDiff(total-totalArray[totalArray.length-2])
 
-        let ordem = [...totalarrayHora].sort((a,b)=>b-a)
-        SetMinimo(ordem[ordem.length-1])
-        SetMaximo(ordem[0])
+        setDiffper(totalArray[totalArray.length-2]?total/totalArray[totalArray.length-2]:total/100)
+        SetMinimo(Math.min(...totalArray))
+        SetMaximo(Math.max(...totalArray))
+        SetMedia(total/totalarrayHora.length)
       }
     } catch (error) {
       console.error("Erro ao obter dados do servidor:", error);
@@ -604,8 +595,8 @@ let arrayhora = [
 <span>
 
 {total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]) >= 0
-?<div className="spaninfodash" style={{color:"rgb(20, 181, 122)"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])-1)*100).toFixed(2)}%`}</div>
-:<div className="spaninfodash" style={{color:"red"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])-1)*100).toFixed(2)}%`}</div>}
+?<div className="spaninfodash" style={{color:"rgb(20, 181, 122)"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]))*100).toFixed(2)}%`}</div>
+:<div className="spaninfodash" style={{color:"red"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]))*100).toFixed(2)}%`}</div>}
 
 
 </span>
@@ -685,7 +676,7 @@ let arrayhora = [
   </select></div>               
 </div>
   <div className="restinfoDash" style={{display:"flex",alignItems:"center",justifyContent:"center", alignItems:"center"}}>
-  <span className="spaninfodash" style={{  fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#14B57A",}}>{Metrica == "Media" ?` ${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
+  <span className="spaninfodash" style={{  fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#14B57A",}}>{Metrica == "Media" ?` ${Media}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
 
   </div>
 

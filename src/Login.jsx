@@ -95,20 +95,20 @@ function Login() {
       else{
 
         console.log("a")
-
+        
         const data = {            
           "identifier": email,
           "password": senha             
       };
-      fetch("http://ec2-44-220-83-117.compute-1.amazonaws.com/auth/signin",{method:"POST",body:data}).then((res)=>console.log(res)).catch((res)=>console.log(res))
-      axios.post('http://ec2-44-220-83-117.compute-1.amazonaws.com/auth/signin', data, {httpsAgent:false,maxRedirects:0,httpAgent:true})
+      console.log(data)
+      axios.post('http://ec2-44-220-83-117.compute-1.amazonaws.com/auth/signin', data)
       .then(response => {
         Cookies.set("LoginResponse", response)
         Cookies.set("Nome",response.data.username)
         Cookies.set("Email",email)
         Cookies.set("Senha",senha)
         Cookies.set("Token", response.data.accessToken)
-        console.log(Cookies.get())
+        console.log(response)
 
         
         const headers = {
@@ -138,6 +138,7 @@ function Login() {
            .catch(error => {
         console.error(error);
       });  
+      navigate("/equipevisao")
       })
       .catch( RES=>{
 
@@ -161,7 +162,7 @@ function Login() {
 
 <div id='imgmargin' className='imgsmargins' style={{display:"flex", width:"100vw",height:"20vh",justifyContent:"center",alignItems:"center"}}>
     <div id='mdlogdiv'>  
-<img src={`${logo}`} onClick={navigate("/")} className='img' alt="" />
+<img src={`${logo}`}  className='img' alt="" />
   <img src={`${letraverde}`} className='img' alt="" /></div>
 
      <div  style={{display:"flex", flexDirection:"row", justifyContent:"right", alignItems:"center",width:"50vw",marginRight:"20px"}}><span id='SemConta' >Não possui conta? crie!</span>           <button id="btncadastro" style={{
