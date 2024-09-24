@@ -15,6 +15,8 @@ function Login() {
   let navigate=useNavigate()
 
   const [email, setEmail] = useState("")
+  const [login, setLogin] = useState(false)
+
   const [senha, setSenha] = useState("")
   let erros = document.getElementsByClassName("erros")
   let erro = document.getElementsByClassName("erro")
@@ -70,31 +72,42 @@ function Login() {
   
   function handleEnviar(){
 
-
     for(let x=0; x<inputs.length; x++) {
+          console.log(erros[x])
+
       if(erros[x].style.opacity =="1"){
-        erros[x]?.removeChild(erros[x].lastChild);
-        erros[x]?.removeChild(erros[x].lastChild);
+        if (erros[x]?.lastChild) {
+          erros[x].removeChild(erros[x].lastChild);
+      }
         console.log('gas')
              }
-        if(!inputs[x].value){
+        if(!inputs[0].value && !inputs[1].value){
           console.log("a")
-        erro[x].style.opacity = "1"
-        erros[x].style.opacity = "1"
+
         if(erros[x].textContent == ""){
           if(inputs[x] == inputs[0]){
             erros[x].append("EMAIL OBRIGATORIO")
+            erro[x].style.opacity = "1"
+            erros[x].style.opacity = "1"
           }else{
             erros[x].append("SENHA OBRIGATORIO")
+            erro[x].style.opacity = "1"
+            erros[x].style.opacity = "1"
   
           }
         }
       
 
+      }else{
+        setLogin(true)
+        erro[x].style.opacity = "0"
+        erros[x].style.opacity = "0"
       }
-      else{
+    }
+      if(login){
 
-        console.log("a")
+        console.log(email)
+        console.log(senha)
         
         const data = {            
           "identifier": email,
@@ -153,7 +166,6 @@ function Login() {
       }
       )
         }
-}
   }
   return (
     <>

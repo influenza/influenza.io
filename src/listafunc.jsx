@@ -67,9 +67,9 @@ export function Listausu(props) {
           console.log("element")
           console.log(res.data)
           console.log(Cookies.get())
-          console.log(res.data[Cookies.get().IndexEqui].members)
+          console.log(res.data[Cookies.get().IndexEqui?Cookies.get().IndexEqui:0].members)
           console.log(indexEqui)
-          res.data[indexEqui].members.forEach(element => {
+          res.data[indexEqui?indexEqui:0].members.forEach(element => {
           console.log(element)
           idmembers.push(element.id)
           if(element.role == "COMMON_USER"){
