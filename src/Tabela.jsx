@@ -12,6 +12,8 @@ import { Navbar3 } from "./navbar3";
 import { Navbar4 } from "./Navbar4";
 import axios from "axios";
 let erroSemEmi
+
+  
 let diadict = {"01": [],"02": [],"03": [],"04": [],"05": [],"06": [],"07": [],"08": [],"09": [],"10": [],"11": [],"12": [],"13": [],"14": [],"15": [],"16": [],"17": [],"18": [],"19": [],"20": [],"21": [],"22": [],"23": [],"24": []}
 let arrayhora = [
      "01", "02", "03", "04", "05", "06", "07", "08", "09",
@@ -50,6 +52,14 @@ let mesarraychosen =[]
 let mes2arraychosen =[]
 let totaldia =0
     export function Tabela(props){
+        const [indexEqui, Setindexequi] = useState(document.getElementsByClassName("SelectEqui") == Number?document.getElementsByClassName("SelectEqui"):0)
+
+        console.log(document.getElementsByClassName("SelectEqui"))
+function handleindexEqui(e){
+    console.log(document.getElementsByClassName("SelectEqui"))
+  Setindexequi(document.getElementsByClassName("SelectEqui"))
+  return(document.getElementsByClassName("SelectEqui"))
+  }
   let navigate=useNavigate()
   useEffect(()=>{
 
@@ -71,9 +81,10 @@ let totaldia =0
 
         const [UmaVez,SetUmaVez]=useState(true);
         const [NomeEqui, SetEqui] = useState(document.getElementsByClassName("SelectEqui")[0])
+        let linhas
         useEffect(()=>{
-            funcData()
             const intervalId = setInterval(() => {
+                funcData()
 
                 SetEqui(document.getElementsByClassName("SelectEqui")[0].id);
               }, 2000);
@@ -89,8 +100,10 @@ let totaldia =0
             };
             let temhandle
             await axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${Cookies.get().ID}`, headers).then((res)=>{console.log(res) 
-              console.log(res.data[0].handle)
-              temhandle=res.data[0].handle
+              let id = document.getElementsByClassName("SelectEqui")[0].id
+              console.log(res.data[id])
+              temhandle=res.data[id].handle
+              console.log(temhandle=res.data[indexEqui].handle)
               console.log(temhandle)
       
             })
@@ -99,8 +112,8 @@ let totaldia =0
                 .then((res) => {
                     const dataList = res.data._embedded.mQ135ReadingVOList;
                     setData(dataList);
-                    console.log(data)
-                    console.log(res.data._embedded)
+                     linhas = Array.from({ length: Data.length }, (_, index) => index);
+
                     for (let x = 0; x < dataList.length; x++) {
                         if(datavalue.length<dataList.length){
                             datavalue.push([dataList[x].value, dataList[x].timestamp])
@@ -174,15 +187,11 @@ let totaldia =0
           };
         }, []); // O array de dependências vazio faz com que o efeito seja executado apenas uma vez
 
-        console.log(Data)
-        const linhas = Array.from({ length: Data.length }, (_, index) => index);
         const [Pages, setPages] = useState((linhas.length ).toFixed());
   
         let arraypages = []
-        console.log("dasfsa")
      
         Cookies.set("dataar", [1, 2, 3, 4, 5, arraypages.length]);
-        console.log(Pages)
         for (let index = 0; index < (linhas.length/100).toFixed(); index++) {
             arraypages.push(index+1)
         }
@@ -199,7 +208,6 @@ let totaldia =0
             reader.readAsDataURL(file);
           }
         };
-        console.log(arraypages)
         let datavaluehora=[]
         let mesvaluehora=[]
 
@@ -240,7 +248,7 @@ let totaldia =0
         
         return(
             <>
-            <Navbar3></Navbar3>
+            <Navbar3 funcEqui={handleindexEqui}></Navbar3>
             <div style={{display:"flex", flexDirection:"row", overflow:"hidden"}}>
           
             <Navbar4 es={2}></Navbar4>
