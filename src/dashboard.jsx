@@ -240,16 +240,16 @@ let arrayhora = [
 
       })
       if(temp=="Mensal"){
-        console.log()
-
-        settotal(totalArray == []?totalArray.reduce((a,b)=>a+b):0)
+        console.log(totalArray)
+        let totalvalor = totalArray.reduce((a,b)=>a+b)
+        settotal(totalArray ?totalArray.reduce((a,b)=>a+b):0)
      
         setDiff(total-totalArrayMes[totalArrayMes.length-2])
 
-        setDiffper(totalArrayMes[totalArrayMes.length-2]?total/totalArrayMes[totalArrayMes.length-2]:total/100)
+        setDiffper(totalArrayMes[totalArrayMes.length-2]?totalvalor/totalArrayMes[totalArrayMes.length-2]:totalvalor/100)
         SetMinimo(Math.min(...totalArray))
         SetMaximo(Math.max(...totalArray))
-        SetMedia(total/totalArray.length)
+        SetMedia(totalvalor/totalArray.length)
       }
       else if(temp == "Anual"){
         let totalano = totalArrayMes.reduce((a,b)=>a+b)
@@ -271,7 +271,7 @@ let arrayhora = [
         setDiffper(totalArray[totalArray.length-2]?total/totalArray[totalArray.length-2]:total/100)
         SetMinimo(Math.min(...totalArray))
         SetMaximo(Math.max(...totalArray))
-        SetMedia(total/totalarrayHora.length)
+        SetMedia(total?total/totalarrayHora.length:0)
       }
     } catch (error) {
       console.error("Erro ao obter dados do servidor:", error);
@@ -503,6 +503,21 @@ let arrayhora = [
         setAnte(false);
       }
     }
+    const faixaStyle = width < 900 ? {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      marginTop: "2vh"
+    } :
+    {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      marginTop: "2vh"
+    } ;  // Estilo vazio caso a condição não seja verdadeira
+    
+
+    
   return ( 
   Cookies.get().Metas != undefined ?(
     <>
@@ -516,14 +531,15 @@ let arrayhora = [
 <p id="TituloMdDash">Graficos Das Emissões</p>
 
 </div>
-<div id="faixa1" style={{display: "flex", flexDirection: "row", justifyContent: "center", marginTop:"2vh",  }}>
+
+<div id="faixa1"  style={faixaStyle}>
 <div id="gap550dash" style={{display:"flex", justifyContent:"center", flexDirection:"row", }}>
 <div className="mdDashinfodiv" style={{ backgroundColor: "white",justifyContent:"start"  }}>
 <div style={{ flexDirection: "column", display: "flex" }}>
  <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
  <span id="mdtittempDash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", }}>Total {temp}</span> 
 
- <div><select name="tempo" onChange={tempo} id="tempo" >
+ <div><select  style={{cursor:"pointer"}}name="tempo" onChange={tempo} id="tempo" >
     <option value="Diaria">Diária</option>
     <option value="Mensal">Mensal</option>
     <option value="Anual">Anual</option>
@@ -580,7 +596,7 @@ let arrayhora = [
  <span style={{color:"#4A9AE9"}}> {Cookies.get().Metas?Cookies.get().Metas.split(",")[dictemp[temp]]:0}
  </span>
 
-  </span><Link to="/metas"><button id="btnMetas" style={{backgroundColor: "#D3D3D3", }}>Definir meta</button></Link>
+  </span><Link to="/metas"><button id="btnMetas" style={{backgroundColor: "#D3D3D3", cursor:"pointer"}}>Definir meta</button></Link>
     
 </div>
 <div className="restinfoDash" style={{display:"flex",textAlign:"center",justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
@@ -611,7 +627,7 @@ let arrayhora = [
 <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
 <span id="mdtittempDash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", }}>{temp} {Metrica}</span> 
  <div>
-  <select name="tempo" onChange={metrica} id="tempo" style={{ backgroundColor: "#D3D3D3", marginRight: "10px", borderRadius: "10px",  }}>
+  <select name="tempo" onChange={metrica} id="tempo" style={{ backgroundColor: "#D3D3D3", marginRight: "10px", borderRadius: "10px", cursor:"pointer" }}>
     <option value="Media">Media</option>
     <option value="Minimo">Minimo</option>
     <option value="Maximo">Maximo  </option>
@@ -619,7 +635,7 @@ let arrayhora = [
   </select></div>               
 </div>
   <div className="restinfoDash" style={{display:"flex",alignItems:"center",justifyContent:"center", alignItems:"center"}}>
-  <span style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#4A9AE9",}}>{Metrica == "Media" ? `${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
+  <span style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#4A9AE9",fontSize:"20px"}}>{Metrica == "Media" ? `${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
 
   </div>
 
@@ -668,7 +684,7 @@ let arrayhora = [
 <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
 <span id="mdtittempDash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", }}>{temp} {Metrica}</span> 
  <div>
-  <select name="tempo" onChange={metrica} id="tempo" style={{ backgroundColor: "#D3D3D3", marginRight: "10px", borderRadius: "10px",  }}>
+  <select name="tempo" onChange={metrica} id="tempo" style={{ backgroundColor: "#D3D3D3", marginRight: "10px", borderRadius: "10px",cursor:"pointer"  }}>
     <option value="Media">Media</option>
     <option value="Minimo">Minimo</option>
     <option value="Maximo">Maximo  </option>
@@ -688,7 +704,7 @@ let arrayhora = [
 <div style={{ flexDirection:"row", display: "flex", justifyContent: "center" , gap:"20px"}}>
 <div>
 <div style={{backgroundColor:"white",borderTopLeftRadius: "10px",borderTopRightRadius: "10px", justifyContent:"center",display:"flex",alignItems:"center", textAlign:"center"}}><span id="mdtittempDash" > Tipos de Gases</span> <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-<select name="tempo" onChange={graficoMet} id="tempo" style={{ marginTop:"10px",backgroundColor: "transparent",color:"white",border:"white", borderRadius: "10px",marginRight:"10px", }}>
+<select name="tempo" onChange={graficoMet} id="tempo" style={{ marginTop:"10px",backgroundColor: "transparent",color:"white",border:"white", borderRadius: "10px",cursor:"pointer",marginRight:"10px", }}>
     <option value="Barra">Barra</option>
     <option value="Pizza">Pizza</option>
     <option value="Media">Media</option>
@@ -720,7 +736,7 @@ let arrayhora = [
 <div style={{ flexDirection:"row", display: "flex", justifyContent: "center" , gap:"20px"}}>
 <div>
 <div style={{backgroundColor:"white",borderTopLeftRadius: "10px",borderTopRightRadius: "10px", justifyContent:"space-between",display:"flex",alignItems:"center", textAlign:"center"}}><span id="mdtittempDash" style={{marginLeft:"10px"}}> Tipos de Gases</span> <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-<select name="tempo" onChange={graficoMet} id="tempo" style={{marginTop:"10px", backgroundColor: "#D3D3D3", borderRadius: "10px", }}>
+<select name="tempo" onChange={graficoMet} id="tempo" style={{marginTop:"10px", backgroundColor: "#D3D3D3", borderRadius: "10px",cursor:"pointer" }}>
     <option value="Barra">Barra</option>
     <option value="Pizza">Pizza</option>
     <option value="Media">Media</option>

@@ -258,7 +258,7 @@ let totaldia =0
                 <div id="mdSelectstab">
                     <div style={{display:"flex", flexDirection:"column"}}>
                     <span className="mdselectspantab">Tabela por:</span>
-                    <select name="" onChange={handleTableType} id="" className="mdselecttab">
+                    <select style={{cursor:"pointer"}} name="" onChange={handleTableType} id="" className="mdselecttab">
                     <option value="Emissao">Emissao</option>
 
                     <option value="Hora">Hora</option>
@@ -271,7 +271,7 @@ let totaldia =0
                 <div id="mdSelectstab">
                     <div style={{display:"flex", flexDirection:"column"}}>
                     <span className="mdselectspantab"> Sensor:</span>
-                    <select name="" id="" className="mdselecttab">
+                    <select name="" style={{cursor:"pointer"}} id="" className="mdselecttab">
                         <option value="MQ7">MQ7</option>
                         <option value="FIRE">FIRE</option>
                         <option value="MQ135">MQ135</option>
@@ -289,7 +289,7 @@ let totaldia =0
 <path d="M19.4649 0.151733V14.0284H14.6973L21.9203 22.3543L29.0002 14.0284H24.2326V0.151733H19.4649Z" fill="white"/>
 </svg>
 
-                    <select id="mdselectfilter" onChange={(e)=>{
+                    <select style={{cursor:"pointer"}} id="mdselectfilter" onChange={(e)=>{
                         setFiltro(e.target.value)
                     }} className="mdselectazul" value={Filtro}>
                         

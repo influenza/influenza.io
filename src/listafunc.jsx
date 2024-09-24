@@ -23,7 +23,7 @@ export function Listausu(props) {
   const [ultimoclick, setultimoclick] = useState(null);
   const [idMap, setIdMap] = useState({});
   const [response2, setResponse2] = useState()
-  const [indexEqui, Setindexequi] = useState(document.getElementsByClassName("SelectEqui")[0])
+  const [indexEqui, Setindexequi] = useState(document.getElementsByClassName("SelectEqui")?document.getElementsByClassName("SelectEqui"):0)
   const [IDmembers, setIDmembers] = useState()
   const [Roles, setRoles] = useState()
   const [Datapages2, setDatapages2] = useState([])
@@ -65,6 +65,8 @@ export function Listausu(props) {
       const response = await axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${Cookies.get().ID}`, headers).then(res=>{
 
           console.log("element")
+          console.log(res.data)
+          console.log(Cookies.get())
           console.log(res.data[Cookies.get().IndexEqui].members)
           console.log(indexEqui)
           res.data[indexEqui].members.forEach(element => {
@@ -304,7 +306,7 @@ fill="#000000" stroke="none">
 </g>
 </svg>
 </div>
-<div id="mdlistusudiv2" style={{display:"flex",flexDirection:"row",justifyContent:"center",background:"#0075E8", alignItems:"center", border:"1px solid black", borderRadius:"10px"}}>
+<div id="mdlistusudiv2" style={{display:"flex",flexDirection:"row",justifyContent:"center",background:"#0075E8", alignItems:"center", border:"1px solid black", borderRadius:"10px",cursor:"pointer"}}>
 <svg style={{rotate:"90deg",marginLeft:"20px", marginRight:"10px"}}  version="1.0" xmlns="http://www.w3.org/2000/svg"
 width="20px" height="20px" viewBox="0 0 1280.000000 1209.000000"
 preserveAspectRatio="xMidYMid meet">
@@ -340,7 +342,7 @@ setFilterSelect(e.target.value)
 
 </select>
 </div>
-<div id="mdlistusudivlixo" style={{backgroundColor:"#FF6300",display:"flex",justifyContent:"center",alignItems:"center",borderRadius:"10px"}} onClick={()=>{
+<div id="mdlistusudivlixo"  style={{backgroundColor:"#FF6300",display:"flex",justifyContent:"center",alignItems:"center",borderRadius:"10px",cursor:"pointer"}} onClick={()=>{
 for (let index = 0; index < iddict.length; index++) {
   console.log(idMap[iddict[index]])
   axios.delete(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/91/user/${idMap[iddict[index]]}`, headers)

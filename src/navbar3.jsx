@@ -50,16 +50,16 @@ export function Navbar3(props) {
         <div id="mdnav1equihome" >
             <div id="mdnav11equihome">
                 <div >
-                    <span onClick={() => { navigate("/equipevisao") }}> Home</span>
+                    <span onClick={() => { navigate("/equipevisao") }} style={{cursor:"pointer"}}> Home</span>
                 </div>
                 <span>
-                    <select  id={EquiSelect} className="SelectEqui" onChange={(e)=>{
+                    <select  id={EquiSelect} style={{cursor:"pointer"}} className="SelectEqui" onChange={(e)=>{
                             console.log(e.target.value)
                             SetEquiSelect(e.target.value)
                             Cookies.set("IndexEqui",EquiSelect)
 
                             }}  >
-                        <option value="">Workspace</option>
+                        <option value="" >Workspace</option>
                         {Equi.map((linha, index) => {
                         if(EquiSelect == index){
                             Cookies.set("NomeEqui2",linha.name)
@@ -75,7 +75,7 @@ export function Navbar3(props) {
                 </span>
             </div>
             <div  id="mdnav12equihome">
-                <button onClick={handleNavigate} id="mdbtnconequihome">
+                <button onClick={handleNavigate} id="mdbtnconequihome" style={{cursor:"pointer"}}>
             {     width >500 &&   <svg id="mdsvgConvida" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19 7.5C19 11.6421 15.6421 15 11.5 15C7.35786 15 4 11.6421 4 7.5C4 3.35786 7.35786 0 11.5 0C15.6421 0 19 3.35786 19 7.5Z" fill="white" />
                         <circle cx="11.5" cy="7.5" r="4.5" fill="#3AB110" />
@@ -85,7 +85,7 @@ export function Navbar3(props) {
                     Convide
                 </button>
 
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                <svg style={{cursor:"pointer"}} version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="30px" height="30px" viewBox="0 0 1280.000000 1278.000000"
                     preserveAspectRatio="xMidYMid meet">
                     <metadata>
@@ -132,7 +132,7 @@ export function Navbar3(props) {
                             2103 609 537 1352 856 2169 930 151 14 608 6 755 -13z" />
                     </g>
                 </svg>
-                <svg onClick={()=>{
+                <svg style={{cursor:"pointer"}} onClick={()=>{
                     if(Notificacao == true){
                         SetNotificacao(false)
                     }else{
@@ -145,7 +145,12 @@ export function Navbar3(props) {
         </div>
         <div style={{ height:"0.0001px", justifyContent:"center",display:"flex", gap:"80vw" }}>
             <div></div>
-
+                {Notificacao && 
+                <>
+                <div style={{background:"white",width:"28vw",height:"92vh",zIndex:"1"}}>
+                    
+                </div>
+                </>}
      </div>
         </>
     );
