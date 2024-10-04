@@ -345,7 +345,8 @@ setFilterSelect(e.target.value)
 <div id="mdlistusudivlixo"  style={{backgroundColor:"#FF6300",display:"flex",justifyContent:"center",alignItems:"center",borderRadius:"10px",cursor:"pointer"}} onClick={()=>{
 for (let index = 0; index < iddict.length; index++) {
   console.log(idMap[iddict[index]])
-  axios.delete(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/91/user/${idMap[iddict[index]]}`, headers)
+  console.log(Cookies.get())
+  axios.delete(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/${Cookies.get().NomeEquiID}/user/${idMap[iddict[index]]}`, headers)
 }
 }}>
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"

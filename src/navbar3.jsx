@@ -1,15 +1,19 @@
 import { useState, useEffect, useRef } from "react";
 import Cookies from "js-cookie";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import axios from "axios";
 export function Navbar3(props) {
     let navigate = useNavigate();
     const [Equi, SetEqui] = useState([]);
     const [EquiSelect, SetEquiSelect] = useState(0);
     const [Notificacao, SetNotificacao] = useState(false);
+    const [Configuracao, SetConfiguracao] = useState(false);
+    const [ConvitesNum, SetConvitesNum] = useState(false);
+
     const [EquiSelectindex, SetEquiSelectindex] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
+    
     const handleResize = () => {
         setWidth(window.innerWidth);
       };
@@ -37,7 +41,7 @@ export function Navbar3(props) {
         axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${Cookies.get().ID}`, headers)
             .then(res => {
                 console.log(res.data[EquiSelect])
-
+        axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/invite/v1/pending/recipient/${Cookies.get().ID}`,headers).then((res)=>{SetConvitesNum(res.data.length)})  
 
                 console.log(Cookies.get())
                 SetEqui(res.data);
@@ -75,7 +79,7 @@ export function Navbar3(props) {
                 </span>
             </div>
             <div  id="mdnav12equihome">
-                <button onClick={handleNavigate} id="mdbtnconequihome" style={{cursor:"pointer"}}>
+                <button onClick={handleNavigate} id="mdbtnconequihome" style={{cursor:"pointer"}}  >
             {     width >500 &&   <svg id="mdsvgConvida" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19 7.5C19 11.6421 15.6421 15 11.5 15C7.35786 15 4 11.6421 4 7.5C4 3.35786 7.35786 0 11.5 0C15.6421 0 19 3.35786 19 7.5Z" fill="white" />
                         <circle cx="11.5" cy="7.5" r="4.5" fill="#3AB110" />
@@ -85,7 +89,14 @@ export function Navbar3(props) {
                     Convide
                 </button>
 
-                <svg style={{cursor:"pointer"}} version="1.0" xmlns="http://www.w3.org/2000/svg"
+                <svg style={{cursor:"pointer"}} onClick={()=>{
+                     if(Notificacao == true){
+                        SetConfiguracao(false)
+                    }else{
+                        SetConfiguracao(true)
+                        SetNotificacao(false)
+                    }
+                }} version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="30px" height="30px" viewBox="0 0 1280.000000 1278.000000"
                     preserveAspectRatio="xMidYMid meet">
                     <metadata>
@@ -137,6 +148,7 @@ export function Navbar3(props) {
                         SetNotificacao(false)
                     }else{
                         SetNotificacao(true)
+                        SetConfiguracao(false)
                     }
                 }} width="30px" height="35px" viewBox="0 0 48 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 47.5V42.5H12V25C12 21.5417 12.8333 18.4792 14.5 15.8125C16.1667 13.1042 18.3333 11.3333 21 10.5V8.75C21 7.70833 21.2833 6.83333 21.85 6.125C22.45 5.375 23.1667 5 24 5C24.8333 5 25.5333 5.375 26.1 6.125C26.7 6.83333 27 7.70833 27 8.75V10.5C29.6667 11.3333 31.8333 13.1042 33.5 15.8125C35.1667 18.4792 36 21.5417 36 25V42.5H40V47.5H8ZM24 55C22.9 55 21.95 54.5208 21.15 53.5625C20.3833 52.5625 20 51.375 20 50H28C28 51.375 27.6 52.5625 26.8 53.5625C26.0333 54.5208 25.1 55 24 55ZM16 42.5H32V25C32 22.25 31.2167 19.8958 29.65 17.9375C28.0833 15.9792 26.2 15 24 15C21.8 15 19.9167 15.9792 18.35 17.9375C16.7833 19.8958 16 22.25 16 25V42.5Z" fill="black" />
@@ -148,7 +160,15 @@ export function Navbar3(props) {
                 {Notificacao && 
                 <>
                 <div style={{background:"white",width:"28vw",height:"92vh",zIndex:"1"}}>
-                    
+                    Notificação
+                </div>
+                </>}
+                {Configuracao && 
+                <>
+                <div style={{background:"white",width:"28vw",height:"92vh",zIndex:"1", display:"flex",flexDirection:"column", gap:"20px"}}>
+                    <div style={{fontSize:"30px"}}>                    Configuração
+                    </div>
+                    <Link style={{fontSize:"30px", textDecoration:"none"}} to={"/entrarequipe"}> {ConvitesNum}Convites</Link>
                 </div>
                 </>}
      </div>

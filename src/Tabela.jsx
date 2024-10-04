@@ -48,7 +48,7 @@ let arrayMes2 = [
 let datavalue=[]
 let diaarraychosen =[]
 let mesarraychosen =[]
-
+let mesdia =[]
 let mes2arraychosen =[]
 let totaldia =0
     export function Tabela(props){
@@ -78,10 +78,11 @@ function handleindexEqui(e){
         const [DataSelect,setDataSelect]=useState([]);
         const [TabelaType,setTabelaType]=useState("Emissao");
         const [Filtro,setFiltro]=useState("MenorData");
+        const [date,setDate]=useState(false);
+        const [Pages, setPages] = useState();
 
         const [UmaVez,SetUmaVez]=useState(true);
         const [NomeEqui, SetEqui] = useState(document.getElementsByClassName("SelectEqui")[0])
-        let linhas
         useEffect(()=>{
             const intervalId = setInterval(() => {
                 funcData()
@@ -110,13 +111,14 @@ function handleindexEqui(e){
             axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/team/${temhandle}?page=1&direction=asc`, headers)
 
                 .then((res) => {
-                    const dataList = res.data._embedded.mQ135ReadingVOList;
+                    const dataList = res.data._embedded.mQ135ReadingVOList.slice(0,1000);
+                    setPages((res.data._embedded.mQ135ReadingVOList.length/1000)+1)
+                    console.log(res.data._embedded.mQ135ReadingVOList.slice(0,100))
                     setData(dataList);
-                     linhas = Array.from({ length: Data.length }, (_, index) => index);
 
                     for (let x = 0; x < dataList.length; x++) {
                         if(datavalue.length<dataList.length){
-                            datavalue.push([dataList[x].value, dataList[x].timestamp])
+                            datavalue.push([dataList[x].value, dataList[x].timestamp, dataList[x].id])
 
                         }
                         const hour = dataList[x].timestamp.slice(11, 13);
@@ -133,26 +135,30 @@ function handleindexEqui(e){
                         if(!mes2arraychosen.includes(dia)){
                             mes2arraychosen.push(dia)
                         }
-                        if(!mes2dict[dia].includes(date2)){
-                            mes2dict[dia].push(date2)
+                        if(!mes2dict[dia].includes(dataList[x].value*2)){
+                            mes2dict[dia].push(dataList[x].value*2)
+                            if(!mesdia.includes(dataList[x].timestamp.slice(0,10))){
+                                mesdia.push(dataList[x].timestamp.slice(0,10))
 
+                            }
                         }
-                        mes2dict[dia].push(dataList[x])
-                        if (diadict[hour][0] === date) {
-                            diadict[hour].push(dataList[x]);
+                        console.log(diadict[hour].includes([dataList[x].value, date2]))
+                        console.log(diadict)
+                        console.log(diadict[hour])
+                        if (!diadict[hour].includes([dataList[x].value, date2])) {
+                            diadict[hour].push([dataList[x].value, date2]);
                             if(!diaarraychosen.includes(hour)){
                                 diaarraychosen.push(hour)
 
                             }
 
-                        } else {
-                            diadict[hour] = [date, dataList[x]];
+                        } 
                             if(!diaarraychosen.includes(hour)){
                                 diaarraychosen.push(hour)
 
                             }
                             
-                        }
+                        
                       diaarraychosen.forEach((item)=>{
                         let total=0
                         for(let x of mes2dict[item]){
@@ -174,6 +180,9 @@ function handleindexEqui(e){
           setWidth(window.innerWidth);
           setHeight(window.innerHeight);
         };
+        const handledata= (e)=>{
+            setDate(e.target.value)
+        }
         const handleTableType = (e)=>{
             setTabelaType(e.target.value)
             }
@@ -186,15 +195,16 @@ function handleindexEqui(e){
             window.removeEventListener("resize", handleResize);
           };
         }, []); // O array de dependências vazio faz com que o efeito seja executado apenas uma vez
+        let linhas = Array.from({ length: Data.length }, (_, index) => index);
 
-        const [Pages, setPages] = useState((linhas.length ).toFixed());
   
         let arraypages = []
      
         Cookies.set("dataar", [1, 2, 3, 4, 5, arraypages.length]);
-        for (let index = 0; index < (linhas.length/100).toFixed(); index++) {
+        for (let index = 0; index < Pages; index++) {
             arraypages.push(index+1)
         }
+
         const data = { 2: 28, 4: 30, 6: 30, 9: 30, 11: 30 };
         const [imageperfil, setImageperfil] = useState(null);
         const [text, settext] = useState("normal");
@@ -216,7 +226,6 @@ function handleindexEqui(e){
 
         let DataHora=0
         let DataMes=0
-
         for(let x of diaarraychosen){
             totalHora =0
 
@@ -231,18 +240,23 @@ function handleindexEqui(e){
                 datavaluehora.push([totalHora,DataHora])
             }
         }
+
+        let x2 = 0
         for(let x of mes2arraychosen){
             totalMes =0
 
             if (mes2dict[x]) {
                 for (let y of mes2dict[x]) {
 
-                    if (typeof y !== "string") {
-                        totalMes += y.value;  // Acumula o valor em totalHora
-                        DataMes = y.timestamp
+                    if (typeof y !== "string" ) {
+                        totalMes += y;  // Acumula o valor em totalHora
+                        DataMes = mesdia[x2]
+                        
                     }
                 }
+                
                 mesvaluehora.push([totalMes,DataMes])
+                x2++
             }
         }
         
@@ -269,7 +283,6 @@ function handleindexEqui(e){
                     <select style={{cursor:"pointer"}} name="" onChange={handleTableType} id="" className="mdselecttab">
                     <option value="Emissao">Emissao</option>
 
-                    <option value="Hora">Hora</option>
                         <option value="Dia">Dia</option>
                         <option value="Mes">Mes</option>
 
@@ -310,6 +323,19 @@ function handleindexEqui(e){
 
                     </div>
                     </div>
+                    
+                </div>
+                <div id="mdSelectstab">
+                    <div style={{display:"flex", flexDirection:"column"}}>
+                    <span className="mdselectspantab" style={{color:"white"}}>Se:</span>
+
+                    <div name="" id="mdselectazulfilter" style={{backgroundColor:"#0075E8", display:'flex',      alignItems:"center", textAlign:"center", borderRadius:"8px",marginLeft:"35px"}} >
+
+                    <input type="date" name="" id="mdselectfilter" onChange={handledata} />
+
+                    </div>
+                    </div>
+                    
                 </div>
                 </div>
                 </div>
@@ -325,50 +351,89 @@ function handleindexEqui(e){
     </thead>
     <tbody >
     {linhas && TabelaType == "Emissao" && !erroSemEmi &&
-     
 linhas.map((item, index) => {
 
-// Ordena datavalue em ordem decrescente
-let datavalue1 =datavalue.sort((a, b) => b[0] - a[0]);
-
-
 if (index <= 1000) {
-    if (Filtro == "MenorEmissao") {
+
+    let datavalue1 =datavalue.sort((a, b) => b[0] - a[0]);
+    let datavalue2 = [...datavalue].sort((a, b) => a[0] - b[0]);
+    if(date && Data[item].timestamp.slice(0, 10)==date && Filtro =="MenorData"){
         return (
             <tr>
-                <td>{item}</td>
+                <td>{Data[item].id}</td>
+                <td>{`${Data[item].timestamp.slice(0, 10)}/${Data[item].timestamp.slice(11, 16)}`}</td>
+                <td>{Data[item].value}</td>
+
+            </tr>
+        );
+     }
+
+     else if(date && datavalue1 && datavalue1[item][1].slice(0, 10)==date && Filtro == "MaiorEmissao"){
+        return (
+            <tr>
+                <td>{datavalue1[item][2]}</td>
+                <td>{`${datavalue1[item][1].slice(0, 10)}/${datavalue1[item][1].slice(11, 16)}`}</td>
+                <td>{datavalue1[item][0]}</td>
+            </tr>
+        );
+     }
+     else if (date && datavalue2 && datavalue2[item][1]?.slice(0, 10) == date && Filtro == "MenorEmissao"){
+        return (
+            <tr>
+                <td>{datavalue2[item][2]}</td>
+                <td>{`${datavalue2[item][1].slice(0, 10)}/${datavalue2[item][1].slice(11, 16)}`}</td>
+                <td>{datavalue2[item][0]}</td>
+            </tr>
+        );
+     }
+     else if (date && datavalue2 && Data[linhas.length-item-1].timestamp.slice(0, 10) == date && Filtro == "MaiorData"){
+        return (
+            <tr>
+            <td>{Data[linhas.length-item-1].id}</td>
+            <td>{`${Data[linhas.length-item-1].timestamp.slice(0, 10)}/${Data[linhas.length-item-1].timestamp.slice(11, 16)}`}</td>
+            <td>{Data[linhas.length-item-1].value}</td>
+        </tr>
+        );
+     }
+        
+     
+    
+    else if (Filtro == "MaiorEmissao"&& !date) {
+        return (
+            <tr>
+                <td>{datavalue1[item][2]}</td>
                 <td>{`${datavalue1[item][1].slice(0, 10)}/${datavalue1[item][1].slice(11, 16)}`}</td>
                 <td>{datavalue1[item][0]}</td>
             </tr>
         );
     }
-    
-    // Cria uma cópia do datavalue e ordena em ordem crescente
-    let datavalue2 = [...datavalue].sort((a, b) => a[0] - b[0]);
 
-     if (Filtro == "MaiorEmissao") {
+    else if(Filtro == "MenorEmissao"&& !date){
         return (
             <tr>
-                <td>{item}</td>
+                <td>{datavalue2[item][2]}</td>
                 <td>{`${datavalue2[item][1].slice(0, 10)}/${datavalue2[item][1].slice(11, 16)}`}</td>
                 <td>{datavalue2[item][0]}</td>
             </tr>
         );
-    } 
-    else if(Filtro == "MaiorData" ){
+    }
+    // Cria uma cópia do datavalue e ordena em ordem crescente
+
+
+    else if(Filtro == "MaiorData" && !date){
 
         return (
             <tr>
-                <td>{linhas.length-item}</td>
+                <td>{Data[linhas.length-item-1].id}</td>
                 <td>{`${Data[linhas.length-item-1].timestamp.slice(0, 10)}/${Data[linhas.length-item-1].timestamp.slice(11, 16)}`}</td>
                 <td>{Data[linhas.length-item-1].value}</td>
             </tr>
         );
     }
-    else if(Filtro=="MenorData") {
+    else if(Filtro=="MenorData" && !date) {
         return (
             <tr>
-                <td>{item}</td>
+                <td>{Data[item].id}</td>
                 <td>{`${Data[item].timestamp.slice(0, 10)}/${Data[item].timestamp.slice(11, 16)}`}</td>
                 <td>{Data[item].value}</td>
             </tr>
@@ -386,14 +451,11 @@ return null;
     diaarraychosen.map((item, index) =>{
         let array =[]
         let datavaluehora1 = [...datavaluehora].sort((a,b)=>{return(a[0]-b[0])})
-        console.log(datavaluehora1[index][1].slice(8,10))
-        console.log(datavaluehora1[index][1])
+
         let x=0
         datavaluehora1[index].push((parseInt(datavaluehora1[index][1].slice(5,7) + datavaluehora1[index][1].slice(8,10) + datavaluehora1[index][1].slice(11,13) )))
-        console.log(datavaluehora1[index])
         let datavaluehora2 = [...datavaluehora].sort((a, b) => b[0] - a[0]);
         let datavaluehora3 = [...datavaluehora1].sort((a, b) => a[2] - b[2]);
-        console.log(datavaluehora3)
         if (Filtro == "MenorEmissao") {
 
 
@@ -417,16 +479,13 @@ return null;
             )
         }
         else if(Filtro =="MenorData"){
-            console.log(index)
-            
-            console.log(datavaluehora3[index])
+
             return(
                 <tr>
                 <td>{index}</td>
                 <td>{`${datavaluehora3[index][1].slice(0,10)}/${datavaluehora3[index][1].slice(11,13)}`}</td>
-                <td>{datavaluehora3[index]}</td>
-
                 <td>{datavaluehora3[index][0]}</td>
+
                 </tr>
             
             )
@@ -446,10 +505,23 @@ return null;
 }
 {mes2dict && TabelaType =="Dia" && !erroSemEmi &&
     mes2arraychosen.map((item, index) =>{
-     
+                    let mesvaluehora1 = [...mesvaluehora].sort((a,b)=>{return(a[0]-b[0])})
+                    let mesvaluehora2 = [...datavaluehora].sort((a, b) => b[0] - a[0]);
+
+
+        if(date && mesvaluehora[index][1].slice(0,10)==date ){
+            return (
+                <tr>
+         <td>{index}</td>
+            <td>{`${mesvaluehora[index][1].slice(0,10)}`}</td>
+            <td>{mesvaluehora[index][0]/2}</td>
+    
+                </tr>
+            );
+         }
         
             
-        if(Filtro =="MenorData"){
+        else if(!date && Filtro =="MenorData"){
                      
         return(
             <tr>
@@ -460,7 +532,7 @@ return null;
         
         )
                 }
-                else if(Filtro =="MaiorData"){
+                else if( !date && Filtro =="MaiorData"){
                     return(
                         <tr>
                         <td>{mes2arraychosen.length-index-1}</td>
@@ -471,7 +543,7 @@ return null;
                     )
                 }
                 
-        else if (Filtro == "MenorEmissao") {
+        else if ( !date && Filtro == "MenorEmissao") {
             let mesvaluehora1 = [...mesvaluehora].sort((a,b)=>{return(a[0]-b[0])})
 
 
@@ -484,7 +556,7 @@ return null;
             
             )
         }
-        if (Filtro == "MaiorEmissao") {
+       else if (!date && Filtro == "MaiorEmissao") {
             let mesvaluehora2 = [...datavaluehora].sort((a, b) => b[0] - a[0]);
             return(
                 <tr>
@@ -531,10 +603,42 @@ return(
 </table>
 
         </div>
-        <div id="mdfoottab">
+        <div id="mdfoottab" style={{justifyContent:"right",marginLeft:"0px"}}>
 
-            <div id="mdtabopagesdiv" style={{display:"flex", justifyContent:"center",}}>
-            
+            <div id="mdtabopagesdiv" >
+            {arraypages.map((item,index)=>{
+                if(item ==1){
+                    return(
+                     <>
+                        <div style={{backgroundColor:"blue",width:"30px",height:"30px"}}>{item}</div>
+                        <div onClick={()=>{navigate(`/tabela/${item+1}`)}} style={{backgroundColor:"blue",width:"30px",height:"30px"}}>{item+1}</div>
+                     </>
+
+                    )
+                 }
+             if(item <4){
+                return(
+                    <div onClick={()=>{navigate(`/tabela/${item+1}`)}} style={{backgroundColor:"blue",width:"30px",height:"30px"}}>{item+1}</div>
+                )
+             }
+             if(arraypages.length>4 && item == 4){
+                return(
+                    <div>...</div>
+                )
+             }
+             if(arraypages.length==4 && item == 4){
+                return(
+                    <div onClick={()=>{navigate(`/tabela/${item+1}`)}} style={{backgroundColor:"blue",width:"30px",height:"30px"}}>{item+1}</div>
+                )
+             }
+             if(arraypages.length == item){
+                return(
+                    <div onClick={()=>{navigate(`/tabela/${item+1}`)}} style={{backgroundColor:"blue",width:"30px",height:"30px"}}>{item+1}</div>
+                )
+             }
+            })
+
+            }
             </div>
         </div>
 </div>

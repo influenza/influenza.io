@@ -44,27 +44,21 @@ function handleEnviar(){
     erros.style.opacity = "0"
          }
          else{
-          axios.post(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/${91}/user/${55}`, headers)
-          .then(res => {
+          axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1`,headers).then((res)=>{
             console.log(res)
-          }).catch(res=>console.log(res))
-          axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/user/v1/findEmail/${Email}`, headers).then(res=>{
-            console.log(res)
-            axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${res.data.id}`, headers).then(res=>{
+          })
+          axios.get(  `http://ec2-44-220-83-117.compute-1.amazonaws.com/api/user/v1/email/${Email}`, headers).then(res=>{
+            console.log(headers)
+            const data = 
+              {
+                "senderId": Cookies.get().ID,
+                "recipientId": res.data.id,
+                "teamId": Cookies.get().NomeEquiID
+            }
+            ;
+            console.log(data)
+            axios.post(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/invite/v1`, data ,headers ).then((res)=>{
               console.log(res)
-              let furaFor
-              for (let index = 0; index < res.data.length; index++) {
-                console.log(Cookies.get().NomeEqui2 == res.data[index].name)
-                if(Cookies.get().NomeEqui2 == res.data[index].name){
-                  furaFor=true
-                 }
-              }if(furaFor){
-                erro.style.opacity = "1"
-                erros.style.opacity = "1"
-                erros.append("Usuario já se faz presente em sua Equipe")  
-              }
-            }).catch(res=>{
-  
             })
           }).catch(res =>{
             erro.style.opacity = "1"

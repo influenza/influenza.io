@@ -99,6 +99,15 @@ export function Cadastro4(props){
       Cookies.set("Token", res.data.accessToken)
       }).catch(res=>console.log(res))
       navigate("/equipevisao")
+      const headers = {
+        headers: {
+            "Authorization": `Bearer ${Cookies.get().Token}`
+        }
+    };
+    let data = {
+      "email": Cookies.get().Email,
+    }
+      axios.post(`http://ec2-44-220-83-117.compute-1.amazonaws.com/auth/signup/send-confirmation-code`,data ,headers).then((res)=>{console.log(res)})
     })
     .catch(error => {
       console.error('Erro:', error);
@@ -125,7 +134,7 @@ export function Cadastro4(props){
       <div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"",textAlign:"center"}}>
 
 <div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",height:"15vh",justifyContent:"center",alignItems:"center",marginBottom:"20px"}}>
-<img src={`${logo}`} onClick={navigate("/")} className='img'alt="" />
+<img src={`${logo}`}  className='img'alt="" />
     <img src={`${letraverde}`} className='img'   alt="" /></div>
      <div style={{display:"flex",justifyContent:"center", alignItems:"center", height:"80vh"}}>
      <div id="mdcon" style={{backgroundColor:"white",  borderRadius:"17px",boxShadow:"4px 4px 4px 3px rgba(0, 0, 0, 0.2)"}}>

@@ -16,7 +16,7 @@ import jsCookie from 'js-cookie';
 function Metas() {
   const [tempo, setTempo] = useState(0);
   const [metavalue, setMetavalue] = useState('');
-  const [meta, setmeta]= useState(["","","","",])
+  const [meta, setmeta]= useState(["","","",])
   let navigate = useNavigate()
   useEffect(() => {
     console.log(tempo);
@@ -40,7 +40,7 @@ function Metas() {
     <div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"", justifyContent:"center",alignItems:"center",textAlign:"center"}}>
     <div style={{display:"flex",flexDirection:"row",marginTop:"-25vh", width:"100vw",}}>
 <div style={{width:"50vw", display:"flex", alignItems:"center", textAlign:"left",justifyContent:"left", marginRight:"20px", fontSize:"20px"}}>  
-<img src={`${logo}`} onClick={navigate("/")} style={{width:"150px", height:"150px", marginRight:"20px"}} alt="" />
+<img src={`${logo}`}  style={{width:"150px", height:"150px", marginRight:"20px"}} alt="" />
   <img src={`${letraverde}`} style={{width:"200px", height:"200px"}} alt="" /></div>
 
     </div>
@@ -52,9 +52,7 @@ function Metas() {
           onChange={(e) => {
             if (e.target.value === "dia") {
               setTempo(0);
-            } else if (e.target.value === "sem") {
-              setTempo(1);
-            } else if (e.target.value === "men") {
+            }  else if (e.target.value === "men") {
               setTempo(2);
             } else {
               setTempo(3);
@@ -64,7 +62,6 @@ function Metas() {
         >
           <option value="dia">Diaria</option>
           
-          <option value="sem">Semanal</option>
         
           <option value="men">Mensal</option>
           <option value="anl">Anual</option>
@@ -74,8 +71,37 @@ function Metas() {
         <p className="diverro" style={{textAlign:"left"}}>Valor da meta</p>
         <Input type="number" className="inplog" value={metavalue} style={{ padding:"0px 10px",border:"2px solid #aaa",borderRadius:"16px",fontSize:"18px",}}  Onchange={handleMetaChange} /><br />
         <Button text="Definir esta meta" id="mdbtncad4" style={{ backgroundColor:"#279301",color:"white", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}} func={()=>{
-            meta[tempo]=metavalue
+           const headers = {
+            headers: {
+              "Authorization": `Bearer ${Cookies.get().Token}`
+            }
+          };
+          console.log(Cookies.get())
+                    console.log(Cookies.get().NomeEquiID)
+                    fetch(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/${Cookies.get().NomeEquiID}`, { 
+                      method: "PUT",
+                      headers:{ 
+                        "Authorization": `Bearer ${Cookies.get().Token}`,
+                        "Content-Type": "application/json" // Defina o tipo de conteúdo como JSON
+                      },
+                      body: JSON.stringify({  // Converta o objeto JavaScript para uma string JSON
+                        "dailyGoal": 10.00, 
+                        "weeklyGoal": 70.00, 
+                        "monthlyGoal": 300.00, 
+                        "annualGoal": 3600.00
+                      })
+                    }).then((res) => {
+                      console.log(res);
+                    }).catch((error) => {
+                      console.error('Erro:', error);
+                    });
+                    
 
+
+                    
+
+           meta[tempo]=metavalue
+          
            Cookies.set("Metas",meta)
 
             setMetavalue("")
@@ -87,15 +113,14 @@ function Metas() {
           <Button id="mdbtncad4" func={()=>{ 
                       if(tempo == 0){
                         meta[0]="10000"
+               
                       }
-                      else if(tempo == 1){
-                        meta[1]="70000"
-                      }
+                    
                       else if(tempo == 2){
-                        meta[2]="300000"
+                        meta[1]="300000"
                       }
                       else if(tempo == 3){
-                        meta[3]="3600000"          
+                        meta[2]="3600000"          
 
                       }
                       Cookies.set("Metas",meta)
@@ -106,9 +131,8 @@ function Metas() {
           style={{backgroundColor:"#279301",color:"white", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}} text="Definir essa"> </Button>
           <Button func={()=>{
             meta[0]="10000"
-            meta[1]="70000"
-            meta[2]="300000"
-            meta[3]="3600000"
+            meta[1]="300000"
+            meta[2]="3600000"
             Cookies.set("Metas",meta)
 
           }} id="mdbtncad4" style={{ backgroundColor:"#279301",color:"white", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}}   text="Definir todas "> </Button>
