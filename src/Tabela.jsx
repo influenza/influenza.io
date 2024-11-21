@@ -102,10 +102,8 @@ function handleindexEqui(e){
             let temhandle
             await axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${Cookies.get().ID}`, headers).then((res)=>{console.log(res) 
               let id = document.getElementsByClassName("SelectEqui")[0].id
-              console.log(res.data[id])
               temhandle=res.data[id].handle
-              console.log(temhandle=res.data[indexEqui].handle)
-              console.log(temhandle)
+  
       
             })
             axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/mq135Reading/v1/team/${temhandle}?page=1&direction=asc`, headers)
@@ -118,7 +116,7 @@ function handleindexEqui(e){
 
                     for (let x = 0; x < dataList.length; x++) {
                         if(datavalue.length<dataList.length){
-                            datavalue.push([dataList[x].value, dataList[x].timestamp, dataList[x].id])
+                            datavalue.push([dataList[x].value, dataList[x].timestamp])
 
                         }
                         const hour = dataList[x].timestamp.slice(11, 13);
@@ -135,30 +133,26 @@ function handleindexEqui(e){
                         if(!mes2arraychosen.includes(dia)){
                             mes2arraychosen.push(dia)
                         }
-                        if(!mes2dict[dia].includes(dataList[x].value*2)){
-                            mes2dict[dia].push(dataList[x].value*2)
-                            if(!mesdia.includes(dataList[x].timestamp.slice(0,10))){
-                                mesdia.push(dataList[x].timestamp.slice(0,10))
+                        if(!mes2dict[dia].includes(date2)){
+                            mes2dict[dia].push(date2)
 
-                            }
                         }
-                        console.log(diadict[hour].includes([dataList[x].value, date2]))
-                        console.log(diadict)
-                        console.log(diadict[hour])
-                        if (!diadict[hour].includes([dataList[x].value, date2])) {
-                            diadict[hour].push([dataList[x].value, date2]);
+                        mes2dict[dia].push(dataList[x])
+                        if (diadict[hour][0] === date) {
+                            diadict[hour].push(dataList[x]);
                             if(!diaarraychosen.includes(hour)){
                                 diaarraychosen.push(hour)
 
                             }
 
-                        } 
+                        } else {
+                            diadict[hour] = [date, dataList[x]];
                             if(!diaarraychosen.includes(hour)){
                                 diaarraychosen.push(hour)
 
                             }
                             
-                        
+                        }
                       diaarraychosen.forEach((item)=>{
                         let total=0
                         for(let x of mes2dict[item]){
@@ -204,7 +198,8 @@ function handleindexEqui(e){
         for (let index = 0; index < Pages; index++) {
             arraypages.push(index+1)
         }
-
+        console.log(Pages)
+        console.log(arraypages)
         const data = { 2: 28, 4: 30, 6: 30, 9: 30, 11: 30 };
         const [imageperfil, setImageperfil] = useState(null);
         const [text, settext] = useState("normal");
@@ -220,43 +215,49 @@ function handleindexEqui(e){
         };
         let datavaluehora=[]
         let mesvaluehora=[]
-
+        let datas=[]
         let totalHora=0
         let totalMes=0
 
         let DataHora=0
         let DataMes=0
-        for(let x of diaarraychosen){
-            totalHora =0
 
+        for (let x of diaarraychosen) {
             if (diadict[x]) {
+                totalHora = 0;  // Reinicializa totalHora para cada elemento de diaarraychosen
+                let DataHora = null;  // Reinicializa DataHora
+        
                 for (let y of diadict[x]) {
-
-                    if (typeof y !== "string") {
+                    console.log(y);
+                    console.log(datavaluehora);
+                    console.log(datas);
+                    console.log(!datas.includes(y.timestamp));
+        
+                    if (typeof y !== "string" && !datas.includes(y.timestamp)) {
                         totalHora += y.value;  // Acumula o valor em totalHora
-                        DataHora = y.timestamp
+                        DataHora = y.timestamp;  // Atualiza o timestamp mais recente
                     }
                 }
-                datavaluehora.push([totalHora,DataHora])
+        
+                if (DataHora !== null) {  // Verifica se houve alguma atualização de DataHora
+                    datavaluehora.push([totalHora, DataHora]);  // Adiciona o total e o timestamp
+                    datas.push(DataHora);  // Armazena o timestamp processado
+                }
             }
         }
-
-        let x2 = 0
+        
         for(let x of mes2arraychosen){
             totalMes =0
 
             if (mes2dict[x]) {
                 for (let y of mes2dict[x]) {
 
-                    if (typeof y !== "string" ) {
-                        totalMes += y;  // Acumula o valor em totalHora
-                        DataMes = mesdia[x2]
-                        
+                    if (typeof y !== "string") {
+                        totalMes += y.value;  // Acumula o valor em totalHora
+                        DataMes = y.timestamp
                     }
                 }
-                
                 mesvaluehora.push([totalMes,DataMes])
-                x2++
             }
         }
         
@@ -266,7 +267,7 @@ function handleindexEqui(e){
             <div style={{display:"flex", flexDirection:"row", overflow:"hidden"}}>
           
             <Navbar4 es={2}></Navbar4>
-                <div style={{backgroundColor:"#f5ebe0", width:"92vw",height:"100%", msScrollLimitXMax:"0px",display:"flex",flexDirection:"column",justifyContent:"center",textAlign:"center"}}>
+                <div style={{backgroundColor:"#f5ebe0", width:"92vw",height:"92vh", msScrollLimitXMax:"0px",display:"flex",flexDirection:"column",justifyContent:"center",textAlign:"center"}}>
                 <div id="mdivfaixa1">
                 <p>Monitoramento de emissões</p>
                 <span></span>
@@ -283,6 +284,7 @@ function handleindexEqui(e){
                     <select style={{cursor:"pointer"}} name="" onChange={handleTableType} id="" className="mdselecttab">
                     <option value="Emissao">Emissao</option>
 
+                    <option value="Hora">Hora</option>
                         <option value="Dia">Dia</option>
                         <option value="Mes">Mes</option>
 
@@ -351,16 +353,19 @@ function handleindexEqui(e){
     </thead>
     <tbody >
     {linhas && TabelaType == "Emissao" && !erroSemEmi &&
+     
 linhas.map((item, index) => {
+
+// Ordena datavalue em ordem decrescente
+let datavalue1 =datavalue.sort((a, b) => b[0] - a[0]);
+let datavalue2 = [...datavalue].sort((a, b) => a[0] - b[0]);
 
 if (index <= 1000) {
 
-    let datavalue1 =datavalue.sort((a, b) => b[0] - a[0]);
-    let datavalue2 = [...datavalue].sort((a, b) => a[0] - b[0]);
     if(date && Data[item].timestamp.slice(0, 10)==date && Filtro =="MenorData"){
         return (
             <tr>
-                <td>{Data[item].id}</td>
+                <td>{item}</td>
                 <td>{`${Data[item].timestamp.slice(0, 10)}/${Data[item].timestamp.slice(11, 16)}`}</td>
                 <td>{Data[item].value}</td>
 
@@ -368,19 +373,19 @@ if (index <= 1000) {
         );
      }
 
-     else if(date && datavalue1 && datavalue1[item][1].slice(0, 10)==date && Filtro == "MaiorEmissao"){
+     else if(date && datavalue1 && datavalue1[item][1].slice(0, 10)==date && Filtro == "MenorEmissao"){
         return (
             <tr>
-                <td>{datavalue1[item][2]}</td>
+                <td>{item}</td>
                 <td>{`${datavalue1[item][1].slice(0, 10)}/${datavalue1[item][1].slice(11, 16)}`}</td>
                 <td>{datavalue1[item][0]}</td>
             </tr>
         );
      }
-     else if (date && datavalue2 && datavalue2[item][1]?.slice(0, 10) == date && Filtro == "MenorEmissao"){
+     else if (date && datavalue2 && datavalue2[item][1]?.slice(0, 10) == date && Filtro == "MaiorEmissao"){
         return (
             <tr>
-                <td>{datavalue2[item][2]}</td>
+                <td>{item}</td>
                 <td>{`${datavalue2[item][1].slice(0, 10)}/${datavalue2[item][1].slice(11, 16)}`}</td>
                 <td>{datavalue2[item][0]}</td>
             </tr>
@@ -389,7 +394,7 @@ if (index <= 1000) {
      else if (date && datavalue2 && Data[linhas.length-item-1].timestamp.slice(0, 10) == date && Filtro == "MaiorData"){
         return (
             <tr>
-            <td>{Data[linhas.length-item-1].id}</td>
+            <td>{linhas.length-item}</td>
             <td>{`${Data[linhas.length-item-1].timestamp.slice(0, 10)}/${Data[linhas.length-item-1].timestamp.slice(11, 16)}`}</td>
             <td>{Data[linhas.length-item-1].value}</td>
         </tr>
@@ -398,20 +403,20 @@ if (index <= 1000) {
         
      
     
-    else if (Filtro == "MaiorEmissao"&& !date) {
+    else if (Filtro == "MenorEmissao"&& !date) {
         return (
             <tr>
-                <td>{datavalue1[item][2]}</td>
+                <td>{item}</td>
                 <td>{`${datavalue1[item][1].slice(0, 10)}/${datavalue1[item][1].slice(11, 16)}`}</td>
                 <td>{datavalue1[item][0]}</td>
             </tr>
         );
     }
 
-    else if(Filtro == "MenorEmissao"&& !date){
+    else if(Filtro == "MaiorEmissao"&& !date){
         return (
             <tr>
-                <td>{datavalue2[item][2]}</td>
+                <td>{item}</td>
                 <td>{`${datavalue2[item][1].slice(0, 10)}/${datavalue2[item][1].slice(11, 16)}`}</td>
                 <td>{datavalue2[item][0]}</td>
             </tr>
@@ -424,7 +429,7 @@ if (index <= 1000) {
 
         return (
             <tr>
-                <td>{Data[linhas.length-item-1].id}</td>
+                <td>{linhas.length-item}</td>
                 <td>{`${Data[linhas.length-item-1].timestamp.slice(0, 10)}/${Data[linhas.length-item-1].timestamp.slice(11, 16)}`}</td>
                 <td>{Data[linhas.length-item-1].value}</td>
             </tr>
@@ -433,7 +438,7 @@ if (index <= 1000) {
     else if(Filtro=="MenorData" && !date) {
         return (
             <tr>
-                <td>{Data[item].id}</td>
+                <td>{item}</td>
                 <td>{`${Data[item].timestamp.slice(0, 10)}/${Data[item].timestamp.slice(11, 16)}`}</td>
                 <td>{Data[item].value}</td>
             </tr>
@@ -451,12 +456,15 @@ return null;
     diaarraychosen.map((item, index) =>{
         let array =[]
         let datavaluehora1 = [...datavaluehora].sort((a,b)=>{return(a[0]-b[0])})
-
+        console.log(datavaluehora1[index][1].slice(8,10))
+        console.log(datavaluehora1[index][1])
         let x=0
         datavaluehora1[index].push((parseInt(datavaluehora1[index][1].slice(5,7) + datavaluehora1[index][1].slice(8,10) + datavaluehora1[index][1].slice(11,13) )))
+        console.log(datavaluehora1[index])
         let datavaluehora2 = [...datavaluehora].sort((a, b) => b[0] - a[0]);
-        let datavaluehora3 = [...datavaluehora1].sort((a, b) => a[2] - b[2]);
-        if (Filtro == "MenorEmissao") {
+        let datavaluehora3 = [...datavaluehora1].sort((a, b) => a[0] - b[0]);
+        console.log(datavaluehora3)
+        if (Filtro == "MenorEmissao" && date && datavaluehora1 && date == datavaluehora1[index][1].slice(0,10)) {
 
 
             return(
@@ -468,7 +476,7 @@ return null;
             
             )
         }
-        if (Filtro == "MaiorEmissao") {
+        if (Filtro == "MaiorEmissao" && date && datavaluehora2[index][1].slice(0,10) == date && datavaluehora2 ) {
             return(
                 <tr>
                 <td>{index}</td>
@@ -478,19 +486,69 @@ return null;
             
             )
         }
-        else if(Filtro =="MenorData"){
-
+        else if(Filtro =="MenorData" && date && datavaluehora3 && datavaluehora3[index][1].slice(0,10) == date ){
+            console.log(index)
+            
+            console.log(datavaluehora3[index])
             return(
                 <tr>
                 <td>{index}</td>
                 <td>{`${datavaluehora3[index][1].slice(0,10)}/${datavaluehora3[index][1].slice(11,13)}`}</td>
-                <td>{datavaluehora3[index][0]}</td>
 
+                <td>{datavaluehora3[index][0]}</td>
                 </tr>
             
             )
         }
-        else if(Filtro =="MaiorData"){
+        else if(Filtro =="MaiorData" && date && datavaluehora && datavaluehora[diaarraychosen.length-index-1][1].slice(0,10) == date ){
+            return(
+                <tr>
+                <td>{diaarraychosen.length-index-1}</td>
+                <td>{`${datavaluehora[diaarraychosen.length-index-1][1].slice(0,10)}/${datavaluehora[diaarraychosen.length-index-1][1].slice(11,13)}`}</td>
+                <td>{datavaluehora[diaarraychosen.length-index-1][0]}</td>
+                </tr>
+            
+            )
+        }
+       
+    
+        else if (Filtro == "MenorEmissao" && !date) {
+
+
+            return(
+                <tr>
+                <td>{index}</td>
+                <td>{`${datavaluehora1[index][1].slice(0,10)}/${datavaluehora1[index][1].slice(11,13)}`}</td>
+                <td>{datavaluehora1[index][0]}</td>
+                </tr>
+            
+            )
+        }
+        if (Filtro == "MaiorEmissao" && !date) {
+            return(
+                <tr>
+                <td>{index}</td>
+                <td>{`${datavaluehora2[index][1].slice(0,10)}/${datavaluehora2[index][1].slice(11,13)}`}</td>
+                <td>{datavaluehora2[index][0]}</td>
+                </tr>
+            
+            )
+        }
+        else if(Filtro =="MenorData" && !date){
+            console.log(index)
+            
+            console.log(datavaluehora3[index])
+            return(
+                <tr>
+                <td>{index}</td>
+                <td>{`${datavaluehora3[index][1].slice(0,10)}/${datavaluehora3[index][1].slice(11,13)}`}</td>
+
+                <td>{datavaluehora3[index][0]}</td>
+                </tr>
+            
+            )
+        }
+        else if(Filtro =="MaiorData" && !date){
             return(
                 <tr>
                 <td>{diaarraychosen.length-index-1}</td>
@@ -505,45 +563,32 @@ return null;
 }
 {mes2dict && TabelaType =="Dia" && !erroSemEmi &&
     mes2arraychosen.map((item, index) =>{
-                    let mesvaluehora1 = [...mesvaluehora].sort((a,b)=>{return(a[0]-b[0])})
-                    let mesvaluehora2 = [...datavaluehora].sort((a, b) => b[0] - a[0]);
-
-
-        if(date && mesvaluehora[index][1].slice(0,10)==date ){
-            return (
-                <tr>
-         <td>{index}</td>
-            <td>{`${mesvaluehora[index][1].slice(0,10)}`}</td>
-            <td>{mesvaluehora[index][0]/2}</td>
-    
-                </tr>
-            );
-         }
+     
         
             
-        else if(!date && Filtro =="MenorData"){
+        if(Filtro =="MenorData"){
                      
         return(
             <tr>
             <td>{index}</td>
             <td>{`${mesvaluehora[index][1].slice(0,10)}`}</td>
-            <td>{mesvaluehora[index][0]/2}</td>
+            <td>{mesvaluehora[index][0]*2}</td>
             </tr>
         
         )
                 }
-                else if( !date && Filtro =="MaiorData"){
+                else if(Filtro =="MaiorData"){
                     return(
                         <tr>
                         <td>{mes2arraychosen.length-index-1}</td>
                         <td>{`${mesvaluehora[mes2arraychosen.length-index-1][1].slice(0,10)}`}</td>
-                        <td>{mesvaluehora[mes2arraychosen.length-index-1][0]/2}</td>
+                        <td>{mesvaluehora[mes2arraychosen.length-index-1][0]}</td>
                         </tr>
                     
                     )
                 }
                 
-        else if ( !date && Filtro == "MenorEmissao") {
+        else if (Filtro == "MenorEmissao") {
             let mesvaluehora1 = [...mesvaluehora].sort((a,b)=>{return(a[0]-b[0])})
 
 
@@ -551,18 +596,18 @@ return null;
                 <tr>
                 <td>{index}</td>
                 <td>{`${mesvaluehora1[index][1].slice(0,10)}`}</td>
-                <td>{mesvaluehora1[index][0]/2}</td>
+                <td>{mesvaluehora1[index][0]}</td>
                 </tr>
             
             )
         }
-       else if (!date && Filtro == "MaiorEmissao") {
-            let mesvaluehora2 = [...datavaluehora].sort((a, b) => b[0] - a[0]);
+        if (Filtro == "MaiorEmissao") {
+            let mesvaluehora2 = [...mesvaluehora].sort((a, b) => b[0] - a[0]);
             return(
                 <tr>
                 <td>{index}</td>
                 <td>{`${mesvaluehora2[index][1].slice(0,10)}`}</td>
-                <td>{mesvaluehora2[index][0]/2}</td>
+                <td>{mesvaluehora2[index][0]}</td>
                 </tr>
             
             )
@@ -599,6 +644,7 @@ return(
     </tr>
 )
 }) }
+
     </tbody>
 </table>
 

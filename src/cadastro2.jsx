@@ -19,9 +19,9 @@ import "./mediascadas2.css"
 function Login() {
   console.log(Cookies.get())
   const [Nome, setNome] = useState("")
-  const [cadastro, setcadastro] = useState(false)
-  const [cadastrouser, setcadastrouser] = useState(false)
-  const [cadastroEmail, setcadastroEmail] = useState(false)
+  const [cadastro, setcadastro] = useState(true)
+  const [cadastrouser, setcadastrouser] = useState(true)
+  const [cadastroEmail, setcadastroEmail] = useState(true)
 
   const [email, setEmail] = useState("")
   const [consenha, setConSenha] = useState("")
@@ -72,9 +72,9 @@ function Login() {
 
   }
 
-  function handleEnviar(){
+ async function  handleEnviar(){
     
-    setcadastro(true)
+
     let erros = document.getElementsByClassName("erros")
     let erro = document.getElementsByClassName("erro")
 
@@ -137,55 +137,60 @@ function Login() {
         setcadastro(false)
 
         }
+        else {
+          console.log("a")
+          let cadastroEmail2
+          let cadastrouser2
+        await  axios.post('http://ec2-44-220-83-117.compute-1.amazonaws.com/auth/signin', data)
+          .then(response => {
+           console.log(data)
+           console.log(response)
+           console.log("a")
+            if(response.status == 200){
+              erro[1].style.opacity = "1"
+              erros[1].style.opacity = "1"
+              erros[1].append("EMAIL EM USO")
+              cadastroEmail2=false
+            }
+            }).catch((res)=>{
+              console.log(res)
+              cadastroEmail2=true
+            })
+            const data2 = {            
+              "identifier": Nome,
+              "password": senha             
+          };
+          
+          await axios.post('http://ec2-44-220-83-117.compute-1.amazonaws.com/auth/signin', data2)
+          .then(response => {
+            if(response.status == 200){
+              erro[0].style.opacity = "1"
+              erros[0].style.opacity = "1"
+              erros[0].append("USERNAME EM USO")
+              cadastrouser2=false
+            }
+          }).catch((res)=>{
+            console.log(res)
+            cadastrouser2=true
+          })
+          console.log(cadastroEmail2)
+          console.log(cadastrouser2)
+
+         if(cadastroEmail2 == true && cadastrouser2 == true){
+          erros[0].style.opacity = "0"
+          erros[1].style.opacity = "0"
+        
+          Cookies.set("Nome",Nome)
+          Cookies.set("Email",email)
+          Cookies.set("Senha",senha)
+          navigate("/cadastro4")
+         }
+        }
         
 
     
 }
-if(cadastro == true){
-  console.log("a")
 
-  axios.post('http://ec2-44-220-83-117.compute-1.amazonaws.com/auth/signin', data)
-  .then(response => {
-   console.log(data)
-   console.log(response)
-   console.log("a")
-    if(response.status == 200){
-      erro[1].style.opacity = "1"
-      erros[1].style.opacity = "1"
-      erros[1].append("EMAIL EM USO")
-      setcadastroEmail(false)
-    }
-    }).catch((res)=>{
-      console.log(res)
-      setcadastroEmail(true)
-    })
-    const data2 = {            
-      "identifier": Nome,
-      "password": senha             
-  };
-  
-  axios.post('http://ec2-44-220-83-117.compute-1.amazonaws.com/auth/signin', data2)
-  .then(response => {
-    if(response.status == 200){
-      erro[0].style.opacity = "1"
-      erros[0].style.opacity = "1"
-      erros[0].append("USERNAME EM USO")
-      setcadastrouser(false)
-    }
-  }).catch((res)=>{
-    console.log(res)
-    setcadastrouser(true)
-  })
- if(cadastroEmail == true && cadastrouser == true){
-  erros[0].style.opacity = "0"
-  erros[1].style.opacity = "0"
-
-  Cookies.set("Nome",Nome)
-  Cookies.set("Email",email)
-  Cookies.set("Senha",senha)
-  navigate("/cadastro4")
- }
-}
   }
   function handleCancelar(){
     setEmail("")  
@@ -198,7 +203,7 @@ if(cadastro == true){
     <>
 
     <div id='divconcad2' style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`,  height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"", }}>
-    <div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",height:"15vh",justifyContent:"center",alignItems:"center"}}>
+    <div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",height:"15vh",alignItems:"center",}}>
 <div id="imgs" >  
 <img src={`${logo}`} className='img'alt="" />
   <img src={`${letraverde}`} className='img'   alt="" /></div>

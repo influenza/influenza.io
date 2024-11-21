@@ -51,7 +51,6 @@ function handleEnviar(){
             console.log(headers)
             const data = 
               {
-                "senderId": Cookies.get().ID,
                 "recipientId": res.data.id,
                 "teamId": Cookies.get().NomeEquiID
             }

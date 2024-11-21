@@ -139,20 +139,40 @@ fill="#FF6300" stroke="none">
         setArea(e.target.value)
         Cookies.set("Area",e.target.value)
       }}>
-          <option value="textil">Textil </option>
-          <option value="Automobilistica">Automobilistica </option>
-          <option value="PetroQuimica">PetroQuimica </option>
-          <option value="Farmaceutico">Farmaceutico </option>
-          <option value="Alimenticio">Alimenticio</option>
-          <option value="Base">Base</option>
-          <option value="Siderugica">Siderugica</option>
-          <option value="Metalurgica">Metalurgica</option>
-          <option value="Agropecuario">Agropecuario</option>
-          <option value="Naval">Naval</option>
-          <option value="eletroeletronica">eletroeletronica</option>
-          <option value="Outra industria">Trabalho em outras industrias</option>
-          <option value="Outros">Trabalho em outro setor da economia</option>
-          <option value="Prefiro não informar">Prefiro não informar</option>
+<option value="Agriculture">Agricultura</option>
+<option value="Basic Chemical Production">Produção de Produtos Químicos Básicos</option>
+<option value="Beverage Production">Produção de Bebidas</option>
+<option value="Chemical Production">Produção Química</option>
+<option value="Circuit Assembly">Montagem de Circuitos</option>
+<option value="Crop Cultivation">Cultivo de Culturas</option>
+<option value="Dairy Production">Produção de Laticínios</option>
+<option value="Device Manufacturing">Fabricação de Dispositivos</option>
+<option value="Drug Manufacturing">Fabricação de Medicamentos</option>
+<option value="Dyeing">Tingimento</option>
+<option value="Elastomer Production">Produção de Elastômeros</option>
+<option value="Fertilizer Manufacturing">Fabricação de Fertilizantes</option>
+<option value="Finishing">Acabamento</option>
+<option value="Food Processing">Processamento de Alimentos</option>
+<option value="Heat Treatment">Tratamento Térmico</option>
+<option value="Industrial Gas Production">Produção de Gases Industriais</option>
+<option value="Livestock Farming">Pecuária</option>
+<option value="Marine Engineering">Engenharia Naval</option>
+<option value="Metal Casting">Fundição de Metais</option>
+<option value="Metal Mining">Mineração de Metais</option>
+<option value="Ore Processing">Processamento de Minérios</option>
+<option value="Packaging">Embalagem</option>
+<option value="Painting and Finishing">Pintura e Acabamento</option>
+<option value="Parts Manufacturing">Fabricação de Peças</option>
+<option value="Plastic Production">Produção de Plásticos</option>
+<option value="Quality Control">Controle de Qualidade</option>
+<option value="Quality Testing">Teste de Qualidade</option>
+<option value="Ship Repair">Reparação de Navios</option>
+<option value="Shipbuilding">Construção Naval</option>
+<option value="Steel Production">Produção de Aço</option>
+<option value="Steel Rolling">Laminação de Aço</option>
+<option value="Vehicle Assembly">Montagem de Veículos</option>
+<option value="Weaving">Tecelagem</option>
+
           
       
         </select>

@@ -36,6 +36,7 @@ import Inicio from './inicio.jsx';
 import EnviarCon from './EnviarConvite.jsx';
 import { HomeTem} from './homeequitem.jsx';
 import { Listausupag } from './listausupag.jsx';
+import { CodigoSenha } from './codigosenha.jsx';
 ReactDOM.render(
   <Router>
     <Routes>
@@ -46,7 +47,7 @@ ReactDOM.render(
       <Route path='/inicio' element={<Inicio/>} />
       <Route path='/Enviar' element={<EnviarCon/>} />
 
-      <Route path='/cadastro3/:cifra' element={<Cadastro3 />} /> 
+      <Route path='/cadastro3/' element={<Cadastro3 />} /> 
       <Route path='/termosdeuso' element={<termosuso />} /> 
       <Route path='//termosdeuso' element={<termosuso />} /> 
       <Route path='/equipe' element={<Equipe />} /> 
@@ -68,6 +69,8 @@ ReactDOM.render(
       <Route path='/listausuarios/:pag' element={<Listausupag/>} /> 
 
       <Route path='/redefinirsenha' element={<RedefinirSenha/>}/> 
+      <Route path='/codigosenha' element={<CodigoSenha/>}/> 
+
       <Route path='/equipe2' element={<Equipe2 />} /> 
       <Route path='/equipe3' element={< Equipe3/>} /> 
       <Route path='/equipe4' element={< Equipe4/>} /> 

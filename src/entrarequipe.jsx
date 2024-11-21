@@ -14,6 +14,8 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import Convite from './conviteequipe'
 
 function EntrarEqui() {
+  let navigate=useNavigate()
+
   const [teamNames, setTeamNames] = useState([]);
   const [idTeam, setidTeam] = useState([]); // Use o useState para armazenar os nomes das equipes
   function handleButtonReject(res) {
@@ -39,9 +41,8 @@ function handleButtonAccept(res){
       "Authorization": `Bearer ${Cookies.get().Token}`
     }
   };
-  
-  console.log(headers)
   const clickedIndex = res.target.id; // Captura o valor do botão clicado
+  console.log(idTeam[clickedIndex]);
   fetch(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/invite/v1/accept/${idTeam[clickedIndex]}`,{ 
     method: "PUT",
     headers:{ 
@@ -50,6 +51,7 @@ function handleButtonAccept(res){
     }
   }).then((res) => {console.log(res)})
 }
+
   useEffect(() => {
     const fetchTeamNames = async () => {
       const headers = {
@@ -90,8 +92,8 @@ function handleButtonAccept(res){
         <div style={{ display: "flex", flexDirection: "row", width: "100vw" }}>
           <div style={{ width: "40vw", display: "flex", alignItems: "center", textAlign: "left", justifyContent: "left", marginRight: "20px", fontSize: "20px" }}>
             <div style={{ width: "50vw", display: "flex", alignItems: "center", textAlign: "left", justifyContent: "left", marginRight: "20px", marginTop: "-50vh", fontSize: "20px" }}>
-              <img src={`${logo}`} style={{ width: "150px", height: "150px", marginRight: "20px" }} alt="" />
-              <img src={`${letraverde}`} style={{ width: "150px", height: "150px" }} alt="" />
+              <img src={`${logo}`} style={{ width: "100px", height: "100px", marginRight: "20px" }} alt="" />
+              <img src={`${letraverde}`} style={{ width: "100px", height: "100px" }} alt="" />
             </div>
           </div>
         </div>

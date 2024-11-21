@@ -31,6 +31,7 @@ export function HomeTem(props){
     const [text ,settext] =useState("normal")
     const [nacionalidade, setNacionalidade] = useState(0)
     const [genero, setGenero] = useState(0)
+    const [atividade, setAtividade] = useState("")
     const [NomeEqui,SetNomeEqui]=useState(Cookies.get().NomeEqui2)
     const [handleEqui, SethandleEqui]=useState(Cookies.get().NomeEqui2?Cookies.get().NomeEqui2.toLowerCase():"")
     const [Setor,SetSetor] = useState()
@@ -41,9 +42,62 @@ export function HomeTem(props){
           "Authorization": `Bearer ${Cookies.get().Token}`
       }
   };
+  const atividades = {
+    "Agriculture": "Agricultura",
+    "Basic Chemical Production": "Produção de Produtos Químicos Básicos",
+    "Beverage Production": "Produção de Bebidas",
+    "Chemical Production": "Produção Química",
+    "Circuit Assembly": "Montagem de Circuitos",
+    "Crop Cultivation": "Cultivo de Culturas",
+    "Dairy Production": "Produção de Laticínios",
+    "Device Manufacturing": "Fabricação de Dispositivos",
+    "Drug Manufacturing": "Fabricação de Medicamentos",
+    "Dyeing": "Tingimento",
+    "Elastomer Production": "Produção de Elastômeros",
+    "Fertilizer Manufacturing": "Fabricação de Fertilizantes",
+    "Finishing": "Acabamento",
+    "Food Processing": "Processamento de Alimentos",
+    "Heat Treatment": "Tratamento Térmico",
+    "Industrial Gas Production": "Produção de Gases Industriais",
+    "Livestock Farming": "Pecuária",
+    "Marine Engineering": "Engenharia Naval",
+    "Metal Casting": "Fundição de Metais",
+    "Metal Mining": "Mineração de Metais",
+    "Ore Processing": "Processamento de Minérios",
+    "Packaging": "Embalagem",
+    "Painting and Finishing": "Pintura e Acabamento",
+    "Parts Manufacturing": "Fabricação de Peças",
+    "Plastic Production": "Produção de Plásticos",
+    "Quality Control": "Controle de Qualidade",
+    "Quality Testing": "Teste de Qualidade",
+    "Ship Repair": "Reparação de Navios",
+    "Shipbuilding": "Construção Naval",
+    "Steel Production": "Produção de Aço",
+    "Steel Rolling": "Laminação de Aço",
+    "Vehicle Assembly": "Montagem de Veículos",
+    "Weaving": "Tecelagem"
+  };
+  const setores = {
+    "Food": "Alimentício",
+    "Basic": "Básico",
+    "Petrochemical": "Petroquímico",
+    "Electroelectronic": "Eletroeletrônico",
+    "Agricultural": "Agrícola",
+    "Pharmaceutical": "Farmacêutico",
+    "Textile": "Têxtil",
+    "Steel": "Siderúrgico",
+    "Naval": "Naval",
+    "Metallurgical": "Metalúrgico",
+    "Automotive": "Automotivo"
+  };
+  
+    axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/activity/v1`,headers).then((res)=>console.log(res))
     axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${Cookies.get().ID}`, headers)
     .then((res)=>{
-      SetSetor(res.data[0].activity.sector)
+      console.log(res)
+      settext(res.data[0].description)
+      setAtividade(atividades[res.data[0].activity.name])
+      SetSetor(setores[res.data[0].activity.sector])
       SetFunc(res.data[0].members.length)
       SetfusoHorario(res.data[0].timeZone)
     })
@@ -139,11 +193,13 @@ function handlePular(e){
 <span id="txtdescEquiVis" style={{fontWeight:"bold"}}>
 Descrição
 </span>
-<span id="span400pxEquivis" ></span>
+<span id="span400pxEquivis" >
+
+</span>
 
       </div>
-      <div id="descinpEquiVIS" style={{ backgroundColor:"white"}}>
-
+      <div id="descinpEquiVIS" style={{ backgroundColor:"white", justifyContent:"left",display:"flex", padding:"10px"}}>
+      {text}
       </div>
       <button id="btnAdicionarEquiVIS2" style={{ backgroundColor:"#279301"}}>Adicionar</button>
 
@@ -162,24 +218,20 @@ Descrição
 <input type="text" value={Setor} id="inputMDEquiVIS" style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
             
             </div>
+            <div style={{display:"flex",flexDirection:"column",gap:"20px"}}>
+            <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>ATIVIDADE </span>
+
+<input type="text" value={atividade} id="inputMDEquiVIS" style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
+            
+            </div>
             <div style={{display:"flex",flexDirection:"column",gap:"10px", justifyContent:"center"}}>
             <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>FUNCIONÁRIOS </span>
 
 <input type="text" value={Func} id="inputMDEquiVIS"  style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
             
             </div>
-            <div style={{display:"flex",flexDirection:"column",gap:"10px", justifyContent:"center"}}>
-            <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>SEDE </span>
 
-<input type="text" value={Setor} id="inputMDEquiVIS" style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
-            
-            </div>
-            <div style={{display:"flex",flexDirection:"column",gap:"10px", justifyContent:"center"}}>
-            <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>ESTADO</span>
 
-<input type="text" value={Setor} id="inputMDEquiVIS" style={{color:"white",borderRadius:"8px",borderColor:"transparent",backgroundColor:"#AAAAAA",}} />
-            
-            </div>
             <div style={{display:"flex",flexDirection:"column",gap:"10px", justifyContent:"center"}}>
             <span id="mdspanNomeEquiEQUIVIS" style={{fontWeight:"bold"}}>FUSO HORÁRIO</span>
 

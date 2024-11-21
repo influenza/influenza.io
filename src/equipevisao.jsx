@@ -13,6 +13,7 @@ import Navbar2 from "./navbarlateral2";
 import { Navbar4 } from "./Navbar4";
 import { Navbar3 } from "./navbar3";
 import axios from "axios";
+import Metas from "./metas";
 export function EquipeVisao(props){
   const [width, setWidth] = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
@@ -36,6 +37,14 @@ export function EquipeVisao(props){
     const [nacionalidade, setNacionalidade] = useState(0)
     const [genero, setGenero] = useState(0)
     const [EquipSelect, setEquipSelect] = useState(0)
+    const [Fire, setFire] = useState(false)
+    const [FireInterval, setFireInterval] = useState(false)
+
+    const [Invite, setInvite] = useState(false)
+    const [InviteSended, setInviteSended] = useState(false)
+
+    const [Meta, setMeta] = useState(false)
+
 
 
   
@@ -51,7 +60,8 @@ export function EquipeVisao(props){
 
   }
     useEffect(()=>{
-      
+      console.log(Cookies.get().NomeEqui2)
+
       const headers = {
         headers: {
           "Authorization": `Bearer ${Cookies.get().Token}`
@@ -59,14 +69,20 @@ export function EquipeVisao(props){
       };
       axios.get("http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1",headers).then((res)=>{console.log(res)})
       axios.get("http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/handle/ecosynergyofc", headers).then((res)=>{console.log(res)})
-
+      axios.get("http://ec2-44-220-83-117.compute-1.amazonaws.com/api/notifications/preferences/v1/WEB",headers).then((res)=>{console.log(res)
+        setFire(res.data.fireDetection)
+        setFireInterval(res.data.fireIntervalMinutes)
+        setInvite(res.data.inviteReceived)
+        setInviteSended(res.data.inviteStatus)
+        setMeta(res.data.teamGoalReached)
+      })
+      console.log("sjhda  ")
       axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/user/v1/email/${Cookies.get().Email}`, headers)
         .then(res => {
           console.log(res)
           console.log(res.data.id)
           Cookies.set("ID", res.data.id)
         })
-
 
         
     },[])
@@ -83,9 +99,20 @@ export function EquipeVisao(props){
  
 <div id="mdequihomegeral">
     <div id="mdhomeequigeraldiv1">
-    <span id="mdtxt2homeequi">Bom dia {Cookies.get().NomeCom.split(" ")[0]}</span>
-    <div id="mdhomeequigeraldiv11"></div>
-    <div id="mdhomeequigeraldiv12"></div>
+    <span id="mdtxt2homeequi">Bom dia {Cookies.get().NomeCom?Cookies.get().NomeCom.split(" ")[0]:0}</span>
+    <div id="mdhomeequigeraldiv11"style={{display:"flex",flexDirection:"column",justifyContent:"start",alignItems:"normal"}}>
+      <p>Notificações</p>
+      <div>
+{ Cookies.get().NomeEqui2=="Ecosynergy Oficial" &&<>      <li style={{color:"red"}}>{Fire && <>Fogo detectado {FireInterval>1?"nos":"no"} {FireInterval>1?"últimos":"último"} {FireInterval} {FireInterval>1?"minutos":"minuto"}</>}</li>
+      <li style={{}}>{Invite && <>Você tem convite(s) pendente </>}</li>
+      <li style={{}}>{Metas && <>Sua meta diária está prestes a ser batida </>}</li>
+      </>}
+
+      </div>
+     
+      </div>
+    <div id="mdhomeequigeraldiv12">     
+    </div>
     </div>
     <div id="mdhomeequigeraldiv2"></div>
     

@@ -37,13 +37,13 @@ function Equipe3() {
 <img src={`${logo}`} className='img'alt="" />
     <img src={`${letraverde}`} className='img'   alt="" /></div>
 
-    <div style={{display:"flex", justifyContent:"center", flexDirection:"column"}}>
+    <div style={{display:"flex", justifyContent:"center", flexDirection:"column",marginTop:"10vh"}}>
     <div>
       <p id='mdequi3txt0' style={{fontWeight:"bold"}}>Escolha seu plano</p>
       
     </div>
     <div >
-      <p id='mdequi3txt1' >Voce esta a um passo do seu futuro mais verde!!00000 Escolha um plano ecosynergy.</p>
+      <p id='mdequi3txt1' >Voce esta a um passo do seu futuro mais verde!! Escolha um plano ecosynergy.</p>
     </div>
 
     {!assina &&

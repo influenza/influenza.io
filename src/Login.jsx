@@ -20,7 +20,6 @@ function Login() {
   const [senha, setSenha] = useState("")
   let erros = document.getElementsByClassName("erros")
   let erro = document.getElementsByClassName("erro")
-
   let inputs = document.getElementsByClassName("inplog" )
   const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   const regex2 = /^(?=.*[a-zA-Z]{6,})(?=.*[!@#$%^&*()])(?=.*[0-9]).*$/;
@@ -70,7 +69,8 @@ function Login() {
 
   }
   
-  function handleEnviar(){
+  async function handleEnviar(){
+    let p =0
 
     for(let x=0; x<inputs.length; x++) {
           console.log(erros[x])
@@ -99,12 +99,9 @@ function Login() {
       
 
       }else{
-        setLogin(true)
         erro[x].style.opacity = "0"
         erros[x].style.opacity = "0"
-      }
-    }
-      if(login){
+      
 
         console.log(email)
         console.log(senha)
@@ -115,7 +112,7 @@ function Login() {
       };
       console.log(data)
       axios.post('http://ec2-44-220-83-117.compute-1.amazonaws.com/auth/signin', data)
-      .then(response => {
+      .then(async (response) => {
         Cookies.set("LoginResponse", response)
         Cookies.set("Nome",response.data.username)
         Cookies.set("Email",email)
@@ -131,7 +128,7 @@ function Login() {
         };
         
         axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/user/v1/email/${email}`, headers)
-          .then(res => {
+          .then(async (res) => {
             console.log(res)
             Cookies.set("genero", res.data.gender)
             Cookies.set("nacionalidade", res.data.nationality)
@@ -139,44 +136,54 @@ function Login() {
             Cookies.set("ID", res.data.id)
 
             console.log(Cookies.get())
-            axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${res.data.id}`, headers)
+            await axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/user/${res.data.id}`, headers)
             .then(res =>{
               console.log(res.data[0])
-              Cookies.set("NomeEqui2",res.data[0].name)
+                Cookies.set("NomeEqui2",res.data[0].name)
+
             }).catch(res=>{
               console.log(res)
               Cookies.set("NomeEqui2","")
             })
+            navigate("/equipevisao")
           })
            .catch(error => {
         console.error(error);
       });  
-      navigate("/equipevisao")
       })
       .catch( RES=>{
 
         console.log(RES)
-        erro[0].style.opacity = "1"
-        erros[0].style.opacity = "1"
-              erro[1].style.opacity = "1"
-        erros[1].style.opacity = "1"
-        erros[0].append("LOGIN INVALIDO")
-        erros[1].append("LOGIN INVALIDO")
+ if(p==0){
+  erro[0].style.opacity = "1"
+  erros[0].style.opacity = "1"
+        erro[1].style.opacity = "1"
+  erros[1].style.opacity = "1"
+  
+  erros[0].append("LOGIN INVALIDO")
+  erros[1].append("LOGIN INVALIDO")
+  p=1
+ }
 
       }
       )
-        }
+       
+      }
+    }
   }
   return (
     <>
 
 <div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"",textAlign:"center"}}>
 
-<div id='imgmargin' className='imgsmargins' style={{display:"flex", width:"100vw",height:"20vh",justifyContent:"center",alignItems:"center"}}>
-    <div id='mdlogdiv'>  
-<img src={`${logo}`}  className='img' alt="" />
-  <img src={`${letraverde}`} className='img' alt="" /></div>
+<div style={{justifyContent:"center",display:"flex",flexDirection:"row"}}>
+<div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",height:"15vh",justifyContent:"",alignItems:"center"}}>
+<div id="imgs" >  
+<img src={`${logo}`} className='img'alt="" />
+  <img src={`${letraverde}`} className='img'   alt="" /></div>
 
+    </div>
+    <div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",height:"15vh",justifyContent:"",alignItems:""}}>
      <div  style={{display:"flex", flexDirection:"row", justifyContent:"right", alignItems:"center",width:"50vw",marginRight:"20px"}}><span id='SemConta' >Não possui conta? crie!</span>           <button id="btncadastro" style={{
        backgroundColor: "#279301",
        color: "white",
@@ -184,11 +191,14 @@ function Login() {
        borderRadius: "10px",
        border:'0px',
        marginLeft:"15px",
-       width:"80px"
+       width:"80px",
+       cursor:"pointer"
      }}onClick={()=>{navigate("/cadastro2")}} text={"Cadastre-se"} >Enviar</button>
                                                                                                                     
       </div>
-    </div>
+      </div>
+</div>
+
     <div style={{height:"80vh", width:"100vw", display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
     <div id='mdcon' className="mdconclasslog" style={{backgroundColor:"white", borderRadius:"17px",boxShadow:"4px 4px 4px 3px rgba(0, 0, 0, 0.2)"}}>
       <p id='mdlogP1' >Bem vindo de volta</p>

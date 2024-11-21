@@ -25,9 +25,10 @@ function Cadastro3() {
   const [senha, setSenha] = useState("")
   const [codcert, setcodcert] = useState("12345")
   useEffect(() => {
+    setcodcert(Cookies.get().CodigoVerificação)
     const handleKeyPress = (e) => {
 
-   if(x<=4){
+   if(x<=5){
     setCode((prevCode) => {
       const newCode = [...prevCode];
       newCode[x] = e.key;
@@ -37,7 +38,7 @@ function Cadastro3() {
     });
 
    }
-      if (x < 5) {
+      if (x < 6) {
         setX((prevX) => prevX + 1);
       }
     };
@@ -70,9 +71,11 @@ function Cadastro3() {
   function handleChangeEmail2(event) {
     Cookies.set("email",email2)
   }
-function handlecodver(){
+async function handlecodver(){
+  console.log(codcert)
   axios.get()
-  setEmail2(code.join(""))
+  let email3 = code.join("").toUpperCase()
+  setEmail2(code.join("").toUpperCase())
   let erros = document.getElementById("erros")
   let erro = document.getElementById("erro")
   console.log(email2)
@@ -82,7 +85,7 @@ function handlecodver(){
   erros.append("")
   erros?.removeChild(erros.lastChild);
 
-  if(email2 ==undefined || !erros.textContent =="CODIGO DE VERIFICAÇÃO OBRIGATORIO" ){
+  if(email3 ==undefined || !erros.textContent =="CODIGO DE VERIFICAÇÃO OBRIGATORIO" ){
     erro.style.opacity = "1"
     erros.style.opacity = "1"
 
@@ -90,40 +93,43 @@ function handlecodver(){
 
 
   }
-  else if(email2 != codcert && email2 != undefined || !erros.textContent =="CODIGO DE VERIFICAÇÃO INCORRETO"){
+  else if(email3 != codcert && email2 != undefined || !erros.textContent =="CODIGO DE VERIFICAÇÃO INCORRETO"){
         erro.style.opacity = "1"
     erros.style.opacity = "1"
     erros?.removeChild(erros.lastChild);
     erros.append("CODIGO DE VERIFICAÇÃO INCORRETO")
   }
-  else if(email2 == codcert){
+  else if(email3 == codcert){
     Cookies.set("codcert",true)
-    navigate(`/equipevisao`)
-    
+    navigate("/equipevisao")
   }
 }
   return (
     <>
 
-    <div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"", justifyContent:"center",alignItems:"center",textAlign:"center"}}>
+    <div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"",alignItems:"center",textAlign:"center"}}>
     <div style={{display:"flex",flexDirection:"row", width:"100vw",}}>
 <div style={{width:"40vw", display:"flex", alignItems:"center", textAlign:"left",justifyContent:"left", marginRight:"20px", fontSize:"20px"}}>  
-<div id='divimg' style={{width:"50vw", display:"flex", alignItems:"center", textAlign:"left",justifyContent:"left", marginRight:"20px" ,fontSize:"20px"}}>  
-<img src={`${logo}`} style={{width:"150px", height:"150px", marginRight:"20px"}} alt="" />
-  <img src={`${letraverde}`} style={{width:"150px", height:"150px"}} alt="" /></div>
+<div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",height:"15vh",alignItems:"center",}}>
+<div id="imgs" >  
+<img src={`${logo}`} className='img'alt="" />
+  <img src={`${letraverde}`} className='img'   alt="" /></div>
+
+    </div>
 
 </div>
 
     </div>
-    <div id='md2con' style={{backgroundColor:"white",  boxShadow:"4px 4px 4px 3px rgba(0, 0, 0, 0.2)"}}>
+    <div id='md2con' style={{backgroundColor:"white",  boxShadow:"4px 4px 4px 3px rgba(0, 0, 0, 0.2)",marginTop:"20vh"}}>
       <p id="mdtxtgeral" style={{ fontWeight:"bolder", }}>Estamos quase lá</p>
     <p id='mdtxtem'>Enviamos um codigo para seu email, coloque-o abaixo</p>
     <div id="mdbotaodiv" style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-    <span className="mdbotao" style={{ padding:"0px 10px",border:"2px solid #aaa",fontSize:"18px", borderRadius:"20px",   height:"5vh",marginBottom:"5px", width:"2.5vw", display:"flex", justifyContent:"center", textAlign:"center", alignItems:"center"}}>{code[0]}</span>
-    <span  className="mdbotao" style={{ padding:"0px 10px",border:"2px solid #aaa",fontSize:"18px", borderRadius:"20px",   height:"5vh",marginBottom:"5px", width:"2.5vw", display:"flex", justifyContent:"center", textAlign:"center", alignItems:"center"}}>{code[1]}</span>
-    <span  className="mdbotao" style={{ padding:"0px 10px",border:"2px solid #aaa",fontSize:"18px", borderRadius:"20px",   height:"5vh",marginBottom:"5px", width:"2.5vw", display:"flex", justifyContent:"center", textAlign:"center", alignItems:"center"}}>{code[2]}</span>
-    <span   className="mdbotao" style={{ padding:"0px 10px",border:"2px solid #aaa",fontSize:"18px", borderRadius:"20px",   height:"5vh",marginBottom:"5px", width:"2.5vw", display:"flex", justifyContent:"center", textAlign:"center", alignItems:"center"}}>{code[3]}</span>
-    <span  className="mdbotao" style={{ padding:"0px 10px",border:"2px solid #aaa",fontSize:"18px", borderRadius:"20px",   height:"5vh",marginBottom:"5px", width:"2.5vw", display:"flex", justifyContent:"center", textAlign:"center", alignItems:"center"}}>{code[4]}</span>
+    <span className="mdbotao" style={{ padding:"0px 10px",border:"2px solid #aaa",fontSize:"18px", borderRadius:"20px",   height:"5vh",marginBottom:"5px", width:"2.5vw", display:"flex", justifyContent:"center", textAlign:"center", alignItems:"center"}}>{code[0]?`${code[0]}`.toUpperCase():""}</span>
+    <span  className="mdbotao" style={{ padding:"0px 10px",border:"2px solid #aaa",fontSize:"18px", borderRadius:"20px",   height:"5vh",marginBottom:"5px", width:"2.5vw", display:"flex", justifyContent:"center", textAlign:"center", alignItems:"center"}}>{code[1]?`${code[1]}`.toUpperCase():""}</span>
+    <span  className="mdbotao" style={{ padding:"0px 10px",border:"2px solid #aaa",fontSize:"18px", borderRadius:"20px",   height:"5vh",marginBottom:"5px", width:"2.5vw", display:"flex", justifyContent:"center", textAlign:"center", alignItems:"center"}}>{code[2]?`${code[2]}`.toUpperCase():""}</span>
+    <span   className="mdbotao" style={{ padding:"0px 10px",border:"2px solid #aaa",fontSize:"18px", borderRadius:"20px",   height:"5vh",marginBottom:"5px", width:"2.5vw", display:"flex", justifyContent:"center", textAlign:"center", alignItems:"center"}}>{code[3]?`${code[3]}`.toUpperCase():""}</span>
+    <span  className="mdbotao" style={{ padding:"0px 10px",border:"2px solid #aaa",fontSize:"18px", borderRadius:"20px",   height:"5vh",marginBottom:"5px", width:"2.5vw", display:"flex", justifyContent:"center", textAlign:"center", alignItems:"center"}}>{code[4]?`${code[4]}`.toUpperCase():""}</span>
+    <span  className="mdbotao" style={{ padding:"0px 10px",border:"2px solid #aaa",fontSize:"18px", borderRadius:"20px",   height:"5vh",marginBottom:"5px", width:"2.5vw", display:"flex", justifyContent:"center", textAlign:"center", alignItems:"center"}}>{code[5]?`${code[5]}`.toUpperCase():""}</span>
 
     </div>
     <div id='erro'  style={{opacity:"0",display:"flex",flexDirection:"column",justifyContent:"center"}}>
@@ -148,9 +154,19 @@ fill="#FF6300" stroke="none">
 </g>
 </svg>
       </div>
-      
+        <span  style={{color:"blue",textDecoration:"underline"}} href="" onClick={()=>{
+          console.log("a")
+            const headers = {
+              headers: {
+                  "Authorization": `Bearer ${Cookies.get().Token}`
+              }
+          };
+          console.log(Cookies.get().Nome)
+          axios.post(`http://ec2-44-220-83-117.compute-1.amazonaws.com/auth/signup/send-confirmation-code?email=${Cookies.get().Email}&name=${Cookies.get().Nome}`
+            ,headers).then((res)=>{Cookies.set("CodigoVerificação",res.data)})
+        }}>Reenvie o código</span> 
       <div id='mdbotoeslogin1'>
-      <Button id="md2btn" text={"Entrar"} func={handlecodver} style={{ backgroundColor:"#279301",color:"white", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}}>Enviar</Button>
+      <Button id="md2btn" text={"Entrar"} func={handlecodver}  style={{ backgroundColor:"#279301",color:"white", fontWeight:"bold",borderRadius:"10px",border:"0px solid white"}}>Enviar</Button>
 
         </div>
         

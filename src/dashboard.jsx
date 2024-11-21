@@ -25,8 +25,8 @@ export function Dashboard(props) {
   const [Maximo, SetMaximo] = useState();
   const [MediaArray, SetMediaArray] = useState();
   
-  const [Diff, setDiff] = useState(null);
-  const [Diffper, setDiffper] = useState(null);
+  const [Diff, setDiff] = useState(0);
+  const [Diffper, setDiffper] = useState(0);
 
   const [data, setData] = useState(null);
   const [grafico, setGrafico] = useState("Barra");
@@ -46,7 +46,9 @@ export function Dashboard(props) {
   const [chartInstance, setchartinstnse] = useState("")
   const [chartInstance2, setchartinstnse2] = useState("")
   const [chartInstance3, setchartinstnse3] = useState("")
-  const [total, settotal] = useState("");
+  const [total, settotal] = useState(0);
+  const [tempodate, settempodate] = useState(0);
+
   const [mesarraychosen, setMesArrayChosen] = useState([])
   const [diaarraychosen, setdiaArrayChosen] = useState([])
   const [horarraychosen, sethoraArrayChosen] = useState([])
@@ -84,7 +86,17 @@ export function Dashboard(props) {
   let navigate = useNavigate()
   console.log(Cookies.get().Metas)
   if(Cookies.get().Metas == undefined){
-    navigate("/metas")
+        
+    const headers = {
+      headers: {
+        "Authorization": `Bearer ${Cookies.get().Token}`
+      }
+    };
+    axios.get(`http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1/id/${Cookies.get().NomeEquiID}`,headers).then((res)=>{
+      console.log(res.data.dailyGoal)
+      let arr =[res.data.dailyGoal, res.data.monthlyGoal, res.data.annualGoal]
+      Cookies.set("Metas", arr)
+    })
   }
   console.log();
   
@@ -109,19 +121,19 @@ export function Dashboard(props) {
   let horas = d.getHours();
   let dia = d.getDate();
   let mes
-  if(parseInt(d.getMonth())+1 < 10){
+  const [tempos, settempo] = useState(false);
+
+if(tempos==false){  if(parseInt(d.getMonth())+1 < 10){
      mes = `0${d.getMonth() + 1}`;
 
   }else{
      mes = d.getMonth() + 1;
 
-  }
+  }}
   let year = d.getFullYear(); 
   let minutos = d.getMinutes();
-  
-  function tempo(e) {
-    Settemp(e.target.value);
-  }
+
+
   const [Data,SetData]= useState()
   let diadicttrue = {"01": [],"02": [],"03": [],"04": [],"05": [],"06": [],"07": [],"08": [],"09": [],"10": [],"11": [],"12": [],"13": [],"14": [],"15": [],"16": [],"17": [],"18": [],"19": [],"20": [],"21": [],"22": [],"23": [],"24": []}
   
@@ -147,6 +159,7 @@ let arrayhora = [
   let umavez= false
 
   const fetchData = async () => {
+    
     const headers = {
       headers: {
         "Authorization": `Bearer ${Cookies.get().Token}`
@@ -205,14 +218,12 @@ let arrayhora = [
        }
        if(!totalArray.includes(total2)){
         totalArray.push(total2)
-        settotal(total2)
        }
         }
 
         for(let x of horarraychosen){
           total2 =0
           for (let y of diadicttrue[x]){
-          console.log(y)
           if(y[1] ==dia){
             total2+=y[0]
           }
@@ -239,6 +250,9 @@ let arrayhora = [
            console.log(temp == "Diaria")
 
       })
+      if(temp=="Diaria"){
+        SetMedia(total/totalarrayHora.length)
+      }
       if(temp=="Mensal"){
         console.log(totalArray)
         let totalvalor = totalArray.reduce((a,b)=>a+b)
@@ -264,85 +278,200 @@ let arrayhora = [
       }
       else if(temp == "Diaria"){
         console.log(totalarrayHora)
-        settotal(totalarrayHora ==[]? totalarrayHora.reduce((a,b)=>a+b):0)
+        if(totalarrayHora !=[]){
+          settotal(totalarrayHora.reduce((a,b)=>a+b))
+        }else{
+          settotal(0)
+        }
         console.log(total)
         setDiff(total-totalArray[totalArray.length-2])
 
         setDiffper(totalArray[totalArray.length-2]?total/totalArray[totalArray.length-2]:total/100)
         SetMinimo(Math.min(...totalArray))
         SetMaximo(Math.max(...totalArray))
-        SetMedia(total?total/totalarrayHora.length:0)
+        console.log(totalarrayHora.length)
+        if(total != 0){
+          SetMedia(total/totalarrayHora.length)
+          console.log(totalarrayHora.length)
+        }else{
+          SetMedia(0)
+
+        }
       }
     } catch (error) {
       console.error("Erro ao obter dados do servidor:", error);
     }
   };
-  useEffect(() => {
-    const setupChart = () => {
-
-      const ctx = chartRef.current;
-      if (chartInstance) {
-        chartInstance.destroy();
-      }
-
-      console.log({"dicionario":diadict})
-      const valor = totalArray
-      console.log(totalArray)
-      const newChartInstance = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: diaarraychosen,
-          datasets: [{
-            label: `Emissão de gases por ${dictemp2[temp]} `,
-            data: valor,
-            aspectRatio: 4,
-            borderWidth: 1,
-            barThickness: 8,
-          }]
+ 
+  const setupChart = (destroy) => {
+    const ctx = chartRef.current;
+  
+    if (chartInstance || destroy) {
+      chartInstance.destroy(); // Destruir gráfico anterior se `destroy` for true
+    }
+  
+    const newChartInstance = new Chart(ctx, {
+      // Configurações do gráfico
+      type: 'bar',
+      data: {
+        labels: horarraychosen,
+        datasets: [{
+          label: `Emissão de gases por ${dictemp2[temp]}`,
+          data: totalarrayHora,
+          borderWidth: 1,
+          barThickness: 8,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+            },
+          }],
         },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            yAxes: [{
-              display: true,
-              ticks: {
-                beginAtZero: true,
-                min: 200,
-                max: 200,
-                stepSize: 1
-              }
-            }]
+      },
+    });
+    if(temp=="Mensal"){
+      newChartInstance.data.labels = diaarraychosen
+      newChartInstance.data.datasets[0].data =totalArray
+      newChartInstance.update();
+
+    }
+    else if(temp == "Anual"){
+      console.log("fsafsaga")
+      newChartInstance.data.labels = mesarraychosen
+      newChartInstance.data.datasets[0].data =totalArrayMes
+      newChartInstance.update();
+
+    }
+    else if(temp == "Diaria"){
+      console.log("fsafsaga")
+      newChartInstance.data.labels = horarraychosen
+      newChartInstance.data.datasets[0].data =totalarrayHora
+      newChartInstance.update();
+
+    }
+    setchartinstnse(newChartInstance); // Atualiza com o novo gráfico
+  };
+  
+  const setupChartpie = () => {
+      
+    const ctx = chartRef2.current.getContext('2d');
+
+    // Destrói o gráfico anterior, se existir
+    if (chartInstance) {
+      chartInstance.destroy();
+    }
+
+
+    const newChartInstance = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: horarraychosen,
+        datasets: [{
+          label: 'Emissão de gases em',
+          data: totalarrayHora,
+          borderWidth: 1,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      }
+    });
+    if(temp=="Mensal"){
+      newChartInstance.data.labels = diaarraychosen
+      newChartInstance.data.datasets[0].data =totalArray
+      newChartInstance.update();
+
+    }
+    else if(temp == "Anual"){
+      console.log("fsafsaga")
+      newChartInstance.data.labels = mesarraychosen
+      newChartInstance.data.datasets[0].data =totalArrayMes
+      newChartInstance.update();
+
+    }
+    else if(temp == "Diaria"){
+      console.log("fsafsaga")
+      newChartInstance.data.labels = horarraychosen
+      newChartInstance.data.datasets[0].data =totalarrayHora
+      newChartInstance.update();
+
+    }
+
+    // Salva a instância do gráfico para destruição posterior
+    setchartinstnse(newChartInstance);
+  };
+  const setupChartScatter = () => {
+      
+    const ctx = chartRef3.current.getContext('2d');
+    if (chartInstance) {
+      chartInstance.destroy();
+    }
+  
+    const newChartInstance = new Chart(ctx, {
+      type: 'scatter',
+      data: {
+        datasets: [{
+          label: 'Scatter Dataset',
+          data: [{ x: -10, y: 0 }] // Inicialização com um ponto de exemplo
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'linear',
+            position: 'bottom'
           }
         }
-        
-      });
-     
-      console.log(temp)
-      if(temp=="Mensal"){
-        newChartInstance.data.labels = diaarraychosen
-        newChartInstance.data.datasets[0].data = valor
-        newChartInstance.update();
-
       }
-      else if(temp == "Anual"){
-        console.log("fsafsaga")
-        newChartInstance.data.labels = mesarraychosen
-        newChartInstance.data.datasets[0].data =totalArrayMes
-        newChartInstance.update();
+    });
+  if(temp=="Mensal"){
+    newChartInstance.data.labels = diaarraychosen
+    newChartInstance.data.datasets[0].data =totalArray
+    newChartInstance.update();
 
-      }
-      else if(temp == "Diaria"){
-        console.log("fsafsaga")
-        console.log(horarraychosen)
-        newChartInstance.data.labels = horarraychosen
-        newChartInstance.data.datasets[0].data =totalarrayHora
-        newChartInstance.update();
+  }
+  else if(temp == "Anual"){
+    console.log("fsafsaga")
+    newChartInstance.data.labels = mesarraychosen
+    newChartInstance.data.datasets[0].data =totalArrayMes
+    newChartInstance.update();
 
-      }
+  }
+  else if(temp == "Diaria"){
+    console.log("fsafsaga")
+    newChartInstance.data.labels = horarraychosen
+    newChartInstance.data.datasets[0].data =totalarrayHora
+    newChartInstance.update();
 
-      setchartinstnse(newChartInstance);
-    };
+  }
+
+  setchartinstnse(newChartInstance);
+  
+};
+let totalarrayHora2 =[]
+let horarraychosen2=[]
+async function handledate(e) {
+  settempodate(e)
+  dia = e.target.value.slice(8, 10);
+  mes = e.target.value.slice(5, 7);
+  settempo(true)
+   settotalarrayHora([]); // Limpar arrays antes
+   sethoraArrayChosen([]);
+   setdiaArrayChosen([])
+   setTotalArray([])
+  console.log(total)
+  await fetchData();  // Espera fetchData completar
+  setupChart(true);   // Só depois chama setupChart
+}
+
+  useEffect(() => {
+   
     fetchData().then(setupChart);
 
     const setupChartpie2 = () => {
@@ -378,112 +507,23 @@ let arrayhora = [
     };
     fetchData().then(setupChartpie2)
 
-    const setupChartpie = () => {
-      
-      const ctx = chartRef2.current.getContext('2d');
-
-      // Destrói o gráfico anterior, se existir
-      if (chartInstance) {
-        chartInstance.destroy();
-      }
-
-
-      const newChartInstance = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          labels: horarraychosen,
-          datasets: [{
-            label: 'Emissão de gases em',
-            data: totalarrayHora,
-            borderWidth: 1,
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-        }
-      });
-      if(temp=="Mensal"){
-        newChartInstance.data.labels = diaarraychosen
-        newChartInstance.data.datasets[0].data =totalArray
-        newChartInstance.update();
-
-      }
-      else if(temp == "Anual"){
-        console.log("fsafsaga")
-        newChartInstance.data.labels = mesarraychosen
-        newChartInstance.data.datasets[0].data =totalArrayMes
-        newChartInstance.update();
-
-      }
-      else if(temp == "Diaria"){
-        console.log("fsafsaga")
-        newChartInstance.data.labels = horarraychosen
-        newChartInstance.data.datasets[0].data =totalarrayHora
-        newChartInstance.update();
-
-      }
-
-      // Salva a instância do gráfico para destruição posterior
-      setchartinstnse(newChartInstance);
-    };
+    
     fetchData().then(setupChartpie)
-      const setupChartScatter = () => {
-      
-        const ctx = chartRef3.current.getContext('2d');
-        if (chartInstance) {
-          chartInstance.destroy();
-        }
-      
-        const newChartInstance = new Chart(ctx, {
-          type: 'scatter',
-          data: {
-            datasets: [{
-              label: 'Scatter Dataset',
-              data: [{ x: -10, y: 0 }] // Inicialização com um ponto de exemplo
-            }]
-          },
-          options: {
-            scales: {
-              x: {
-                type: 'linear',
-                position: 'bottom'
-              }
-            }
-          }
-        });
-      if(temp=="Mensal"){
-        newChartInstance.data.labels = diaarraychosen
-        newChartInstance.data.datasets[0].data =totalArray
-        newChartInstance.update();
-
-      }
-      else if(temp == "Anual"){
-        console.log("fsafsaga")
-        newChartInstance.data.labels = mesarraychosen
-        newChartInstance.data.datasets[0].data =totalArrayMes
-        newChartInstance.update();
-
-      }
-      else if(temp == "Diaria"){
-        console.log("fsafsaga")
-        newChartInstance.data.labels = horarraychosen
-        newChartInstance.data.datasets[0].data =totalarrayHora
-        newChartInstance.update();
-
-      }
-
-      setchartinstnse(newChartInstance);
-      
-    };
+    
     fetchData().then(setupChartScatter);
- }, [result,grafico,temp]);
+ }, [result,grafico,temp,dia]);
   
-    function tempo(e) {
+   async function tempo(e) {
+    console.log("fjha")
       Settemp(e.target.value);
+      console.log(tempodate)
+    if(tempodate){
+      handledate(tempodate)
+    }
     }
   
     function graficoMet(e) {
+      console.log(mes)
       setGrafico(e.target.value);
       if (e.target.value === "Pizza") {
         setelemento(<img style={{ width: "500px", height: "300px" }} />);
@@ -528,8 +568,10 @@ let arrayhora = [
 
 <div style={{width:"92vw", display:"flex", justifyContent:"space-between"}}>
 
-<p id="TituloMdDash">Graficos Das Emissões</p>
+<div style={{display:"flex",marginLeft:"20px", gap:"20px"}}>
+<p id="TituloMdDash">Graficos Das Emissões</p> <input type="date" name="" id="" onChange={handledate} style={{border:"0px",background:"transparent"}}/>
 
+</div>
 </div>
 
 <div id="faixa1"  style={faixaStyle}>
@@ -574,8 +616,8 @@ let arrayhora = [
 }
   {(((42580591/total).toFixed(3)-1)*100).toFixed(3)> 0 &&
   <div className="spaninfodash" style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "red"}}>
-<span >{`${((Diffper-1)*100).toFixed(2)}% `}</span> <br />
-<span style={{marginTop:"2vh"}}>{`${Diff} `}</span>
+<span style={{marginTop:"2vh"}}>{`${Diff} `}</span><br />
+<span >{Diffper?`${((Diffper-1)*100).toFixed(2)}% `:`${0}%`}</span> 
 
   </div>
 }
@@ -593,26 +635,26 @@ let arrayhora = [
 <div style={{ flexDirection: "column", display: "flex" }}>
  <div className="navbarinfoDash" style={{display:"flex",flexDirection:"row", justifyContent:"space-between"}}>
  <span  id="mdtittempDash" style={{ textAlign: "left", fontFamily: "Krona One , sans-serif", fontWeight: "bold"}}>Revisão da meta:
- <span style={{color:"#4A9AE9"}}> {Cookies.get().Metas?Cookies.get().Metas.split(",")[dictemp[temp]]:0}
+ <span style={{color:"#4A9AE9"}}> {Cookies.get().Metas?Cookies.get().Metas.split(",")[dictemp[temp]!=0?dictemp[temp]-1:dictemp[temp]]:0}
  </span>
 
-  </span><Link to="/metas"><button id="btnMetas" style={{backgroundColor: "#D3D3D3", cursor:"pointer"}}>Definir meta</button></Link>
+  </span><Link to="/metas"><button id="btnMetas" style={{backgroundColor: "#D3D3D3", cursor:"pointer"}}>Meta </button></Link>
     
 </div>
 <div className="restinfoDash" style={{display:"flex",textAlign:"center",justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
 
 <span>
 
-{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]) >= 0
-?<div className="spaninfodash" style={{color:"rgb(20, 181, 122)"}}>{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])}</div>
-:<div className="spaninfodash"  style={{color:"red"}}>{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]])}</div>}
+{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]!=0?dictemp[temp]-1:dictemp[temp]]) >= 0
+?<div className="spaninfodash" style={{color:"rgb(20, 181, 122)"}}>{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]!=0?dictemp[temp]-1:dictemp[temp]])}</div>
+:<div className="spaninfodash"  style={{color:"red"}}>{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]!=0?dictemp[temp]-1:dictemp[temp]])}</div>}
 
 </span>
 <span>
 
-{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]) >= 0
-?<div className="spaninfodash" style={{color:"rgb(20, 181, 122)"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]))*100).toFixed(2)}%`}</div>
-:<div className="spaninfodash" style={{color:"red"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]]))*100).toFixed(2)}%`}</div>}
+{total - parseInt(Cookies.get().Metas.split(",")[dictemp[temp]!=0?dictemp[temp]-1:dictemp[temp]]) >= 0
+?<div className="spaninfodash" style={{color:"rgb(20, 181, 122)"}}>{total?`${((total/parseInt(Cookies.get.Metas?Cookies.get().Metas.split(",")[dictemp[temp]!=0?dictemp[temp]-1:dictemp[temp]]:1))*100).toFixed(2)}%`:`0%`}</div>
+:<div className="spaninfodash" style={{color:"red"}}>{`${((total/parseInt(Cookies.get().Metas.split(",")[dictemp[temp]!=0?dictemp[temp]-1:dictemp[temp]]))*100).toFixed(2)}%`}</div>}
 
 
 </span>
@@ -635,7 +677,7 @@ let arrayhora = [
   </select></div>               
 </div>
   <div className="restinfoDash" style={{display:"flex",alignItems:"center",justifyContent:"center", alignItems:"center"}}>
-  <span style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#4A9AE9",fontSize:"20px"}}>{Metrica == "Media" ? `${Math.round(Media)}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
+  <span style={{ fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#4A9AE9",fontSize:"20px"}}>{Metrica == "Media" ? `${Media?Media:0}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
 
   </div>
 
@@ -658,7 +700,7 @@ let arrayhora = [
 {Cookies.get().Metas?Cookies.get().Metas.split(",")[dictemp[temp]]:0}
 
 </span>
-  </span><Link to="/metas"><button id="btnMetas" style={{backgroundColor: "#D3D3D3", }}>Definir meta</button></Link>
+  </span><Link to="/metas"><button id="btnMetas" style={{backgroundColor: "#D3D3D3", }}> Meta</button></Link>
     
 </div>
 <div className="restinfoDash" style={{display:"flex",textAlign:"center",justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
@@ -692,7 +734,7 @@ let arrayhora = [
   </select></div>               
 </div>
   <div className="restinfoDash" style={{display:"flex",alignItems:"center",justifyContent:"center", alignItems:"center"}}>
-  <span className="spaninfodash" style={{  fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#14B57A",}}>{Metrica == "Media" ?` ${Media}`: Metrica  == "Variancia"? Math.round(Variancia): Metrica == "Maximo"?Maximo:Minimo} </span>
+  <span className="spaninfodash" style={{  fontFamily: "Krona One , sans-serif", fontWeight: "bold", color: "#14B57A",}}>100 </span>
 
   </div>
 

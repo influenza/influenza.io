@@ -225,20 +225,26 @@ function handleindexEqui(e){
         let DataHora=0
         let DataMes=0
 
-        for(let x of diaarraychosen){
-            totalHora =0
-
+        for (let x of diaarraychosen) {
             if (diadict[x]) {
+                let DataHora = null;  // Reinicializa DataHora
+        
                 for (let y of diadict[x]) {
+                    totalHora = 0;  // Reinicializa totalHora para cada elemento de diaarraychosen
 
-                    if (typeof y !== "string") {
+        
+                    if (typeof y !== "string" ) {
                         totalHora += y.value;  // Acumula o valor em totalHora
-                        DataHora = y.timestamp
+                        DataHora = y.timestamp;  // Atualiza o timestamp mais recente
                     }
                 }
-                datavaluehora.push([totalHora,DataHora])
+        
+                if (DataHora !== null) {  // Verifica se houve alguma atualização de DataHora
+                    datavaluehora.push([totalHora, DataHora]);  // Adiciona o total e o timestamp
+                }
             }
         }
+        
         for(let x of mes2arraychosen){
             totalMes =0
 
@@ -455,7 +461,7 @@ return null;
         datavaluehora1[index].push((parseInt(datavaluehora1[index][1].slice(5,7) + datavaluehora1[index][1].slice(8,10) + datavaluehora1[index][1].slice(11,13) )))
         console.log(datavaluehora1[index])
         let datavaluehora2 = [...datavaluehora].sort((a, b) => b[0] - a[0]);
-        let datavaluehora3 = [...datavaluehora1].sort((a, b) => a[2] - b[2]);
+        let datavaluehora3 = [...datavaluehora1].sort((a, b) => a[0] - b[0]);
         console.log(datavaluehora3)
         if (Filtro == "MenorEmissao") {
 
@@ -487,7 +493,6 @@ return null;
                 <tr>
                 <td>{index}</td>
                 <td>{`${datavaluehora3[index][1].slice(0,10)}/${datavaluehora3[index][1].slice(11,13)}`}</td>
-                <td>{datavaluehora3[index]}</td>
 
                 <td>{datavaluehora3[index][0]}</td>
                 </tr>
@@ -518,7 +523,7 @@ return null;
             <tr>
             <td>{index}</td>
             <td>{`${mesvaluehora[index][1].slice(0,10)}`}</td>
-            <td>{mesvaluehora[index][0]/2}</td>
+            <td>{mesvaluehora[index][0]*2}</td>
             </tr>
         
         )
@@ -528,7 +533,7 @@ return null;
                         <tr>
                         <td>{mes2arraychosen.length-index-1}</td>
                         <td>{`${mesvaluehora[mes2arraychosen.length-index-1][1].slice(0,10)}`}</td>
-                        <td>{mesvaluehora[mes2arraychosen.length-index-1][0]/2}</td>
+                        <td>{mesvaluehora[mes2arraychosen.length-index-1][0]}</td>
                         </tr>
                     
                     )
@@ -542,18 +547,18 @@ return null;
                 <tr>
                 <td>{index}</td>
                 <td>{`${mesvaluehora1[index][1].slice(0,10)}`}</td>
-                <td>{mesvaluehora1[index][0]/2}</td>
+                <td>{mesvaluehora1[index][0]}</td>
                 </tr>
             
             )
         }
         if (Filtro == "MaiorEmissao") {
-            let mesvaluehora2 = [...datavaluehora].sort((a, b) => b[0] - a[0]);
+            let mesvaluehora2 = [...mesvaluehora].sort((a, b) => b[0] - a[0]);
             return(
                 <tr>
                 <td>{index}</td>
                 <td>{`${mesvaluehora2[index][1].slice(0,10)}`}</td>
-                <td>{mesvaluehora2[index][0]/2}</td>
+                <td>{mesvaluehora2[index][0]}</td>
                 </tr>
             
             )

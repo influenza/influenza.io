@@ -1,0 +1,32 @@
+@media screen and (max-width:550px) {
+#ImgLogoNav{
+    width: 80px;
+    height: 50px;
+}
+#divlist{
+    font-size: 10px;
+}
+#navhome{
+    gap: 10vw;
+}
+#btnhomenav{
+    width: 12.5vw
+}
+#homeobjetivos{
+    font-size: 60px;
+    width:300px;
+    margin-left:20px;
+    margin-top:50px
+
+}
+#hometexto{
+    margin-left:20px; font-size:20px; width:300px;margin-top:0px
+}
+}
+#ImgLogoNav{
+    height: 100px;
+}
+
+#navhome{
+    gap: 10vw;
+}

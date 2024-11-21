@@ -264,16 +264,14 @@ document.addEventListener("keyup",(e)=>{
          <div style={{display:"flex", flexDirection:"row", overflow:"hidden"}}>
           
           <Navbar4 es={3}></Navbar4>
-              <div id="mdconlistaus" style={{  display:"flex",flexDirection:"row",backgroundColor:"#f5ebe0", width:"92vw",  msScrollLimitXMax:"0px"}}>
-              <div style={{justifyContent:"left",alignItems:"center",display:"flex",flexDirection:"column", width:"100vw",}}>
-              <div style={{display:"flex", justifyContent:"center", gap:"65vw"}}>
-              <p className="EcoIconLetter" id="mdlisttit" >Tabela de funcionario</p>
-              <span></span>
-
-              </div>
+              <div style={{backgroundColor:"#f5ebe0", width:"92vw",height:"92vh", msScrollLimitXMax:"0px",display:"flex",flexDirection:"column",justifyContent:"center",textAlign:"center"}}>
+                <div id="mdivfaixa1">
+                <p>Tabela de funcionarios</p>
+                <span></span>
+                </div>
 <div style={{display:"flex",alignItems:"center",justifyContent:"center",flexDirection:"column"}}>
 
-<div id="mdlistusucon" style={{background:"white", borderColor:"white",border:"1px solid black"}}>
+<div id="mdDivTabela" style={{background:"white", borderColor:"white",border:"1px solid black"}}>
 <div id="mdlistusudiv1" style={{display:"flex",alignItems:"center",justifyContent:"space-evenly",borderBottom: "1px solid #F5F1ED"}}>
   
 <div id="mdlistusuPmembros" style={{fontWeight:"bold", justifyContent:"center",display:"flex", alignItems:"center", textAlign:"center",gap:"10px"}}>
@@ -599,7 +597,6 @@ l3 -3035 23 -57 c28 -68 110 -163 160 -183 46 -20 198 -20 243 -1 44 19 162
       
          
           
-                  </div>
                   
 
     </>

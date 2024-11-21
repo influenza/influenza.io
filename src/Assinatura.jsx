@@ -19,18 +19,19 @@ function handlePlano(){
       "Authorization": `Bearer ${Cookies.get().Token}`
     }
   };
-  console.log(Cookies,get().Area)
   const data = {
     "handle": Cookies.get().NomeEqui.toLowerCase(),
     "name": Cookies.get().NomeEqui,
-    "description": "Amo o toby",
-    "activity ": Cookies.get().Area,
-    "members": [
-{
-   'id': Cookies.get().ID, 
-   'role': 'ADMINISTRATOR'
-}
-    ]
+    "description": "",
+    "activity ":{
+      "id":5,
+    },
+    "dailyGoal": 0,
+    "weeklyGoal": 0,
+    "monthlyGoal": 0,
+    "annualGoal": 0,
+    "timeZone":"America/Sao_Paulo",
+
 }
 
   console.log(headers)
@@ -44,9 +45,19 @@ function handlePlano(){
 
       Cookies.set("NomeEqui2",Cookies.get().NomeEqui)
 
-      axios.post("http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1",data , headers)
+      axios.post("http://ec2-44-220-83-117.compute-1.amazonaws.com/api/team/v1",{
+        "handle":Cookies.get().NomeEqui.toLowerCase() ,
+        "name": Cookies.get().NomeEqui,
+        "description": "",
+        "activity": { "id": 1 },
+        "dailyGoal": 0.00, 
+        "weeklyGoal": 0.00, 
+        "monthlyGoal": 0.00, 
+        "annualGoal": 0.00,
+        "timeZone": "America/Sao_Paulo"
+    } , headers)
       .then(res=>{console.log(res)
-
+        navigate("/equipevisao")
       }
     )
     })

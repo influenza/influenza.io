@@ -166,9 +166,27 @@ export function Navbar3(props) {
                 {Configuracao && 
                 <>
                 <div style={{background:"white",width:"28vw",height:"92vh",zIndex:"1", display:"flex",flexDirection:"column", gap:"20px"}}>
-                    <div style={{fontSize:"30px"}}>                    Configuração
+                    <div style={{marginLeft:"20px",fontSize:"30px"}}>                    Configuração
                     </div>
-                    <Link style={{fontSize:"30px", textDecoration:"none"}} to={"/entrarequipe"}> {ConvitesNum}Convites</Link>
+                    <Link style={{fontSize:"30px", textDecoration:"none"}} to={"/entrarequipe"}> <div style={{display:"flex", flexDirection:"row",alignItems:"center"}}> <span style={{borderRadius:"50%", width:"40px",height:"40px",display:"flex", backgroundColor:"red", justifyContent:"center",alignItems:"center", textAlign:"center", marginRight:"50px",marginLeft:"20px"}}>{ConvitesNum} </span><span>Convites</span></div></Link>
+                    <Link style={{fontSize:"30px",textDecoration:"none",marginLeft:"20px"}} to={"/metas"}>Metas</Link>
+                    <Link  to={"/"}onClick={()=>{
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                    }
+                }
+                }>
+                    <div style={{display:"flex",flexDirection:"row",alignItems:"center", gap:"2vw", fontSize:"30px"}}>
+                    <svg style={{marginLeft:"20px"}} fill="#000000" width="40px" height="40px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12.207 9H5V7h7.136L11.05 5.914 12.464 4.5 16 8.036l-3.536 3.535-1.414-1.414L12.207 9zM10 4H8V2H2v12h6v-2h2v4H0V0h10v4z" fill-rule="evenodd"/>
+</svg>
+Sair
+                    </div></Link>
                 </div>
                 </>}
      </div>

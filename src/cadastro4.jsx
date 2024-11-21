@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import InputPer from "./inputper";
 import { paises } from './paises';
 import fundo from "./image.png"
+
 import logo from "./logo.png"
 import letraverde from "./letraverde.png"
 import "./mdcadastro4.css"
@@ -26,7 +27,6 @@ export function Cadastro4(props){
 
       if(!Cookies.get().Nome){
         console.log(Cookies.get().Nome)
-        navigate("/cadastro2")
       }
     },[])
     const  handleEnviar = async ()=>{
@@ -79,7 +79,7 @@ export function Cadastro4(props){
   console.log(Cookies.get().Nome)
 
 
-  
+console.log(data)
    axios.post('http://ec2-44-220-83-117.compute-1.amazonaws.com/auth/signup', data,)
     .then(response =>{
       console.log(response)
@@ -98,16 +98,17 @@ export function Cadastro4(props){
       console.log(res)
       Cookies.set("Token", res.data.accessToken)
       }).catch(res=>console.log(res))
-      navigate("/equipevisao")
+      navigate("/cadastro3")
       const headers = {
         headers: {
             "Authorization": `Bearer ${Cookies.get().Token}`
         }
     };
+    axios.post(`http://ec2-44-220-83-117.compute-1.amazonaws.com/auth/signup/send-confirmation-code?email=${email}`
+      ,headers).then((res)=>{Cookies.set("CodigoVerificação",res.data)})
     let data = {
       "email": Cookies.get().Email,
     }
-      axios.post(`http://ec2-44-220-83-117.compute-1.amazonaws.com/auth/signup/send-confirmation-code`,data ,headers).then((res)=>{console.log(res)})
     })
     .catch(error => {
       console.error('Erro:', error);
@@ -133,9 +134,12 @@ export function Cadastro4(props){
     return(
       <div style={{display:"flex", flexDirection:"column", backgroundImage: `url('${fundo}')`, width:"100vw", height:"100vh", backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPositionX:"center",backgroundPositionY:"",textAlign:"center"}}>
 
-<div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",height:"15vh",justifyContent:"center",alignItems:"center",marginBottom:"20px"}}>
-<img src={`${logo}`}  className='img'alt="" />
-    <img src={`${letraverde}`} className='img'   alt="" /></div>
+<div id='imgmargin' style={{display:"flex",flexDirection:"row", width:"100vw",height:"15vh",alignItems:"center",}}>
+<div id="imgs" >  
+<img src={`${logo}`} className='img'alt="" />
+  <img src={`${letraverde}`} className='img'   alt="" /></div>
+
+    </div>
      <div style={{display:"flex",justifyContent:"center", alignItems:"center", height:"80vh"}}>
      <div id="mdcon" style={{backgroundColor:"white",  borderRadius:"17px",boxShadow:"4px 4px 4px 3px rgba(0, 0, 0, 0.2)"}}>
       <p id="mdtxt1cad4">Estamos quase lá</p>
